@@ -2,13 +2,13 @@ create database knk_orari;
 use knk_orari;
 
 create table user (
-uid integer,
-firstname varchar(50),
-lastname varchar(50),
+uid integer not null,   # numri i karteles se profesorit apo administatorit
+firstname varchar(50) not null,
+lastname varchar(50) not null,
 email varchar(100),
-dept varchar(50),
-admin integer,
-password varchar(250),
+dept varchar(50) not null,
+admin integer ,
+password varchar(250)not null,
 primary key(uid));
 
 
@@ -21,12 +21,12 @@ primary key(id));
 
 
 create table  schedule (
-sid integer,
-timestamp time,
-day varchar(20),
-classroom varchar(100),
+sid integer auto_increment,
+timestamp time not null,
+day varchar(20) not null,
+classroom varchar(100) not null,
 available integer,
-pid integer,
+pid integer not null,
 primary key(sid),
 foreign key (pid) references subject(id));
 
