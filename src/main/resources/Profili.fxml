@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="526.0" prefWidth="208.0" style="-fx-background-color: GHOSTWHITE;">
+         <children>
+            <Pane prefHeight="156.0" prefWidth="208.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="52.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="75.0" fitWidth="72.0" layoutX="129.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../fiek-logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Fillimi" textFill="#230202">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Menaxho orët" textFill="#230202">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Profili" textFill="#230202">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Label prefHeight="231.0" prefWidth="204.0" />
+            <Button alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: GRAY;" text="Shkyçu">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </children>
+      </VBox>
+<!--      <Pane layoutX="207.0" prefHeight="526.-->
+      <Pane layoutX="207.0" prefHeight="526.0" prefWidth="418.0" style="-fx-background-color: GAINSBORO;">
+         <children>
+            <VBox layoutY="155.0" prefHeight="294.0" prefWidth="418.0" style="-fx-background-color: white;">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="94.0" />
+                  <Label prefHeight="18.0" prefWidth="128.0" text="Emri i perdoruesit">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameField" prefWidth="200" />
+                  <Label prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" prefWidth="200" />
+                  <Label prefHeight="18.0" prefWidth="128.0" text="Përsërit fjalëkalimin">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="confirmPasswordField" prefWidth="200" />
+                  <Label prefHeight="44.0" prefWidth="148.0" />
+                  <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: LIGHTGREEN;" text="Ruaj Ndryshimet">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+               </children>
+            </VBox>
+            <Label layoutX="14.0" layoutY="36.0" prefHeight="30.0" prefWidth="181.0" text="Profili">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="79.0" text="Këtu mund të shihni të menaxhoni profilin tuaj ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
