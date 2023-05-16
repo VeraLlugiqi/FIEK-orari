@@ -26,7 +26,7 @@
                                 <Font size="22.0" />
                             </font>
                         </Label>
-                        <TextField id="usernameField" layoutX="124.0" layoutY="220.0" prefHeight="25.0" prefWidth="200.0" promptText="ID e perdoruesit" />
+                        <TextField id="usernameField" fx:id="loginButton" layoutX="124.0" layoutY="220.0" prefHeight="25.0" prefWidth="200.0" promptText="ID e perdoruesit" />
                         <PasswordField id="passwordField" layoutX="124.0" layoutY="250.0" prefHeight="25.0" prefWidth="200.0" promptText="Fjalkalimi" />
                         <Button id="loginButton" layoutX="143.0" layoutY="280.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: LIGHTGREEN;" text="Kyçu" />
                     </children>
