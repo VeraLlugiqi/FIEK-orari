@@ -22,19 +22,19 @@
          <children>
             <Pane prefHeight="156.0" prefWidth="208.0">
                <children>
-                  <Label layoutX="14.0" layoutY="52.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
+                  <Label fx:id="fiek_orariLabel" layoutX="14.0" layoutY="52.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="65.0" fitWidth="76.0" layoutX="129.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../fiek-logo.png" />
+                        <Image url="@../../../../../fiek-logo.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Fillimi" textFill="#230202">
+            <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Fillimi" textFill="#230202">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -42,7 +42,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Menaxho orët" textFill="#230202">
+            <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Menaxho orët" textFill="#230202">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -50,7 +50,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Profili" textFill="#230202">
+            <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Profili" textFill="#230202">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -59,7 +59,7 @@
                </padding>
             </Button>
             <Label prefHeight="231.0" prefWidth="204.0" />
-            <Button alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: GRAY;" text="Shkyçu">
+            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: GRAY;" text="Shkyçu">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -84,26 +84,26 @@
                      <children>
                         <TableView prefHeight="266.0" prefWidth="418.0" GridPane.rowIndex="1">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Orët e lira" />
-                            <TableColumn prefWidth="75.0" text="Dita" />
-                              <TableColumn prefWidth="75.0" text="Lënda" />
-                              <TableColumn prefWidth="75.0" text="Salla" />
+                            <TableColumn fx:id="freeScheduleColumn" prefWidth="75.0" text="Orët e lira" />
+                            <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Dita" />
+                              <TableColumn fx:id="subjectColumn" prefWidth="75.0" text="Lënda" />
+                              <TableColumn fx:id="roomColumn" prefWidth="75.0" text="Salla" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <ComboBox prefWidth="150.0" promptText="Salla të lira" GridPane.halignment="RIGHT" />
+                        <ComboBox fx:id="freeRoomsComboBox" prefWidth="150.0" promptText="Salla të lira" GridPane.halignment="RIGHT" />
                      </children>
                   </GridPane>
                </children>
             </VBox>
-            <Label layoutX="40.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Mirë se vini">
+            <Label fx:id="welcomeLabel" layoutX="40.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Mirë se vini">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="79.0" text="Këtu mund të shihni të gjitha informatat rreth orarit ">
+            <Label fx:id="longTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të shihni të gjitha informatat rreth orarit ">
                <font>
                   <Font size="14.0" />
                </font>
