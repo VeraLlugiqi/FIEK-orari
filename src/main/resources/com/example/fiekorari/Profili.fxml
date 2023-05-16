@@ -83,7 +83,7 @@
                      </font>
                   </Label>
                   <PasswordField fx:id="passwordField" prefWidth="200" />
-                  <Label fx:id="rewritePasswordLabel" prefHeight="18.0" prefWidth="128.0" text="Përsërit fjalëkalimin">
+                  <Label fx:id="repeatPasswordLabel" prefHeight="18.0" prefWidth="128.0" text="Përsërit fjalëkalimin">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -105,7 +105,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="profileTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të shihni të menaxhoni profilin tuaj ">
+            <Label fx:id="profileTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të menaxhoni profilin tuaj ">
                <font>
                   <Font size="14.0" />
                </font>

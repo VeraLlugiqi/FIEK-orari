@@ -84,7 +84,7 @@
                             <children>
                                 <TableView prefHeight="266.0" prefWidth="418.0" GridPane.rowIndex="1">
                                     <columns>
-                                        <TableColumn fx:id="freeScheduleColumn" prefWidth="75.0" text="Orët e lira" />
+                                        <TableColumn fx:id="availableScheduleColumn" prefWidth="75.0" text="Orët e lira" />
                                         <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Dita" />
                                         <TableColumn fx:id="subjectButton" prefWidth="75.0" text="Lënda" />
                                         <TableColumn fx:id="roomColumn" prefWidth="75.0" text="Salla" />
@@ -93,7 +93,7 @@
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                     </columnResizePolicy>
                                 </TableView>
-                                <ComboBox fx:id="freeRoomsComboBox" prefWidth="150.0" promptText="Të gjitha sallat" GridPane.halignment="RIGHT" />
+                                <ComboBox fx:id="availableRoomsComboBox" prefWidth="150.0" promptText="Të gjitha sallat" GridPane.halignment="RIGHT" />
                             </children>
                         </GridPane>
                     </children>
