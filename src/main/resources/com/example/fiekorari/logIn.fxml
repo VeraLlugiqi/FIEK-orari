@@ -18,7 +18,7 @@
                     <children>
                         <ImageView fitHeight="150.0" fitWidth="161.0" layoutX="124.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../../../../../../fiek-logo.png" />
+                                <Image url="@../../../../../../../../../../fiek-logo.png" />
                             </image>
                         </ImageView>
                         <Label layoutX="134.0" layoutY="170.0" prefHeight="27.0" prefWidth="200.0" text="FIEK - ORARI">

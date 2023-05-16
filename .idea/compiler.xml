@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="FIEK-orari" options="--add-exports java.datatransfer/java.awt=com.example.fiekorari" />
+      <module name="FIEK-orari" options="" />
     </option>
   </component>
 </project>
