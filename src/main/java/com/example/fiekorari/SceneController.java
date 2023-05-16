@@ -21,6 +21,7 @@ public class SceneController {
          root = FXMLLoader.load(getClass().getResource("fillimi.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setTitle("Fillimi");
         stage.setScene(scene);
         stage.show();
     }
@@ -29,6 +30,7 @@ public class SceneController {
         root = FXMLLoader.load(getClass().getResource("menaxhoOret.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setTitle("Menaxho Orët");
         stage.setScene(scene);
         stage.show();
     }
@@ -36,6 +38,7 @@ public class SceneController {
         root = FXMLLoader.load(getClass().getResource("profili.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setTitle("Profili");
         stage.setScene(scene);
         stage.show();
     }
@@ -43,8 +46,29 @@ public class SceneController {
         root = FXMLLoader.load(getClass().getResource("logIn.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setTitle("Kyçu");
         stage.setScene(scene);
         stage.show();
     }
+
+    public void switchToSignUp(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Regjistrohu");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchBackToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("logIn.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Kyçu");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 
 }
