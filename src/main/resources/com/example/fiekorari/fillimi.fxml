@@ -59,8 +59,8 @@
                </padding>
             </Button>
             <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="220.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" />
-            <Label prefHeight="222.0" prefWidth="204.0" />
-            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu">
+            <Label prefHeight="222.0" prefWidth="193.0" />
+            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: DARKRED;" text="Shkyçu">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
