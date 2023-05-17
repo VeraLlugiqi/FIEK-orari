@@ -1,94 +1,115 @@
 package controllers;
 
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Base64;
+import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.stage.Window;
-import models.User;
-import repository.UserRepository;
-import service.UserAuthService;
-import service.UserService;
-import service.interfaces.UserServiceInterface;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import service.ConnectionUtil;
 
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-public class LoginController implements Initializable{
-//    Services
-    private UserServiceInterface userService;
-//    ....
-
-
-    public LoginController() {
-        System.out.println("Controller");
-        this.userService = new UserService();
-    }
-
+public class LoginController {
     @FXML
-    private TextField txtUsername;
+    private TextField idTextField;
     @FXML
-    private Button btnLogin;
-    @FXML
-    private PasswordField pwdPassword;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        Ndrysho tekstin e dizajnit ne baze te gjuhes
-        Locale locale = Locale.getDefault();
-
-        ResourceBundle translate = ResourceBundle.getBundle(
-                "translations.content", locale
-        );
-        this.btnLogin.setText(translate.getString("login.button.text"));
-    }
-
-    private void translateView(){
-//        ResourceBundle translate = this.getResourceBoundle();
-        //
-//        this.btnLogin.setText(translate.getString("login.button.text"));
-    }
+    private PasswordField passwordField;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
 
+    public void loginUser() {
+        String idNumber = idTextField.getText();
+        String password = passwordField.getText();
 
+        // Validate if any field is empty
+        if (idNumber.isEmpty() || password.isEmpty()) {
+            showErrorAlert("ID Number and password are required.");
+            return;
+        }
 
+        // Retrieve the user from the database
+        try (Connection conn = ConnectionUtil.getConnection();
+             PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?")) {
+            statement.setString(1, idNumber);
+            ResultSet resultSet = statement.executeQuery();
 
-    private void translate(){
-        Locale currentLocale = Locale.getDefault();
-        ResourceBundle translate =
-                ResourceBundle.getBundle("translations.content", currentLocale);
-        btnLogin.setText(translate.getString("button.login.name"));
-        // te tjerat
-    }
+            if (resultSet.next()) {
+                String storedPassword = resultSet.getString("password");
+                byte[] salt = hexStringToByteArray(resultSet.getString("salt"));
+                String hashedPassword = hashPassword(password, salt);
 
-    private void enClick(ActionEvent e){
-        Locale.setDefault(new Locale("en"));
-        this.translate();
-    }
-    @FXML
-    private void loginClick(ActionEvent e){
-        String username = this.txtUsername.getText();
-        String password = this.pwdPassword.getText();
-        try{
-            User user = this.userService.login(username, password);
-            if(user == null){
-               System.out.println("Username or password is incorrect!");
-               return;
+                if (storedPassword.equals(hashedPassword)) {
+                    // Login successful, proceed to the next screen or action
+                    showAlert("Login successful!");
+                } else {
+                    showErrorAlert("Invalid idNumber or password.");
+                }
+            } else {
+                showErrorAlert("Invalid idNumber or password.");
             }
-            System.out.println("User is correct!");
-        }catch (SQLException sqlException){
-            System.out.println("Gabim ne baze te te dhenave!");
+        } catch (SQLException e) {
+            showErrorAlert("Failed to login. Please try again.");
+            e.printStackTrace();
         }
     }
 
-    @FXML
-    private void cancelClick(ActionEvent e){
-        this.txtUsername.setText("");
-        this.pwdPassword.setText("");
-        Locale.setDefault(new Locale("de", "DE")); // set default locale to German
+    private String hashPassword(String password, byte[] salt) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] hashedPassword = md.digest(password.getBytes());
+            return Base64.getEncoder().encodeToString(hashedPassword);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Failed to hash password.", e);
+        }
+    }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private byte[] hexStringToByteArray(String hexString) {
+        int len = hexString.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
+                    + Character.digit(hexString.charAt(i + 1), 16));
+        }
+        return data;
+    }
+
+    public void switchToSignUp(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Regjistrohu");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
