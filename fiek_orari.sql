@@ -3,15 +3,13 @@ use knk_orari;
 
 
 create table user (
-uid integer not null,   # numri i karteles se profesorit apo administatorit
-firstname varchar(50) not null,
-lastname varchar(50) not null,
-email varchar(100),
-dept varchar(50) not null,
-admin integer not null,
+uid integer not null auto_increment,   # numri i karteles se profesorit apo administatorit
+firstName varchar(50) not null,
+lastName varchar(50) not null,
+idNumber varchar(100) not null,
 password varchar(250)not null,
+salt varchar(250) not null,
 primary key(uid));
-
 
 create table subject (
 id integer not null,

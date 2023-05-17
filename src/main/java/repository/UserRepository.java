@@ -20,7 +20,7 @@ import java.util.List;
 public class UserRepository implements UserRepositoryInterface {
 
     public User insert(CreateUserDto user) throws SQLException {
-        String sql = "INSERT INTO users (username, salted_hash, salt) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO user (username, salted_hash, salt ) VALUES (?, ?, ?)";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, user.getUsername());
