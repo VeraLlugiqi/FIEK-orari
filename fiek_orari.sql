@@ -41,7 +41,7 @@ create table professor_subject (
 create table idnumber(
 id integer auto_increment,
 userid integer not null,
-primary key(id);
+primary key(id));
 
 
 insert into idnumber(id, userid)
