@@ -66,7 +66,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Label prefHeight="222.0" prefWidth="193.0" />
+            <Label prefHeight="222.0" prefWidth="193.0" textFill="WHITE" />
             <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
                <VBox.margin>
                   <Insets />

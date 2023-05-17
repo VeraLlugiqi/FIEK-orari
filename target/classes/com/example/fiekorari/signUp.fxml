@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="562.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+<AnchorPane prefHeight="562.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.signupController">
 <!--<<<<<<< HEAD-->
 <!--   <children>-->
 <!--      <Pane layoutX="138.0" layoutY="70.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">-->
@@ -21,7 +20,7 @@
 <!--            <TextField fx:id="lastNameTextField" layoutX="213.0" layoutY="216.0" prefWidth="100.0" promptText="Mbiemri" />-->
 <!--            <Button fx:id="signupButton" layoutX="155.0" layoutY="374.0" mnemonicParsing="false" style="-fx-background-color: DARKCYAN;" text="Regjistrohu" textFill="WHITE" />-->
 <!--            <Label fx:id="questionSignupLabel" layoutX="105.0" layoutY="412.0" text="Tashmë keni një llogari?" />-->
-<!--            <Button fx:id="loginButton" layoutX="229.0" layoutY="407.0" mnemonicParsing="false" style="-fx-background-color: trasparent;" styleClass="tr" text="Kyçu" textFill="#6c88ec" underline="true">-->
+<!--            <Button fx:id="loginButton" layoutX="229.0" layoutY="407.0" mnemonicParsing="false" style="-fx-background-color: trasparent;" styleClass="tr" text="Kyçu" textFill="#425491" underline="true">-->
 <!--               <font>-->
 <!--                  <Font size="13.0" />-->
 <!--               </font>-->
@@ -40,10 +39,7 @@
 <!--            <PasswordField fx:id="confirmPasswordField" layoutX="105.0" layoutY="314.0" prefWidth="208.0" promptText="Konfirmo Fjalëkalimin" />-->
 <!--         </children>-->
 <!--      </Pane>-->
-<!--      <Button layoutX="539.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />-->
-<!--      <Button layoutX="591.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />-->
 <!--   </children>-->
-<!--</AnchorPane>-->
 <!--=======-->
     <children>
         <Pane layoutX="138.0" layoutY="70.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">
@@ -73,4 +69,3 @@
         </Pane>
     </children>
 </AnchorPane>
-
