@@ -104,7 +104,7 @@ public class LoginController {
     }
 
     public void switchToSignUp(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../com/example/fiekorari/signup.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/signup.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Regjistrohu");

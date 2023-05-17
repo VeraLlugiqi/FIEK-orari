@@ -122,10 +122,9 @@ public class SignupController {
     }
 
     public void switchBackToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("com.example.fiekorari.logIn.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Kyçu");
         stage.setScene(scene);
         stage.show();
     }
