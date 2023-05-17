@@ -29,12 +29,12 @@
                         </Label>
                         <ImageView fitHeight="65.0" fitWidth="76.0" layoutX="129.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../../../../../../../fiek-logo.png" />
+                                <Image url="@../../../images/fiek-logo.png" />
                             </image>
                         </ImageView>
                     </children>
                 </Pane>
-                <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY;" text="Fillimi" textFill="#230202">
+                <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Fillimi" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -42,7 +42,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY;" text="Menaxho orët" textFill="#230202">
+                <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Menaxho orët" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -50,7 +50,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY;" text="Profili" textFill="#230202">
+                <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Profili" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -59,7 +59,7 @@
                     </padding>
                 </Button>
                 <Label prefHeight="231.0" prefWidth="204.0" />
-                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: GRAY;" text="Shkyçu">
+                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -108,6 +108,8 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
+            <Button layoutX="283.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
+            <Button layoutX="337.0" layoutY="25.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
             </children>
         </Pane>
     </children>

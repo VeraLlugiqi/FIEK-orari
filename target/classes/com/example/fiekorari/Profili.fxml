@@ -25,12 +25,12 @@
                   </Label>
                   <ImageView fitHeight="75.0" fitWidth="72.0" layoutX="129.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../fiek-logo.png" />
+                        <Image url="@../../../images/fiek-logo.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; " text="Fillimi" textFill="#230202">
+            <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Fillimi" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -38,7 +38,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; " text="Menaxho orët" textFill="#230202">
+            <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Menaxho orët" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -46,7 +46,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; " text="Profili" textFill="#230202">
+            <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Profili" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -55,7 +55,7 @@
                </padding>
             </Button>
             <Label prefHeight="231.0" prefWidth="204.0" />
-            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: GRAY;" text="Shkyçu">
+            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -71,26 +71,32 @@
             <VBox layoutY="155.0" prefHeight="294.0" prefWidth="418.0" style="-fx-background-color: white;">
                <children>
                   <Label prefHeight="18.0" prefWidth="94.0" />
-                  <Label fx:id="userNameLabel" prefHeight="18.0" prefWidth="128.0" text="Emri i perdoruesit">
+                  <Label fx:id="userNameLabel" prefHeight="18.0" prefWidth="128.0" text="ID e përdoruesit">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <TextField fx:id="usernameTextField" prefWidth="200" />
-                  <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi">
+                  <Label fx:id="passwordLabel1" prefHeight="20.0" prefWidth="143.0" text="Fjalëkalimi i tanishëm">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField1" prefWidth="200" />
+                  <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi i ri">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <PasswordField fx:id="passwordField" prefWidth="200" />
-                  <Label fx:id="repeatPasswordLabel" prefHeight="18.0" prefWidth="128.0" text="Përsërit fjalëkalimin">
+                  <Label fx:id="repeatPasswordLabel" prefHeight="20.0" prefWidth="157.0" text="Përsërit fjalëkalimin e ri">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <PasswordField fx:id="confirmPasswordField" prefWidth="200" />
                   <Label prefHeight="44.0" prefWidth="148.0" />
-                  <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: LIGHTGREEN;" text="Ruaj Ndryshimet">
+                  <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKCYAN;" text="Ruaj Ndryshimet" textFill="WHITE">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -110,6 +116,8 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button layoutX="268.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
+            <Button layoutX="322.0" layoutY="33.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
          </children>
       </Pane>
    </children>
