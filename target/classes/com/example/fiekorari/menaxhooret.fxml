@@ -58,8 +58,16 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Label prefHeight="231.0" prefWidth="204.0" />
-                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
+            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+                <Label alignment="BASELINE_LEFT" prefHeight="231.0" prefWidth="204.0" />
+                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -108,8 +116,6 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Button layoutX="283.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
-            <Button layoutX="337.0" layoutY="25.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
             </children>
         </Pane>
     </children>
