@@ -52,6 +52,21 @@ public class SignupController {
             showErrorAlert("All fields are required.");
             return;
         }
+        if (idNumber.length() < 6) {
+            showErrorAlert("ID number must be at least 6 digits.");
+            return;
+        }
+
+        // Validate ID number format (only digits allowed)
+        if (!idNumber.matches("\\d+")) {
+            showErrorAlert("ID number can only contain digits.");
+            return;
+        }
+
+        if (password.length() < 8) {
+            showErrorAlert("Password must be at least 8 characters.");
+            return;
+        }
 
         // Validate password match
         if (!password.equals(confirmPassword)) {
