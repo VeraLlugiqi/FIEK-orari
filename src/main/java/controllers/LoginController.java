@@ -171,11 +171,21 @@ public class LoginController {
                 String hashedPassword = hashPassword(password, salt);
 
                 if (storedPassword.equals(hashedPassword)) {
-                    // Login successful, proceed to the next screen or action
-                    showAlert("Login successful!");
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
+                        root = loader.load();
+                        stage = (Stage) idTextField.getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException e) {
+                        showErrorAlert("Failed to load the next screen. Please try again.");
+                        e.printStackTrace();
+                    }
                 } else {
                     showErrorAlert("Invalid idNumber or password.");
                 }
+
             } else {
                 showErrorAlert("Invalid idNumber or password.");
             }
@@ -228,8 +238,6 @@ public class LoginController {
         stage.setScene(scene);
         stage.show();
     }
-
-
 
 }
 
