@@ -4,35 +4,36 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="562.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
-   <children>
-      <Pane layoutX="138.0" layoutY="70.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">
-         <children>
-            <TextField fx:id="firstNameTextField" layoutX="105.0" layoutY="216.0" prefWidth="100.0" promptText="Emri" />
-            <TextField fx:id="idNumberTextField" layoutX="105.0" layoutY="247.0" prefWidth="208.0" promptText="Numri i ID-së" />
-            <TextField fx:id="lastNameTextField" layoutX="213.0" layoutY="216.0" prefWidth="100.0" promptText="Mbiemri" />
-            <Button fx:id="signupButton" layoutX="155.0" layoutY="374.0" mnemonicParsing="false" onAction="#registerUser" text="Regjistrohu" />
-            <Label fx:id="questionSignupLabel" layoutX="105.0" layoutY="412.0" text="Tashmë keni një llogari?" />
-            <Button fx:id="loginButton" layoutX="229.0" layoutY="407.0" mnemonicParsing="false" onAction="#switchBackToLogin" style="-fx-background-color: trasparent;" styleClass="tr" text="Kyçu" textFill="#6c88ec" underline="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Label layoutX="126.0" layoutY="346.0" prefHeight="17.0" prefWidth="190.0" text="errore(duhet te jet e zbrazet)" />
-            <Label fx:id="signupLabel" layoutX="138.0" layoutY="164.0" prefHeight="17.0" prefWidth="150.0" text="Regjistrohu">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="105.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <PasswordField fx:id="passwordField" layoutX="105.0" layoutY="282.0" prefWidth="208.0" promptText="Fjalëkalimi" />
-            <PasswordField fx:id="confirmPasswordField" layoutX="105.0" layoutY="314.0" prefWidth="208.0" promptText="Konfirmo Fjalëkalimin" />
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="694.0" style="-fx-background-color: GAINSBORO;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox layoutX="153.0" layoutY="65.0" prefHeight="432.0" prefWidth="417.0" style="-fx-background-color: WHITE;">
+            <children>
+                <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
+                    <children>
+                        <ImageView fx:id="LogosignupImage" fitHeight="150.0" fitWidth="161.0" layoutX="124.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../../../../../fiek-logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="fiek_orariLabel" layoutX="134.0" layoutY="170.0" prefHeight="27.0" prefWidth="200.0" text="FIEK - ORARI">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </Label>
+                        <TextField id="usernameField" fx:id="idTextField" layoutX="124.0" layoutY="220.0" prefHeight="25.0" prefWidth="200.0" promptText="ID e përdoruesit" />
+                        <TextField id="emailField" fx:id="emailTextField" layoutX="124.0" layoutY="250.0" prefHeight="25.0" prefWidth="200.0" promptText="Email" />
+                        <PasswordField id="passwordField" fx:id="passwordField" layoutX="124.0" layoutY="280.0" prefHeight="25.0" prefWidth="200.0" promptText="Fjalëkalimi" />
+                        <PasswordField id="confirmPasswordField" fx:id="confirmPasswordField" layoutX="124.0" layoutY="310.0" prefHeight="25.0" prefWidth="200.0" promptText="Konfirmo fjalëkalimin" />
+                        <Button id="signupButton" fx:id="signupButton" layoutX="143.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: LIGHTBLUE;" text="Regjistohu" />
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </children>
+</Pane>

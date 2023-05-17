@@ -11,7 +11,7 @@ public class ConnectionUtil {
     public static Connection getConnection() throws SQLException {
         String databaseName = "knk_orari";
         String databaseUser = "root";
-        String databasePassword = "CAPS1lock150";
+        String databasePassword = "";
         String url = "jdbc:mysql://localhost:3306/" + databaseName;
 
         try {

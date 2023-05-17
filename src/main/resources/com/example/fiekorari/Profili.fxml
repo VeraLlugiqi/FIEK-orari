@@ -30,7 +30,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Fillimi" textFill="#230202">
+            <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; " text="Fillimi" textFill="#230202">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -38,7 +38,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Menaxho orët" textFill="#230202">
+            <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; " text="Menaxho orët" textFill="#230202">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -46,7 +46,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; -fx-text-fill: ;" text="Profili" textFill="#230202">
+            <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: GRAY; " text="Profili" textFill="#230202">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
