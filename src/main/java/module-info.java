@@ -7,4 +7,6 @@ module com.example.fiekorari {
 
     opens com.example.fiekorari to javafx.fxml;
     exports com.example.fiekorari;
+    exports controllers;
+    opens controllers;
 }

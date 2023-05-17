@@ -8,11 +8,11 @@ public class ConnectionUtil {
 
     private static Connection connection;
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
         String databaseName = "knk_orari";
         String databaseUser = "root";
-        String databasePassword = "";
-        String url = "jdbc:mysql://localhost/" + databaseName;
+        String databasePassword = "CAPS1lock150";
+        String url = "jdbc:mysql://localhost:3306/" + databaseName;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
