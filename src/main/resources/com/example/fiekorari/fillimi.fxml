@@ -106,7 +106,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <Label fx:id="welcomeLabel" layoutX="40.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Mirë se vini">
+            <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Mirë se vini">
                <font>
                   <Font size="36.0" />
                </font>
@@ -123,4 +123,3 @@
       <Insets />
    </padding>
 </AnchorPane>
-
