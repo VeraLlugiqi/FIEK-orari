@@ -57,7 +57,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
+            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -118,7 +118,14 @@
                               <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/list.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label prefHeight="18.0" prefWidth="279.0" text="Si mund të ndryshoj gjuhën e ndërfaqes?" GridPane.rowIndex="4" />
+                        <Label prefHeight="58.0" prefWidth="531.0" text="Kaloni tek pjesa LogIn, para se të klikoni butonin kyçu kujdes të klikoni butonin duke përzgjedhur gjuhën që dëshironi" wrapText="true" GridPane.rowIndex="5" />
+                        <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/logout.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
                               <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
                            </image>
@@ -126,13 +133,6 @@
                         <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="18.0" prefWidth="279.0" text="Si mund të ndryshoj gjuhën e ndërfaqes?" GridPane.rowIndex="4" />
-                        <Label prefHeight="58.0" prefWidth="531.0" text="Kaloni tek pjesa LogIn, para se të klikoni butonin kyçu kujdes të klikoni butonin duke përzgjedhur gjuhën që dëshironi" wrapText="true" GridPane.rowIndex="5" />
-                        <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/logout.png" />
                            </image>
                         </ImageView>
                      </children>
