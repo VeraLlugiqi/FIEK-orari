@@ -7,15 +7,15 @@ uid integer not null auto_increment,   # numri i karteles se profesorit apo admi
 firstName varchar(50) not null,
 lastName varchar(50) not null,
 idNumber varchar(100) not null,
-password varchar(250)not null,
-salt varchar(250) not null,
+password varchar(250),
+salt varchar(250),
 primary key(uid));
 
+
 create table subject (
-id integer not null,
+id integer not null auto_increment,
 name varchar(80) not null,
 primary key(id));
-
 
 
 create table schedule (
@@ -30,59 +30,106 @@ foreign key (pid) references subject(id));
 
 
 create table professor_subject (
+id int not null auto_increment,
   professor_id int not null,
   subject_id int not null,
-  primary key (professor_id, subject_id),
+  primary key (id),
   foreign key (professor_id) references user(uid),
  foreign key (subject_id) references subject(id)
 );
 
 
-create table idnumber(
-id integer auto_increment,
-userid integer not null,
-primary key(id));
 
 
-insert into idnumber(id, userid)
+
+
+select * from user;
+
+insert into user( firstName,lastName,idNumber,password,salt)
 values
-('11','121514'),
-('12','121920'),
-('13','121001'),
-('14','122020'),
-('15','122121'),
-('16','120890'),
-('17','120670'),
-('18','121515'),
-('19','121678'),
-('20','121623'),
-('21','121212'),
-('22','121517'),
-('23','121819'),
-('24','122020'),
-('25','122254'),
-('26','122301');
+('Isak','Shabani','121514',null,null),
+('Lule','Ahmeti','121920',null,null),
+('Dhurate','Hyseni','121001',null,null),
+('Artan','Mazrekaj','122020',null,null),
+('Blerim','Rexha','122121',null,null),
+('Valon','Raca','120890',null,null),
+('Milaim','Zabeli','120670',null,null),
+('Qefsere','Gjonbalaj','121515',null,null),
+('Bahri','Prebeza','121678',null,null),
+('Qamil','Kabashi','121517',null,null),
+('Blend','Arifaj','121623',null,null),
+('Dalina','Vranovci','121212',null,null),
+('Synim','Selimi','121819',null,null),
+('Mergim','Hoti','122020',null,null),
+('Arbnor','Halili','122254',null,null),
+('Ramadan','Plakolli','122301',null,null);
 
 
 
+select * from professor_subject;
 
-insert into subject(id,name)
+insert into professor_subject(professor_id, subject_id)
 values 
-(201, 'Arkitektura e kompjutereve'),
-(202, 'Elektronika'),
-(203,'Matematika Diskrete dhe Probabiliteti'),
-(204,'POO'),
-(205,'Baza e te Dhenave'),
-(206, 'Programimi ne Ueb l'),
-(207, 'Sisteme Operative'),
-(208,'Siguria e te dhenave'),
-(209,'Inxhinieria Kompjuterike'),
-(210,'KNK'),
-(211, 'Programimi ne Ueb ll'),
-(212, 'Buxheti dhe analiza e shpezimeve');
+( '1', '15'),
+( '1', '21'),
+( '2', '23'),
+( '3', '16'),
+( '3', '21'),
+( '4', '17'),
+( '5', '9'),
+( '5', '19'),
+('5','20'),
+( '6', '11'),
+( '7', '12'),
+( '8', '14'),
+( '9', '10'),
+( '10', '14'),
+( '11', '16'),
+( '11', '18'),
+( '11', '22'),
+( '12', '16'),
+( '12', '23'),
+( '12', '18'),
+( '13', '12'),
+( '14', '19'),
+( '15', '20'),
+( '16', '13');
 
 
 
+
+
+select * from subject;
+
+insert into subject(name)
+values 
+( 'Matematika l'),
+( 'MAtematika ll'),
+(  'Fizika l'),
+( 'Fizika ll'),
+( 'Bazat e inxhinierise elektrike l'),
+( 'Bazat e inxhinierise elektrike ll'),
+( 'Programimi ne C++'),
+( 'Algoritme dhe Struktura e te dhenave'),
+( 'Shkathtesi Komunikuese'),
+( 'Praktikum ne matematike'),
+( 'Carçe digjitle'),
+('Arkitektura e kompjutereve'),
+('Elektronika'),
+('Matematika Diskrete dhe Probabiliteti'),
+('POO'),
+('Baza e te Dhenave'),
+('Programimi ne Ueb l'),
+('Sisteme Operative'),
+('Siguria e te dhenave'),
+('Inxhinieria Kompjuterike'),
+('KNK'),
+('Programimi ne Ueb ll'),
+('Buxheti dhe analiza e shpezimeve'),
+('Bazat e te dhenave');
+
+
+select * from schedule;
 insert into schedule(sid, timestamp, day, classroom, available, pid)
 values
 ('1001','08:00', 'E hene', NULL,'0',NULL),
