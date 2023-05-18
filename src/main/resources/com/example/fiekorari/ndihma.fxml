@@ -105,6 +105,12 @@
                               <Image url="@../../../../../../../../../../../Downloads/question.png" />
                            </image>
                         </ImageView>
+                        <Label prefHeight="18.0" prefWidth="366.0" text="Si mund të përzgjedh orët?" GridPane.rowIndex="2" />
+                        <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../../../../../../../../../../Downloads/question.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
