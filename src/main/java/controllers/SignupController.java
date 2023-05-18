@@ -24,10 +24,7 @@ public class SignupController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    @FXML
-    private TextField firstNameTextField;
-    @FXML
-    private TextField lastNameTextField;
+
     @FXML
     private TextField idNumberTextField;
     @FXML
@@ -38,30 +35,19 @@ public class SignupController {
     private Label signupLabel;
 
     public void registerUser(){
-        String firstName = firstNameTextField.getText();
-        String lastName = lastNameTextField.getText();
         String idNumber = idNumberTextField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
         // Validate if any field is empty
-        if (firstName.isEmpty() || lastName.isEmpty() || idNumber.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (idNumber.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             PasswordUtil.showErrorAlert("All fields are required.");
             return;
         }
-        // Check if the ID number exists in the idnumber table
+
+        // Check if the ID number exists in the user table
         if (!isIdNumberValid(idNumber)) {
             PasswordUtil.showErrorAlert("Invalid ID number.");
-            return;
-        }
-        if (idNumber.length() < 6) {
-            PasswordUtil.showErrorAlert("ID number must be at least 6 digits.");
-            return;
-        }
-
-        // Validate ID number format (only digits allowed)
-        if (!idNumber.matches("\\d+")) {
-            PasswordUtil.showErrorAlert("ID number can only contain digits.");
             return;
         }
 
@@ -82,23 +68,21 @@ public class SignupController {
         // Hash the password using the salt and the SHA-256 algorithm
         String saltedHashedPassword = PasswordUtil.hashPassword(password, salt);
 
-        // Insert the user into the database
+        // Insert the password and salt into the database
         try (Connection conn = ConnectionUtil.getConnection();
-             PreparedStatement statement = conn.prepareStatement("INSERT INTO user (firstName, lastName, idNumber, password, salt) VALUES (?, ?, ?, ?, ?)")) {
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
+             PreparedStatement statement = conn.prepareStatement("UPDATE user SET password = ?, salt = ? WHERE idNumber = ?")) {
+            statement.setString(1, saltedHashedPassword);
+            statement.setString(2, PasswordUtil.byteArrayToHexString(salt));
             statement.setString(3, idNumber);
-            statement.setString(4, saltedHashedPassword);
-            statement.setString(5, PasswordUtil.byteArrayToHexString(salt));
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                PasswordUtil.showAlert("User registered successfully.");
+                PasswordUtil.showAlert("Registred successfully.");
 
                 // Load the login.fxml file
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
                 try {
                     Parent root = loader.load();
-                    Stage stage = (Stage) firstNameTextField.getScene().getWindow();
+                    Stage stage = (Stage) passwordField.getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
@@ -107,21 +91,17 @@ public class SignupController {
                     e.printStackTrace();
                 }
             } else {
-                PasswordUtil.showErrorAlert("Failed to register user. Please try again.");
+                PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
             }
         } catch (SQLException e) {
-            PasswordUtil.showErrorAlert("Failed to register user. Please try again.");
+            PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
             e.printStackTrace();
         }
     }
 
-
-
-
-
     private boolean isIdNumberValid(String idNumber) {
         try (Connection conn = ConnectionUtil.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT COUNT(*) FROM idnumber WHERE userid = ?")) {
+             PreparedStatement statement = conn.prepareStatement("SELECT COUNT(*) FROM user WHERE idNumber = ?")) {
             statement.setString(1, idNumber);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -131,6 +111,7 @@ public class SignupController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 
