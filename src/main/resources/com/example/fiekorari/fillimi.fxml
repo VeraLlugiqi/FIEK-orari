@@ -58,7 +58,7 @@
                <Insets left="50.0" />
             </padding>
          </Button>
-         <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
+         <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
@@ -106,7 +106,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <Label fx:id="welcomeLabel" layoutX="40.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Mirë se vini">
+            <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Mirë se vini">
                <font>
                   <Font size="36.0" />
                </font>
@@ -123,4 +123,3 @@
       <Insets />
    </padding>
 </AnchorPane>
-

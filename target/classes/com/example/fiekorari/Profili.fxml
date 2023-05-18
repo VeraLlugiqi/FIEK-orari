@@ -54,7 +54,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
+            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

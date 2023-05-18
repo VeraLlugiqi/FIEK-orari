@@ -185,5 +185,13 @@ public class SceneController {
         }
 
 
-
+    @FXML
+    private void switchToNdihma(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("ndihma.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Ndihma");
+        stage.setScene(scene);
+        stage.show();
+    }
     }
