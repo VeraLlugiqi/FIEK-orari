@@ -138,6 +138,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.ConnectionUtil;
+import service.PasswordUtil;
 
 public class LoginController {
     @FXML
@@ -167,8 +168,8 @@ public class LoginController {
 
             if (resultSet.next()) {
                 String storedPassword = resultSet.getString("password");
-                byte[] salt = hexStringToByteArray(resultSet.getString("salt"));
-                String hashedPassword = hashPassword(password, salt);
+                byte[] salt = PasswordUtil.hexStringToByteArray(resultSet.getString("salt"));
+                String hashedPassword = PasswordUtil.hashPassword(password, salt);
 
                 if (storedPassword.equals(hashedPassword)) {
                     try {
@@ -195,23 +196,6 @@ public class LoginController {
         }
     }
 
-    private String hashPassword(String password, byte[] salt) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(salt);
-            byte[] hashedPassword = md.digest(password.getBytes());
-            return Base64.getEncoder().encodeToString(hashedPassword);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Failed to hash password.", e);
-        }
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -220,15 +204,7 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    private byte[] hexStringToByteArray(String hexString) {
-        int len = hexString.length();
-        byte[] data = new byte[len / 2];
-        for (int i = 0; i < len; i += 2) {
-            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
-                    + Character.digit(hexString.charAt(i + 1), 16));
-        }
-        return data;
-    }
+
 
     public void switchToSignUp(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/signup.fxml"));

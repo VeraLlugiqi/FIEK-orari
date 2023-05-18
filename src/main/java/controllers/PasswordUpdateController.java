@@ -1,5 +1,13 @@
 package controllers;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import service.ConnectionUtil;
+import service.PasswordUtil;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -7,23 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import service.ConnectionUtil;
-import service.PasswordUtil;
-import com.example.fiekorari.SceneController;
-
 public class PasswordUpdateController {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML
     private TextField idNumberTextField;
@@ -36,7 +28,9 @@ public class PasswordUpdateController {
     @FXML
     private Button saveChangesButton;
 
-    public void saveChanges(ActionEvent event) {
+    @FXML
+    //@SuppressWarnings("unused")
+    private void saveChanges(ActionEvent event) {
         String idNumber = idNumberTextField.getText();
         String currentPassword = passwordField.getText();
         String newPassword = newPasswordField.getText();
@@ -56,7 +50,7 @@ public class PasswordUpdateController {
             statement.setString(1, idNumber);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                salt = resultSet.getBytes("salt");
+                salt = PasswordUtil.hexStringToByteArray(resultSet.getString("salt"));
                 saltedHashedPassword = resultSet.getString("password");
             } else {
                 PasswordUtil.showErrorAlert("Invalid idNumber.");
@@ -67,9 +61,14 @@ public class PasswordUpdateController {
             e.printStackTrace();
             return;
         }
+        // Hash the current password using the salt from the database
+        String currentSaltedHashedPassword = PasswordUtil.hashPassword(currentPassword, salt);
+
+
+
 
         // Verify current password
-        if (!verifyPassword(currentPassword, salt, saltedHashedPassword)) {
+        if (!currentSaltedHashedPassword.equals(saltedHashedPassword)) {
             PasswordUtil.showErrorAlert("Incorrect current password.");
             return;
         }
@@ -90,7 +89,7 @@ public class PasswordUpdateController {
         byte[] newSalt = PasswordUtil.generateSalt();
 
         // Hash the new password using the new salt and the SHA-256 algorithm
-        String newSaltedHashedPassword = hashPassword(newPassword, newSalt);
+        String newSaltedHashedPassword = PasswordUtil.hashPassword(newPassword, newSalt);
 
         // Update the password in the database
         try (Connection conn = ConnectionUtil.getConnection();
@@ -108,39 +107,9 @@ public class PasswordUpdateController {
             PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
             e.printStackTrace();
         }
-    }
 
-    private boolean verifyPassword(String password, byte[] salt, String saltedHashedPassword) {
-        // Hash the input password with the stored salt
-        String hashedPassword = hashPassword(password, salt);
-
-        // Compare the hashed password with the stored hashed password
-        return hashedPassword.equals(saltedHashedPassword);
-    }
-
-    private String hashPassword(String password, byte[] salt) {
-        try {
-            // Create a MessageDigest instance with the SHA-256 algorithm
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-
-            // Combine the password and salt
-            byte[] passwordBytes = password.getBytes();
-            byte[] saltedPasswordBytes = new byte[passwordBytes.length + salt.length];
-            System.arraycopy(passwordBytes, 0, saltedPasswordBytes, 0, passwordBytes.length);
-            System.arraycopy(salt, 0, saltedPasswordBytes, passwordBytes.length, salt.length);
-
-            // Generate the hashed password
-            byte[] hashedBytes = digest.digest(saltedPasswordBytes);
-
-            // Convert the hashed bytes to a hexadecimal string
-            return PasswordUtil.byteArrayToHexString(hashedBytes);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
         }
+
     }
 
-
-
-}
 

@@ -76,7 +76,7 @@
 <!--      <Pane layoutX="207.0" prefHeight="526.-->
       <Pane layoutX="207.0" prefHeight="526.0" prefWidth="418.0" style="-fx-background-color: GAINSBORO;">
          <children>
-            <VBox layoutY="155.0" prefHeight="294.0" prefWidth="418.0" style="-fx-background-color: white;">
+            <VBox layoutY="137.0" prefHeight="294.0" prefWidth="418.0" style="-fx-background-color: white;">
                <children>
                   <Label prefHeight="18.0" prefWidth="94.0" />
                   <Label fx:id="userNameLabel" prefHeight="18.0" prefWidth="128.0" text="ID e përdoruesit">
@@ -84,27 +84,27 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="usernameTextField" prefWidth="200" />
+                  <TextField fx:id="idNumberTextField" prefWidth="200" />
                   <Label fx:id="passwordLabel1" prefHeight="20.0" prefWidth="143.0" text="Fjalëkalimi i tanishëm">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwordField1" prefWidth="200" />
+                  <PasswordField fx:id="passwordField" prefWidth="200" />
                   <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi i ri">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwordField" prefWidth="200" />
+                  <PasswordField fx:id="newPasswordField" prefWidth="200" />
                   <Label fx:id="repeatPasswordLabel" prefHeight="20.0" prefWidth="157.0" text="Përsërit fjalëkalimin e ri">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="confirmPasswordField" prefWidth="200" />
+                  <PasswordField fx:id="confirmNewPasswordField" prefWidth="200" />
                   <Label prefHeight="44.0" prefWidth="148.0" />
-                  <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKCYAN;" text="Ruaj Ndryshimet" textFill="WHITE">
+                  <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#saveChanges" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKCYAN;" text="Ruaj Ndryshimet" textFill="WHITE">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
