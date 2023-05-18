@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.fiekorari.Ndihma"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutX="10.0" layoutY="10.0" prefHeight="280.0" prefWidth="380.0" text="** Logging In **&#10;1. Open the application.&#10;2. Enter your username and password in the provided fields.&#10;3. Click the &quot;Login&quot; button to proceed.&#10;&#10;** Changing Password **&#10;1. Go to the &quot;Settings&quot; menu.&#10;2. Select &quot;Change Password&quot; option.&#10;3. Enter your current password and the new password.&#10;4. Click &quot;Save&quot; to update your password.&#10;&#10;** Button Operations **&#10;- &quot;Submit&quot; button: Used to submit a form or confirm an action.&#10;- &quot;Cancel&quot; button: Cancels the current operation.&#10;- &quot;Save&quot; button: Saves changes made in settings or preferences.&#10;&#10;For more information, refer to the user manual or contact our support team.">
+            <wrapText>true</wrapText>
+        </Label>
+        <Button layoutX="178.0" layoutY="273.0" mnemonicParsing="false"  text="Close" />
+    </children>
 </AnchorPane>
+<!--  onAction="#closeHelp"  edhe fx:controller="com.yourpackage.HelpController-->
