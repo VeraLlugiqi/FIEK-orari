@@ -11,6 +11,12 @@ password varchar(250),
 salt varchar(250),
 primary key(uid));
 
+create table class (
+cid int auto_increment,
+classname varchar(20),
+primary key(cid)
+);
+
 
 create table subject (
 id integer not null auto_increment,
@@ -38,7 +44,13 @@ id int not null auto_increment,
  foreign key (subject_id) references subject(id)
 );
 
-
+# te tabela fillimi dropdown Lenda 
+#paraqitja e lendeve te profesoreve 
+select s.name from subject s
+inner join professor_subject ps on s.id = ps.subject_id
+inner join user u
+on u.uid = ps.professor_id
+where u.firstName = "Blerim";
 
 
 
@@ -127,6 +139,21 @@ values
 ('Programimi ne Ueb ll'),
 ('Buxheti dhe analiza e shpezimeve'),
 ('Bazat e te dhenave');
+
+
+insert into class(classname)
+values 
+("A408"),
+("A411"),
+("201"),
+("310"),
+("311"),
+("611"),
+("621"),
+("626"),
+('615'),
+("629"),
+("636");
 
 
 select * from schedule;
