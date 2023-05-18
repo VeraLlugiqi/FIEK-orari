@@ -98,41 +98,41 @@
                         <Label prefHeight="58.0" prefWidth="531.0" text="Kaloni tek Profile, vazhdoni te plotësoni kredenciale të sakta aktuale, shtypni fjalëkalimin e ri, ruani ndryshimet." wrapText="true" GridPane.rowIndex="1" />
                         <ImageView fitHeight="48.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/profile.png" />
+                              <Image url="@../../../images/profile.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
+                              <Image url="@../../../images/question.png" />
                            </image>
                         </ImageView>
                         <Label prefHeight="18.0" prefWidth="366.0" text="Si mund të përzgjedh orët?" GridPane.rowIndex="2" />
-                        <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <image>
-                              <Image url="@../../../../../../../../../../../Downloads/question.png" />
-                           </image>
-                        </ImageView>
                         <Label prefHeight="60.0" prefWidth="366.0" text="Kaloni tek Fillimi, përzgjedhni sallën, klikoni butonin ruaj " wrapText="true" GridPane.rowIndex="3" />
                         <ImageView fitHeight="48.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/list.png" />
+                              <Image url="@../../../images/list.png" />
                            </image>
                         </ImageView>
                         <Label prefHeight="18.0" prefWidth="279.0" text="Si mund të ndryshoj gjuhën e ndërfaqes?" GridPane.rowIndex="4" />
                         <Label prefHeight="58.0" prefWidth="531.0" text="Kaloni tek pjesa LogIn, para se të klikoni butonin kyçu kujdes të klikoni butonin duke përzgjedhur gjuhën që dëshironi" wrapText="true" GridPane.rowIndex="5" />
                         <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/logout.png" />
+                              <Image url="@../../../images/logout.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
+                              <Image url="@../../../images/question.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../../images/question.png" />
                            </image>
                         </ImageView>
                      </children>
