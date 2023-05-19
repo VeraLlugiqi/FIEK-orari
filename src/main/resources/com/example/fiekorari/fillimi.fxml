@@ -57,6 +57,14 @@
                <Insets left="50.0" />
             </padding>
          </Button>
+            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
          <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
             <opaqueInsets>
                <Insets />
@@ -65,7 +73,7 @@
                <Insets left="50.0" />
             </padding>
          </Button>
-         <Label prefHeight="222.0" prefWidth="193.0" textFill="WHITE" />
+         <Label prefHeight="188.0" prefWidth="194.0" textFill="WHITE" />
          <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
             <VBox.margin>
                <Insets />

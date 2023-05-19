@@ -57,6 +57,14 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
+            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
             <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
                <opaqueInsets>
                   <Insets />

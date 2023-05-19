@@ -85,4 +85,14 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void switchToOrari(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("orari.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Orari");
+        stage.setScene(scene);
+        stage.show();
+    }
     }
