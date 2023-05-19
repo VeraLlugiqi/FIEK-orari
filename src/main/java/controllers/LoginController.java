@@ -134,10 +134,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.User;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 
 public class LoginController {
+    private UserController userController;
+    public LoginController(){
+        userController = new UserController();
+    }
     @FXML
     private TextField idTextField;
     @FXML
@@ -170,7 +175,11 @@ public class LoginController {
 
                 if (storedPassword.equals(hashedPassword)) {
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
+
+                        UserController.loggedInUserId = idNumber;
+                        System.out.println(UserController.loggedInUserId);
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/menaxhoOret.fxml"));
                         root = loader.load();
                         stage = (Stage) idTextField.getScene().getWindow();
                         scene = new Scene(root);

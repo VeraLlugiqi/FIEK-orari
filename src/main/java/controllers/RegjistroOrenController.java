@@ -150,19 +150,20 @@ public class RegjistroOrenController implements Initializable {
 
         try { Connection conn = ConnectionUtil.getConnection();
              PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, available) VALUES (?, ?, ?, ?, ?, ?, ?)");
+             available = Integer.parseInt(userId);
             statement.setString(1, zgjedhOrenId);
             statement.setString(2,userId);
             statement.setString(3, salla);
             statement.setString(4, lenda);
             statement.setString(5, timestamp);
             statement.setString(6, day);
-            statement.setInt(7, 1);
+            statement.setInt(7, available);
 
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 PasswordUtil.showAlert("Ora u regjistrua me sukses.");
                 PreparedStatement statement1 = conn.prepareStatement("UPDATE schedule SET available = ? WHERE sid = ?");
-                statement1.setInt(1, 1);
+                statement1.setInt(1, available);
                 statement1.setString(2, zgjedhOrenId);
                 statement1.executeUpdate();
 

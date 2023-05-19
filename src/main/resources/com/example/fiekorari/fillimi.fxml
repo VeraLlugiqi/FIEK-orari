@@ -57,7 +57,7 @@
                <Insets left="50.0" />
             </padding>
          </Button>
-            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
+            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

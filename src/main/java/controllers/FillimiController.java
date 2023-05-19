@@ -108,20 +108,11 @@ public class FillimiController implements Initializable, FillimiControllerInterf
     }
     @FXML
     private void switchToProfili(ActionEvent event) throws IOException {
+        System.out.println(UserController.loggedInUserId);
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/profili.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Profili");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    private void switchToNdihma(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/ndihma.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Ndihma");
         stage.setScene(scene);
         stage.show();
     }
@@ -137,5 +128,24 @@ public class FillimiController implements Initializable, FillimiControllerInterf
         scene = new Scene(root);
         addDialogStage.setScene(scene);
         addDialogStage.showAndWait();
+    }
+    @FXML
+    private void switchToNdihma(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("ndihma.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Ndihma");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void switchToOrari(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("orari.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Orari");
+        stage.setScene(scene);
+        stage.show();
     }
 }

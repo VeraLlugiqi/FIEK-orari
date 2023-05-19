@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhoOretController">
     <children>
         <VBox prefHeight="526.0" prefWidth="208.0" style="-fx-background-color: GHOSTWHITE;">
             <children>
@@ -34,7 +34,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Fillimi" textFill="WHITE">
+                <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Fillimi" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -42,7 +42,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Menaxho orët" textFill="WHITE">
+                <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Menaxho orët" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -50,7 +50,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Profili" textFill="WHITE">
+                <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Profili" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -58,7 +58,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
+            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -66,7 +66,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
+            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -75,7 +75,7 @@
                </padding>
             </Button>
                 <Label alignment="BASELINE_LEFT" prefHeight="187.0" prefWidth="204.0" />
-                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
+                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -98,12 +98,12 @@
                                 <RowConstraints maxHeight="264.0000061035156" minHeight="10.0" prefHeight="246.4" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <TableView prefHeight="266.0" prefWidth="418.0" GridPane.rowIndex="1">
+                                <TableView fx:id="table_menaxhoOret" prefHeight="266.0" prefWidth="418.0" GridPane.rowIndex="1">
                                     <columns>
-                                        <TableColumn fx:id="availableScheduleColumn" prefWidth="75.0" text="Orët e lira" />
-                                        <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Dita" />
-                                        <TableColumn fx:id="subjectButton" prefWidth="75.0" text="Lënda" />
-                                        <TableColumn fx:id="roomColumn" prefWidth="75.0" text="Salla" />
+                                        <TableColumn fx:id="columnDita" prefWidth="75.0" text="Dita" />
+                                        <TableColumn fx:id="columnOra" prefWidth="75.0" text="Ora" />
+                                        <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
+                                        <TableColumn fx:id="columnLenda" prefWidth="75.0" text="Lënda" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
