@@ -139,7 +139,7 @@ public class RegjistroOrenController implements Initializable {
             if(resultSet2.next()) {
                 timestamp = resultSet2.getString(2);
                 day = resultSet2.getString(3);
-                available = resultSet2.getInt(4);
+                available = 0;
             }
 
 
@@ -156,11 +156,17 @@ public class RegjistroOrenController implements Initializable {
             statement.setString(4, lenda);
             statement.setString(5, timestamp);
             statement.setString(6, day);
-            statement.setInt(7, available);
+            statement.setInt(7, 1);
 
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                PasswordUtil.showAlert("Password updated successfully.");
+                PasswordUtil.showAlert("Ora u regjistrua me sukses.");
+                PreparedStatement statement1 = conn.prepareStatement("UPDATE schedule SET available = ? WHERE sid = ?");
+                statement1.setInt(1, 1);
+                statement1.setString(2, zgjedhOrenId);
+                statement1.executeUpdate();
+
+
             } else {
                 showErrorAlert("Failed to update password. Please try again.");
             }
