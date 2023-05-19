@@ -76,4 +76,13 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Ndihma");
+        stage.setScene(scene);
+        stage.show();
+    }
     }

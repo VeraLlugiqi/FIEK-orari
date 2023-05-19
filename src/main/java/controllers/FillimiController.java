@@ -1,4 +1,4 @@
-package com.example.fiekorari;
+package controllers;
 
 import controllers.FillimiControllerInterface;
 import controllers.OrariController;
@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import service.ConnectionUtil;
 
@@ -78,7 +80,7 @@ public class FillimiController implements Initializable, FillimiControllerInterf
 
     }
     public void switchToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("logIn.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Kyçu");
@@ -88,7 +90,7 @@ public class FillimiController implements Initializable, FillimiControllerInterf
 
     @FXML
     private void switchToFillimi(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("fillimi.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Fillimi");
@@ -97,7 +99,7 @@ public class FillimiController implements Initializable, FillimiControllerInterf
     }
     @FXML
     private void switchToMenaxhoOret(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("menaxhoOret.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/nebaxhoOret.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Menaxho Orët");
@@ -106,7 +108,7 @@ public class FillimiController implements Initializable, FillimiControllerInterf
     }
     @FXML
     private void switchToProfili(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("profili.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/profili.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Profili");
@@ -116,11 +118,24 @@ public class FillimiController implements Initializable, FillimiControllerInterf
 
     @FXML
     private void switchToNdihma(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("ndihma.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/ndihma.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Ndihma");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
+
+        Stage addDialogStage = new Stage();
+        addDialogStage.setTitle("Regjistro oren");
+        addDialogStage.initModality(Modality.WINDOW_MODAL);
+        addDialogStage.initOwner(stage);
+        scene = new Scene(root);
+        addDialogStage.setScene(scene);
+        addDialogStage.showAndWait();
     }
 }

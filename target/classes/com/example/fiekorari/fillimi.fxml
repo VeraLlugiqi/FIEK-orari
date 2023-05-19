@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fiekorari.FillimiController">
+<AnchorPane fx:id="mainPane" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FillimiController">
    <children>
       <VBox prefHeight="526.0" prefWidth="208.0" style="-fx-background-color: GHOSTWHITE;">
       <children>
@@ -99,7 +99,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#zgjedhOren" text="Zgjedh nje ore" textAlignment="CENTER" textOverrun="CLIP" />
+                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" text="Zgjedh nje ore" textAlignment="CENTER" textOverrun="CLIP" />
                      </children>
                   </GridPane>
                </children>
