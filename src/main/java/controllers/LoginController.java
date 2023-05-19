@@ -179,7 +179,7 @@ public class LoginController {
                         UserController.loggedInUserId = idNumber;
                         System.out.println(UserController.loggedInUserId);
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/menaxhoOret.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
                         root = loader.load();
                         stage = (Stage) idTextField.getScene().getWindow();
                         scene = new Scene(root);

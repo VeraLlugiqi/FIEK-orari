@@ -99,10 +99,11 @@
                             <children>
                                 <TableView fx:id="table_menaxhoOret" prefHeight="266.0" prefWidth="418.0" GridPane.rowIndex="1">
                                     <columns>
+                                        <TableColumn fx:id="columnIndeksi" prefWidth="75.0" text="Indeksi" />
                                         <TableColumn fx:id="columnDita" prefWidth="75.0" text="Dita" />
                                         <TableColumn fx:id="columnOra" prefWidth="75.0" text="Ora" />
-                                        <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
                                         <TableColumn fx:id="columnLenda" prefWidth="75.0" text="Lënda" />
+                              <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -65,7 +65,7 @@ public class FillimiController implements Initializable, FillimiControllerInterf
 
     private void loadFromDatabase(){
         try{
-            ps = conn.prepareStatement("Select * from schedule where available = 0");
+            ps = conn.prepareStatement("SELECT * FROM schedule WHERE available = 0");
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new OrariController(rs.getString(1) ,rs.getString(2), rs.getString(3)));
