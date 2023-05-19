@@ -1,4 +1,4 @@
-package com.example.fiekorari;
+package controllers;
 
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class SceneController {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
+    private  Parent root;
 
     @FXML
     private void switchToFillimi(ActionEvent event) throws IOException {

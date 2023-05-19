@@ -15,7 +15,7 @@
 
 <!--  onAction="#closeHelp"  edhe fx:controller="com.yourpackage.HelpController-->
 
-<AnchorPane fx:id="mainPane" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fiekorari.SceneController">
+<AnchorPane fx:id="mainPane" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SceneController">
    <children>
       <VBox prefHeight="526.0" prefWidth="208.0" style="-fx-background-color: GHOSTWHITE;">
          <children>
@@ -107,11 +107,6 @@
                            </image>
                         </ImageView>
                         <Label prefHeight="18.0" prefWidth="366.0" text="Si mund të përzgjedh orët?" GridPane.rowIndex="2" />
-                        <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <image>
-                              <Image url="@../../../images/question.png" />
-                           </image>
-                        </ImageView>
                         <Label prefHeight="60.0" prefWidth="366.0" text="Kaloni tek Fillimi, përzgjedhni sallën, klikoni butonin ruaj " wrapText="true" GridPane.rowIndex="3" />
                         <ImageView fitHeight="48.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
@@ -125,22 +120,17 @@
                               <Image url="@../../../images/logout.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <image>
-                              <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../../../../../../../ushtrimeKNKK/FIEK-orari/src/main/resources/images/question.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../../../images/question.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
                               <Image url="@../../../images/question.png" />
                            </image>
