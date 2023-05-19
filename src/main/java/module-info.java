@@ -5,8 +5,8 @@ module com.example.fiekorari {
     requires java.datatransfer;
 
 
-    opens com.example.fiekorari to javafx.fxml;
     exports com.example.fiekorari;
     exports controllers;
     opens controllers;
+    opens com.example.fiekorari;
 }

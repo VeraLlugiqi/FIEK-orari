@@ -11,6 +11,33 @@ password varchar(250),
 salt varchar(250),
 primary key(uid));
 
+create table class (
+cid int auto_increment,
+classname varchar(20),
+primary key(cid)
+);
+
+create table orariZgjedhur(
+oid integer auto_increment,
+cid integer,
+id integer,
+sid varchar(4),
+timestamp varchar(20) not null,
+day varchar(20) not null,
+available integer,
+idNumber varchar(100),
+salla varchar(10),
+lenda varchar(20),
+primary key(oid),
+foreign key(cid) references class(cid),
+foreign key(id) references subject(id),
+foreign key(sid) references schedule(sid),
+foreign key(timestamp) references schedule(timestamp),
+foreign key(day) references schedule(day),
+foreign key(available) references schedule(available),
+foreign key(idNumber) references user(idNumber)
+);
+
 
 create table subject (
 id integer not null auto_increment,
@@ -38,7 +65,13 @@ id int not null auto_increment,
  foreign key (subject_id) references subject(id)
 );
 
-
+# te tabela fillimi dropdown Lenda 
+#paraqitja e lendeve te profesoreve 
+select s.name from subject s
+inner join professor_subject ps on s.id = ps.subject_id
+inner join user u
+on u.uid = ps.professor_id
+where u.firstName = "Blerim";
 
 
 
@@ -129,6 +162,21 @@ values
 ('Bazat e te dhenave');
 
 
+insert into class(classname)
+values
+("A408"),
+("A411"),
+("201"),
+("310"),
+("311"),
+("611"),
+("621"),
+("626"),
+('615'),
+("629"),
+("636");
+
+
 select * from schedule;
 insert into schedule(sid, timestamp, day, classroom, available, pid)
 values
@@ -171,3 +219,57 @@ values
 ('1033','14:00', 'E premte', NULL,'0',NULL),
 ('1034','15:30', 'E premte', NULL,'0',NULL),
 ('1035','17:00', 'E premte', NULL,'0',NULL);
+
+
+---------------------------------------------------------------------------------------
+UPDATE SCHEDULE TABLE
+
+drop table schedule;
+create table schedule (
+sid varchar(4),
+timestamp varchar(20) not null,
+day varchar(20) not null,
+available integer,
+primary key(sid));
+
+insert into schedule(sid, timestamp, day, available)
+values
+('1001','08:00', 'E hene','0'),
+('1002','09:30', 'E hene', '0'),
+('1003','11:00', 'E hene','0'),
+('1004','12:30', 'E hene','0'),
+('1005','14:00', 'E hene','0'),
+('1006','15:30', 'E hene','0'),
+('1007','17:00', 'E hene','0'),
+
+('1008','08:00', 'E marte','0'),
+('1009','09:30', 'E marte','0'),
+('1010','11:00', 'E marte','0'),
+('1011','12:30', 'E marte','0'),
+('1012','14:00', 'E marte','0'),
+('1013','15:30', 'E marte','0'),
+('1014','17:00', 'E marte','0'),
+
+('1015','08:00', 'E merkure','0'),
+('1016','09:30', 'E merkure','0'),
+('1017','11:00', 'E merkure','0'),
+('1018','12:30', 'E merkure','0'),
+('1019','14:00', 'E merkure','0'),
+('1020','15:30', 'E merkure','0'),
+('1021','17:00', 'E merkure','0'),
+
+('1022','08:00', 'E enjte','0'),
+('1023','09:30', 'E enjte','0'),
+('1024','11:00', 'E enjte','0'),
+('1025','12:30', 'E enjte','0'),
+('1026','14:00', 'E enjte','0'),
+('1027','15:30', 'E enjte','0'),
+('1028','17:00', 'E enjte','0'),
+
+('1029','08:00', 'E premte','0'),
+('1030','09:30', 'E premte','0'),
+('1031','11:00', 'E premte','0'),
+('1032','12:30', 'E premte','0'),
+('1033','14:00', 'E premte','0'),
+('1034','15:30', 'E premte','0'),
+('1035','17:00', 'E premte','0');
