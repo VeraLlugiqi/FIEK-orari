@@ -149,7 +149,7 @@ public class RegjistroOrenController implements Initializable {
         }
 
         try { Connection conn = ConnectionUtil.getConnection();
-             PreparedStatement statement = conn.prepareStatement("UPDATE orariZgjedhur sid = ?, idNumber = ?, salla = ?, lenda = ?, timestamp = ?, day = ?, available = ? where oid=?");
+             PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, available) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, zgjedhOrenId);
             statement.setString(2,userId);
             statement.setString(3, salla);
