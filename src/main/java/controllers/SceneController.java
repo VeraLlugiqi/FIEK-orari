@@ -30,7 +30,7 @@ public class SceneController {
 
     @FXML
     private void switchToFillimi(ActionEvent event) throws IOException {
-         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
+         root = FXMLLoader.load(getClass().getResource("fillimi.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Fillimi");
@@ -39,7 +39,7 @@ public class SceneController {
     }
     @FXML
     private void switchToMenaxhoOret(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/menaxhoOret.fxml"));
+        root = FXMLLoader.load(getClass().getResource("menaxhoOret.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Menaxho Orët");
@@ -48,7 +48,7 @@ public class SceneController {
     }
     @FXML
     private void switchToProfili(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/profili.fxml"));
+        root = FXMLLoader.load(getClass().getResource("profili.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Profili");
@@ -57,7 +57,7 @@ public class SceneController {
     }
     @FXML
     private void switchToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
+        root = FXMLLoader.load(getClass().getResource("logIn.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Kyçu");
@@ -69,7 +69,7 @@ public class SceneController {
 
     @FXML
     private void switchToNdihma(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/ndihma.fxml"));
+        root = FXMLLoader.load(getClass().getResource("ndihma.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Ndihma");
