@@ -17,6 +17,27 @@ classname varchar(20),
 primary key(cid)
 );
 
+create table orariZgjedhur(
+oid integer auto_increment,
+cid integer,
+id integer,
+sid varchar(4),
+timestamp varchar(20) not null,
+day varchar(20) not null,
+available integer,
+idNumber varchar(100),
+salla varchar(10),
+lenda varchar(20),
+primary key(oid),
+foreign key(cid) references class(cid),
+foreign key(id) references subject(id),
+foreign key(sid) references schedule(sid),
+foreign key(timestamp) references schedule(timestamp),
+foreign key(day) references schedule(day),
+foreign key(available) references schedule(available),
+foreign key(idNumber) references user(idNumber)
+);
+
 
 create table subject (
 id integer not null auto_increment,
@@ -142,7 +163,7 @@ values
 
 
 insert into class(classname)
-values 
+values
 ("A408"),
 ("A411"),
 ("201"),
