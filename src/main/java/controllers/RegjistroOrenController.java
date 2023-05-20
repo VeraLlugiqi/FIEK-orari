@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static service.PasswordUtil.showAlert;
 import static service.PasswordUtil.showErrorAlert;
 
 public class RegjistroOrenController implements Initializable {
@@ -32,8 +33,7 @@ public class RegjistroOrenController implements Initializable {
     String day;
     int available;
 
-    @FXML
-    TextField userIdField;
+
     @FXML
     TextField zgjedhOrenIdField;
     @FXML
@@ -52,29 +52,21 @@ public class RegjistroOrenController implements Initializable {
         }
     }
 
-    @FXML
-    private String getLendaValue() {
-        String selectedValue = lendaCombobox.getValue();
-        return selectedValue;
-    }
-
-    @FXML
-    private String getSallaValue() {
-        String selectedValue = sallaCombobox.getValue();
-        return selectedValue;
-    }
-
     private void loadLendetFromDatabase() {
         try {
-            ps = conn.prepareStatement("Select * from subject");
+            ps = conn.prepareStatement("select s.name from subject s\n" +
+                    "inner join professor_subject ps on s.id = ps.subject_id\n" +
+                    "inner join user u\n" +
+                    "on u.uid = ps.professor_id\n" +
+                    "where u.idNumber = ?;");
+            ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                lendet.add(rs.getString(2));
+                lendet.add(rs.getString(1));
             }
         } catch (Exception e) {
 
         }
-        lendaCombobox.setValue("KNK");
         lendaCombobox.setItems(lendet);
 
         try {
@@ -93,36 +85,25 @@ public class RegjistroOrenController implements Initializable {
     @FXML
     private void zgjedhOrarin(ActionEvent event) {
 
-        String userId = userIdField.getText();
         String zgjedhOrenId = zgjedhOrenIdField.getText();
         String lenda = lendaCombobox.getValue();
-        String salla = getSallaValue();
+        String salla = sallaCombobox.getValue();
 
         // Validate if any field is empty
-        if (userId.isEmpty() || zgjedhOrenId.isEmpty() || lenda.isEmpty() || salla.isEmpty()) {
+        if (zgjedhOrenId.isEmpty() || lenda.isEmpty() || salla.isEmpty()) {
             showErrorAlert("All fields are required.");
             return;
         }
 
-        try {
-            Connection conn = ConnectionUtil.getConnection();
-            PreparedStatement statement = conn.prepareStatement("SELECT * from user where idNumber = ?");
-            statement.setString(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-            if (!resultSet.next()) {
-                showErrorAlert("Invalid idNumber.");
-                return;
-            }
-        }catch (SQLException e) {
-                e.printStackTrace();
-            return;
-        }
-
         try {Connection conn = ConnectionUtil.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT * from schedule where sid = ?");
+             PreparedStatement statement = conn.prepareStatement("SELECT * from schedule where sid = ? AND available = 0");
             statement.setString(1, zgjedhOrenId);
             ResultSet resultSet1 = statement.executeQuery();
-            if (!resultSet1.next()) {
+            if (resultSet1.next()) {
+                timestamp = resultSet1.getString(2);
+                day = resultSet1.getString(3);
+                available = 0;
+            }else{
                 showErrorAlert("Invalid id number.");
                 return;
             }
@@ -131,28 +112,12 @@ public class RegjistroOrenController implements Initializable {
             e.printStackTrace();
             return;
         }
-        try {
-            Connection conn = ConnectionUtil.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT * from schedule where sid = ?");
-            statement.setString(1, zgjedhOrenId);
-            ResultSet resultSet2 = statement.executeQuery();
-            if(resultSet2.next()) {
-                timestamp = resultSet2.getString(2);
-                day = resultSet2.getString(3);
-                available = 0;
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return;
-        }
 
         try { Connection conn = ConnectionUtil.getConnection();
-             PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, available) VALUES (?, ?, ?, ?, ?, ?, ?)");
-             available = Integer.parseInt(userId);
+            available = 1;
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, available) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            statement.setString(2, UserController.loggedInUserId);
             statement.setString(1, zgjedhOrenId);
-            statement.setString(2,userId);
             statement.setString(3, salla);
             statement.setString(4, lenda);
             statement.setString(5, timestamp);
@@ -161,18 +126,16 @@ public class RegjistroOrenController implements Initializable {
 
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                PasswordUtil.showAlert("Ora u regjistrua me sukses.");
+                showAlert("Ora u regjistrua me sukses.");
                 PreparedStatement statement1 = conn.prepareStatement("UPDATE schedule SET available = ? WHERE sid = ?");
                 statement1.setInt(1, available);
                 statement1.setString(2, zgjedhOrenId);
                 statement1.executeUpdate();
-
-
             } else {
-                showErrorAlert("Failed to update password. Please try again.");
+                showErrorAlert("Failed to update schedule. Please try again.");
             }
         } catch (SQLException e) {
-            showErrorAlert("Failed to update password. Please try again.");
+            showErrorAlert("Failed to update schedule. Please try again.");
             e.printStackTrace();
         }
 

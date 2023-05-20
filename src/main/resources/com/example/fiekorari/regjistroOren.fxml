@@ -27,8 +27,6 @@
             <TextField fx:id="zgjedhOrenIdField" prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="Lenda:" GridPane.rowIndex="2" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="Salla:" GridPane.rowIndex="3" />
-            <TextField fx:id="userIdField" layoutX="139.0" layoutY="56.0" prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="1" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="60.0" text="Id e juaj:" />
             <ComboBox fx:id="lendaCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox fx:id="sallaCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
