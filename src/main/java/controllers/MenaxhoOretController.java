@@ -1,22 +1,19 @@
 package controllers;
 
-import controllers.FillimiControllerInterface;
-import controllers.OrariController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.User;
 import service.ConnectionUtil;
 
 import java.io.IOException;
@@ -24,33 +21,36 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class FillimiController extends SceneController implements Initializable{
+public class MenaxhoOretController extends SceneController implements Initializable {
     ActionEvent actionEvent;
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Connection conn = null;
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
-    private ObservableList list;
+    private Connection conn;
+    private PreparedStatement ps;
+    private ResultSet rs;
+    ObservableList lista;
 
+    @FXML
+    private TableView<?> table_menaxhoOret;
+    @FXML
+    private TableColumn<?, ?> columnIndeksi;
 
     @FXML
-    private TableView<?> table_orari;
+    private TableColumn<?, ?> columnOra;
     @FXML
-    private TableColumn<?, ?> columnDay;
+    private TableColumn<?, ?> columnDita;
     @FXML
-    private TableColumn<?, ?> columnTime;
+    private TableColumn<?, ?> columnSalla;
     @FXML
-    private TableColumn<?, ?> columnId;
+    private TableColumn<?, ?> columnLenda;
 
     public void initialize(URL url, ResourceBundle resourceBundle){
-        try {
+        try{
             conn = ConnectionUtil.getConnection();
-            list = FXCollections.observableArrayList();
+            lista = FXCollections.observableArrayList();
             setCellTable();
             loadFromDatabase();
         }catch(Exception e){
@@ -58,32 +58,36 @@ public class FillimiController extends SceneController implements Initializable{
         }
     }
 
-    private void setCellTable(){
-        columnId.setCellValueFactory(new PropertyValueFactory<>("sid"));
-        columnDay.setCellValueFactory(new PropertyValueFactory<>("day"));
-        columnTime.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
+    public void setCellTable(){
+        columnIndeksi.setCellValueFactory(new PropertyValueFactory<>("sid"));
+        columnDita.setCellValueFactory(new PropertyValueFactory<>("day"));
+        columnLenda.setCellValueFactory(new PropertyValueFactory<>("lenda"));
+        columnOra.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
+        columnSalla.setCellValueFactory(new PropertyValueFactory<>("salla"));
     }
 
-    private void loadFromDatabase(){
+    public void loadFromDatabase(){
         try{
-            ps = conn.prepareStatement("SELECT * FROM schedule WHERE available = 0");
+            System.out.println(UserController.loggedInUserId);
+            ps = conn.prepareStatement("Select * from orarizgjedhur where idNumber = ? AND available!=0");
+            ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add(new OrariController(rs.getString(1) ,rs.getString(2), rs.getString(3)));
+                lista.add(new MenaxhoOretTable(rs.getString(2), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
+            table_menaxhoOret.setItems(lista);
+
         }catch(Exception e){
 
         }
-        table_orari.setItems(list);
     }
 
-
     @FXML
-    public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
+    public void fshiOren(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/fshiOren.fxml"));
 
         Stage addDialogStage = new Stage();
-        addDialogStage.setTitle("Regjistro oren");
+        addDialogStage.setTitle("Fshi oren");
         addDialogStage.initModality(Modality.WINDOW_MODAL);
         addDialogStage.initOwner(stage);
         scene = new Scene(root);
@@ -109,5 +113,6 @@ public class FillimiController extends SceneController implements Initializable{
     public void switchToOrari() throws IOException{
         switchToOrari(actionEvent);
     }
+
 
 }

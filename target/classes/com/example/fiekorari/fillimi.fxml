@@ -57,7 +57,7 @@
                <Insets left="50.0" />
             </padding>
          </Button>
-            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
+            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -99,7 +99,7 @@
                      <children>
                         <TableView fx:id="table_orari" prefHeight="266.0" prefWidth="418.0" GridPane.rowIndex="1">
                            <columns>
-                              <TableColumn fx:id="columnId" prefWidth="75.0" text="Numri" />
+                              <TableColumn fx:id="columnId" prefWidth="75.0" text="Indeksi" />
                               <TableColumn fx:id="columnDay" prefWidth="75.0" text="Dita" />
                               <TableColumn fx:id="columnTime" prefWidth="75.0" text="Orët e lira" />
                            </columns>
