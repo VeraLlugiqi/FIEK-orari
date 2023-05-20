@@ -21,6 +21,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+<<<<<<< Updated upstream
             <Label text="Lendet" />
             <Label text="Sallat e lira:" GridPane.rowIndex="1" />
             <ComboBox fx:id="lendaCombobox" prefWidth="150.0" GridPane.columnIndex="1" />
@@ -28,4 +29,16 @@
          </children>
       </GridPane>
     </children>
+=======
+            <Label fx:id="numriOraritLabel" alignment="CENTER" contentDisplay="CENTER" text="Numri i orarit:" GridPane.rowIndex="1" />
+            <TextField fx:id="zgjedhOrenIdField" prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="subjectLabel" alignment="CENTER" contentDisplay="CENTER" text="Lenda:" GridPane.rowIndex="2" />
+            <Label fx:id="sallaLabel" alignment="CENTER" contentDisplay="CENTER" text="Salla:" GridPane.rowIndex="3" />
+            <ComboBox fx:id="lendaCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="sallaCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Button fx:id="pickScheduleLabel" layoutX="104.0" layoutY="195.0" mnemonicParsing="false" onAction="#zgjedhOrarin" text="Zgjedh orarin" />
+   </children>
+>>>>>>> Stashed changes
 </AnchorPane>

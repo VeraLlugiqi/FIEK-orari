@@ -108,6 +108,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
+<<<<<<< Updated upstream
             
                         <GridPane>
                           <columnConstraints>
@@ -133,6 +134,9 @@
                            </children>
                         </GridPane>
 
+=======
+                        <Button fx:id="pickScheduleButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" text="Zgjedh nje ore" textAlignment="CENTER" textOverrun="CLIP" />
+>>>>>>> Stashed changes
                      </children>
                   </GridPane>
                </children>

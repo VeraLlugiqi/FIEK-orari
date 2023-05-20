@@ -1,120 +1,4 @@
-//<<<<<<< HEAD
-//package controllers;
-//
-//
-//import java.io.IOException;
-//import java.security.MessageDigest;
-//import java.security.NoSuchAlgorithmException;
-//import java.security.SecureRandom;
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.util.Base64;
-//import javafx.scene.Parent;
-//import javafx.event.ActionEvent;
-//import javafx.fxml.FXML;
-//import javafx.fxml.FXMLLoader;
-//import javafx.scene.Node;
-//import javafx.scene.Scene;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.PasswordField;
-//import javafx.scene.control.TextField;
-//import javafx.stage.Stage;
-//import service.ConnectionUtil;
-//
-//public class LoginController {
-//    @FXML
-//    private TextField idTextField;
-//    @FXML
-//    private PasswordField passwordField;
-//    private Stage stage;
-//    private Scene scene;
-//    private Parent root;
-//
-//
-//    public void loginUser() {
-//        String idNumber = idTextField.getText();
-//        String password = passwordField.getText();
-//
-//        // Validate if any field is empty
-//        if (idNumber.isEmpty() || password.isEmpty()) {
-//            showErrorAlert("ID Number and password are required.");
-//            return;
-//        }
-//
-//        // Retrieve the user from the database
-//        try (Connection conn = ConnectionUtil.getConnection();
-//             PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?")) {
-//            statement.setString(1, idNumber);
-//            ResultSet resultSet = statement.executeQuery();
-//
-//            if (resultSet.next()) {
-//                String storedPassword = resultSet.getString("password");
-//                byte[] salt = hexStringToByteArray(resultSet.getString("salt"));
-//                String hashedPassword = hashPassword(password, salt);
-//
-//                if (storedPassword.equals(hashedPassword)) {
-//                    // Login successful, proceed to the next screen or action
-//                    showAlert("Login successful!");
-//                } else {
-//                    showErrorAlert("Invalid idNumber or password.");
-//                }
-//            } else {
-//                showErrorAlert("Invalid idNumber or password.");
-//            }
-//        } catch (SQLException e) {
-//            showErrorAlert("Failed to login. Please try again.");
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private String hashPassword(String password, byte[] salt) {
-//        try {
-//            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            md.update(salt);
-//            byte[] hashedPassword = md.digest(password.getBytes());
-//            return Base64.getEncoder().encodeToString(hashedPassword);
-//        } catch (NoSuchAlgorithmException e) {
-//            throw new RuntimeException("Failed to hash password.", e);
-//        }
-//    }
-//
-//    private void showAlert(String message) {
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setHeaderText(null);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
-//
-//    private void showErrorAlert(String message) {
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setHeaderText(null);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
-//
-//    private byte[] hexStringToByteArray(String hexString) {
-//        int len = hexString.length();
-//        byte[] data = new byte[len / 2];
-//        for (int i = 0; i < len; i += 2) {
-//            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
-//                    + Character.digit(hexString.charAt(i + 1), 16));
-//        }
-//        return data;
-//    }
-//
-//    public void switchToSignUp(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("signup.fxml"));
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setTitle("Regjistrohu");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//}
-//=======
+
 package controllers;
 
 
@@ -123,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
@@ -130,9 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.User;
 import service.ConnectionUtil;
@@ -140,6 +24,7 @@ import service.PasswordUtil;
 
 public class LoginController {
     private UserController userController;
+    private ResourceBundle resources;
     public LoginController(){
         userController = new UserController();
     }
@@ -147,10 +32,35 @@ public class LoginController {
     private TextField idTextField;
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private Label fiek_orariLabel;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button signUpButton;
+
+    @FXML
+    private Label notRegisteredLabel;
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    public void initialize() {
+        loadLanguage("en");
+    }
+    public void loadLanguage(String language) {
+        Locale locale = new Locale(language);
+        resources = ResourceBundle.getBundle("translations/content", locale);
+        updateTexts();
+    }
+    private void updateTexts() {
+        fiek_orariLabel.setText(resources.getString("fiek_orariLabel.text"));
+        idTextField.setPromptText(resources.getString("idTextField.promptText"));
+        passwordField.setPromptText(resources.getString("passwordField.promptText"));
+        loginButton.setText(resources.getString("loginButton.text"));
+        notRegisteredLabel.setText(resources.getString("notRegisteredLabel.text"));
+        signUpButton.setText(resources.getString("signUpButton.text"));
+        }
 
     public void loginUser() {
         String idNumber = idTextField.getText();
@@ -158,7 +68,7 @@ public class LoginController {
 
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty()) {
-            showErrorAlert("ID Number and password are required.");
+            showErrorAlert(resources.getString("login.error.emptyFields"));
             return;
         }
 
@@ -186,18 +96,18 @@ public class LoginController {
                         stage.setScene(scene);
                         stage.show();
                     } catch (IOException e) {
-                        showErrorAlert("Failed to load the next screen. Please try again.");
+                        showErrorAlert(resources.getString("login.error.loadScreen"));
                         e.printStackTrace();
                     }
                 } else {
-                    showErrorAlert("Invalid idNumber or password.");
+                    showErrorAlert(resources.getString("login.error.invalidCredentials"));
                 }
 
             } else {
-                showErrorAlert("Invalid idNumber or password.");
+                showErrorAlert(resources.getString("login.error.invalidCredentials"));
             }
         } catch (SQLException e) {
-            showErrorAlert("Failed to login. Please try again.");
+            showErrorAlert(resources.getString("login.error.loginFailed"));
             e.printStackTrace();
         }
     }
@@ -216,9 +126,17 @@ public class LoginController {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/signup.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Regjistrohu");
+        stage.setTitle(resources.getString("signupButton.text"));
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void switchToEnglish(ActionEvent event) {
+        loadLanguage("en");
+    }
+
+    public void switchToAlbanian(ActionEvent event) {
+        loadLanguage("sq");
     }
 
     public static byte[] hexStringToByteArray(String hexString) {
