@@ -13,11 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import service.ConnectionUtil;
+import service.FillimiService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,8 +29,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static service.PasswordUtil.showAlert;
+
 public class FillimiController extends SceneController implements Initializable{
     ActionEvent actionEvent;
+    int lendetRegjistruara;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -37,7 +42,8 @@ public class FillimiController extends SceneController implements Initializable{
     private ResultSet rs = null;
     private ObservableList list;
 
-
+    @FXML
+    TextField indeksiField;
     @FXML
     private TableView<?> table_orari;
     @FXML
@@ -66,7 +72,7 @@ public class FillimiController extends SceneController implements Initializable{
 
     private void loadFromDatabase(){
         try{
-            ps = conn.prepareStatement("SELECT * FROM schedule WHERE available = 0");
+            ps = conn.prepareStatement("SELECT * FROM schedule WHERE availableSchedule = 0");
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new OrariController(rs.getString(1) ,rs.getString(2), rs.getString(3)));
@@ -80,15 +86,53 @@ public class FillimiController extends SceneController implements Initializable{
 
     @FXML
     public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
 
-        Stage addDialogStage = new Stage();
-        addDialogStage.setTitle("Regjistro oren");
-        addDialogStage.initModality(Modality.WINDOW_MODAL);
-        addDialogStage.initOwner(stage);
-        scene = new Scene(root);
-        addDialogStage.setScene(scene);
-        addDialogStage.showAndWait();
+        String indeksi = indeksiField.getText();
+        //Shiko sa lende te regjistruara i ka profesori, ashtu qe i del nje alert error kur nuk ka me lende te regjistroje
+        try {
+            conn = ConnectionUtil.getConnection();
+            ps = conn.prepareStatement("select count(s.name) from subject s\n" +
+                    "                    inner join professor_subject ps on s.id = ps.subject_id\n" +
+                    "                    inner join user u\n" +
+                    "                    on u.uid = ps.professor_id\n" +
+                    "                    where u.idNumber = ? AND availableSubject = 0;");
+            ps.setString(1, UserController.loggedInUserId);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                lendetRegjistruara = rs.getInt(1);
+            }
+
+        }catch(Exception e){
+            showAlert("Ka ndodhur nje gabim gjate marrjes se numrit te lendeve te regjistruara");
+            e.printStackTrace();
+        }
+        System.out.println(lendetRegjistruara);
+        if(lendetRegjistruara !=0 ) {
+            try {
+                conn = ConnectionUtil.getConnection();
+                ps = conn.prepareStatement("SELECT * FROM schedule WHERE sid = ?");
+                ps.setString(1, indeksi);
+                rs = ps.executeQuery();
+                //Nese ekzekutohet me sukses, kjo id ekziston dhe kalojme ne dritaren tjeter
+                FillimiService.getIndeksi = indeksi;
+                root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
+                Stage addDialogStage = new Stage();
+                addDialogStage.setTitle("Regjistro oren");
+                addDialogStage.initModality(Modality.WINDOW_MODAL);
+                addDialogStage.initOwner(stage);
+                scene = new Scene(root);
+                addDialogStage.setScene(scene);
+                System.out.println(FillimiService.getIndeksi);
+                addDialogStage.showAndWait();
+            } catch (Exception e) {
+                //Perndryshe paraqesim error mesazhin
+                showAlert("Indeksi nuk ekziston!");
+            }
+        }else{
+            showAlert("Nuk keni me lende per te shtuar!");
+        }
+
+
     }
 
     public void switchToFillimi() throws IOException{

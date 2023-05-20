@@ -59,7 +59,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
     }
 
     public void setCellTable(){
-        columnIndeksi.setCellValueFactory(new PropertyValueFactory<>("sid"));
+        columnIndeksi.setCellValueFactory(new PropertyValueFactory<>("oid"));
         columnDita.setCellValueFactory(new PropertyValueFactory<>("day"));
         columnLenda.setCellValueFactory(new PropertyValueFactory<>("lenda"));
         columnOra.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
@@ -73,7 +73,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
             ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
-                lista.add(new MenaxhoOretTable(rs.getString(2), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista.add(new MenaxhoOretTable(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             table_menaxhoOret.setItems(lista);
 

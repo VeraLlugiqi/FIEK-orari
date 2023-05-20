@@ -9,7 +9,8 @@ lastName varchar(50) not null,
 idNumber varchar(100) not null,
 password varchar(250),
 salt varchar(250),
-primary key(uid));
+primary key(uid)
+);
 
 create table class (
 cid int auto_increment,
@@ -213,7 +214,9 @@ sid varchar(4),
 timestamp varchar(20) not null,
 day varchar(20) not null,
 available integer,
-primary key(sid));
+cid integer,
+primary key(sid)
+foreign key(cid) references class(cid) auto_increment;
 
 insert into schedule(sid, timestamp, day, available)
 values
@@ -270,7 +273,8 @@ timestamp varchar(20) not null,
 day varchar(20) not null,
 available integer,
 primary key(oid),
-foreign key(sid) references schedule(sid)
+foreign key(sid) references schedule(sid),
+foreign key(cid) references class(cid)
 );
 create table orariZgjedhur(
 oid integer auto_increment,

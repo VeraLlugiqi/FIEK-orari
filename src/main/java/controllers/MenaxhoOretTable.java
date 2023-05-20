@@ -1,26 +1,26 @@
 package controllers;
 
 public class MenaxhoOretTable {
-    String sid;
+    int oid;
     String salla;
     String lenda;
     String timestamp;
     String day;
 
-    public MenaxhoOretTable(String sid, String day, String timestamp, String salla, String lenda) {
-        this.sid = sid;
+    public MenaxhoOretTable(int oid, String day, String timestamp, String salla, String lenda) {
+        this.oid = oid;
         this.salla = salla;
         this.lenda = lenda;
         this.timestamp = timestamp;
         this.day = day;
     }
 
-    public String getSid() {
-        return sid;
+    public int getOid() {
+        return oid;
     }
 
-    public void setSid(String sid) {
-        this.sid = sid;
+    public void setOid(int oid) {
+        this.oid = oid;
     }
 
     public String getSalla() {
