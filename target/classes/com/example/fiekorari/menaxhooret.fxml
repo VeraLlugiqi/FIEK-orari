@@ -105,9 +105,6 @@
                                         <TableColumn fx:id="columnLenda" prefWidth="75.0" text="Lënda" />
                               <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
                                     </columns>
-                                    <columnResizePolicy>
-                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                    </columnResizePolicy>
                                 </TableView>
                         <Button fx:id="fshiOren" mnemonicParsing="false" onAction="#fshiOren" text="Fshi oren" />
                             </children>
