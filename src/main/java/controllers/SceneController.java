@@ -22,14 +22,14 @@ import javafx.stage.Stage;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 
-public class SceneController {
+abstract class SceneController {
 
     private Stage stage;
     private Scene scene;
     private  Parent root;
 
     @FXML
-    private void switchToFillimi(ActionEvent event) throws IOException {
+    public void switchToFillimi(ActionEvent event) throws IOException {
          root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -38,7 +38,7 @@ public class SceneController {
         stage.show();
     }
     @FXML
-    private void switchToMenaxhoOret(ActionEvent event) throws IOException {
+    public void switchToMenaxhoOret(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/menaxhoOret.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -47,7 +47,7 @@ public class SceneController {
         stage.show();
     }
     @FXML
-    private void switchToProfili(ActionEvent event) throws IOException {
+    public void switchToProfili(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/profili.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -56,7 +56,7 @@ public class SceneController {
         stage.show();
     }
     @FXML
-    private void switchToLogin(ActionEvent event) throws IOException {
+    public void switchToLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -68,7 +68,7 @@ public class SceneController {
 
 
     @FXML
-    private void switchToNdihma(ActionEvent event) throws IOException {
+    public void switchToNdihma(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/ndihma.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -76,18 +76,10 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
-    public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Ndihma");
-        stage.setScene(scene);
-        stage.show();
-    }
+
 
     @FXML
-    private void switchToOrari(ActionEvent event) throws IOException {
+    public void switchToOrari(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/orari.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

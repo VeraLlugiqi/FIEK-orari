@@ -23,7 +23,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class MenaxhoOretController implements Initializable {
+public class MenaxhoOretController extends SceneController implements Initializable {
+    ActionEvent actionEvent;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -93,5 +94,25 @@ public class MenaxhoOretController implements Initializable {
         addDialogStage.setScene(scene);
         addDialogStage.showAndWait();
     }
+
+    public void switchToFillimi() throws IOException{
+        switchToFillimi(actionEvent);
+    }
+    public void switchToMenaxhoOret() throws IOException{
+        switchToMenaxhoOret(actionEvent);
+    }
+    public void switchToProfili() throws IOException{
+        switchToProfili(actionEvent);
+    }
+    public void switchToLogin() throws IOException{
+        switchToLogin(actionEvent);
+    }
+    public void switchToNdihma() throws IOException{
+        switchToNdihma(actionEvent);
+    }
+    public void switchToOrari() throws IOException{
+        switchToOrari(actionEvent);
+    }
+
 
 }

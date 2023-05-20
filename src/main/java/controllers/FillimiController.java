@@ -27,7 +27,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class FillimiController implements Initializable, FillimiControllerInterface {
+public class FillimiController extends SceneController implements Initializable{
+    ActionEvent actionEvent;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -76,46 +77,6 @@ public class FillimiController implements Initializable, FillimiControllerInterf
         table_orari.setItems(list);
     }
 
-    public void zgjedhOren(){
-
-    }
-    public void switchToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Kyçu");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    private void switchToFillimi(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Fillimi");
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void switchToMenaxhoOret(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/nebaxhoOret.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Menaxho Orët");
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void switchToProfili(ActionEvent event) throws IOException {
-        System.out.println(UserController.loggedInUserId);
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/profili.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Profili");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
@@ -129,23 +90,24 @@ public class FillimiController implements Initializable, FillimiControllerInterf
         addDialogStage.setScene(scene);
         addDialogStage.showAndWait();
     }
-    @FXML
-    private void switchToNdihma(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("ndihma.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Ndihma");
-        stage.setScene(scene);
-        stage.show();
+
+    public void switchToFillimi() throws IOException{
+        switchToFillimi(actionEvent);
+    }
+    public void switchToMenaxhoOret() throws IOException{
+        switchToMenaxhoOret(actionEvent);
+    }
+    public void switchToProfili() throws IOException{
+        switchToProfili(actionEvent);
+    }
+    public void switchToLogin() throws IOException{
+        switchToLogin(actionEvent);
+    }
+    public void switchToNdihma() throws IOException{
+        switchToNdihma(actionEvent);
+    }
+    public void switchToOrari() throws IOException{
+        switchToOrari(actionEvent);
     }
 
-    @FXML
-    private void switchToOrari(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("orari.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Orari");
-        stage.setScene(scene);
-        stage.show();
-    }
 }

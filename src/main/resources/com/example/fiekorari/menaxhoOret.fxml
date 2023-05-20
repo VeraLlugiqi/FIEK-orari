@@ -33,7 +33,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Fillimi" textFill="WHITE">
+                <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Fillimi" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -41,7 +41,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Menaxho orët" textFill="WHITE">
+                <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Menaxho orët" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -49,7 +49,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Profili" textFill="WHITE">
+                <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Profili" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -57,7 +57,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
+            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Orari" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -65,7 +65,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
+            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: DARKCYAN;" text="Ndihma" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -74,7 +74,7 @@
                </padding>
             </Button>
                 <Label alignment="BASELINE_LEFT" prefHeight="187.0" prefWidth="204.0" />
-                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
+                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>

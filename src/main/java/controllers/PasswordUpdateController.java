@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -15,8 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PasswordUpdateController {
-
+public class PasswordUpdateController extends SceneController {
+    ActionEvent actionEvent;
     @FXML
     private TextField idNumberTextField;
     @FXML
@@ -110,6 +111,26 @@ public class PasswordUpdateController {
 
         }
 
+    public void switchToFillimi() throws IOException{
+        switchToFillimi(actionEvent);
     }
+    public void switchToMenaxhoOret() throws IOException{
+        switchToMenaxhoOret(actionEvent);
+    }
+    public void switchToProfili() throws IOException{
+        switchToProfili(actionEvent);
+    }
+    public void switchToLogin() throws IOException{
+        switchToLogin(actionEvent);
+    }
+    public void switchToNdihma() throws IOException {
+        switchToNdihma(actionEvent);
+    }
+    public void switchToOrari() throws IOException{
+        switchToOrari(actionEvent);
+    }
+
+
+}
 
 
