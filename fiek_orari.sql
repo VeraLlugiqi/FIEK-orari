@@ -14,6 +14,7 @@ primary key(uid));
 create table class (
 cid int auto_increment,
 classname varchar(20),
+available integer,
 primary key(cid)
 );
 
@@ -270,3 +271,44 @@ available integer,
 primary key(oid),
 foreign key(sid) references schedule(sid)
 );
+create table orariZgjedhur(
+oid integer auto_increment,
+sid varchar(4),
+userId varchar(100),
+ps integer
+primary key(oid),
+foreign key(sid) references schedule(sid)
+foreign key(userID) references user(uid)
+foreign key(ps) references profesor_subject(id)
+);
+
+
+
+
+#---------------------------------------------------------------------
+use knk_orari;
+drop table class;
+
+create table class (
+cid int auto_increment,
+classname varchar(20),
+available integer,
+primary key(cid)
+);
+
+insert into class(classname, available)
+values
+("A408", "0"),
+("A411", 0),
+("201", 0),
+("310", 0),
+("311", 0),
+("611", 0),
+("621", 0),
+("626", 0),
+('615', 0),
+("629", 0),
+("636", 0);
+
+
+

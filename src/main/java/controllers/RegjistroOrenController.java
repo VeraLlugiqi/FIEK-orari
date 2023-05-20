@@ -70,7 +70,7 @@ public class RegjistroOrenController implements Initializable {
         lendaCombobox.setItems(lendet);
 
         try {
-            ps = conn.prepareStatement("Select * from class");
+            ps = conn.prepareStatement("Select * from class WHERE available = 0");
             rs = ps.executeQuery();
             while (rs.next()) {
                 sallat.add(rs.getString(2));
@@ -78,7 +78,6 @@ public class RegjistroOrenController implements Initializable {
         } catch (Exception e) {
 
         }
-        sallaCombobox.setValue("621");
         sallaCombobox.setItems(sallat);
     }
 
@@ -90,7 +89,7 @@ public class RegjistroOrenController implements Initializable {
         String salla = sallaCombobox.getValue();
 
         // Validate if any field is empty
-        if (zgjedhOrenId.isEmpty() || lenda.isEmpty() || salla.isEmpty()) {
+        if (zgjedhOrenId.isEmpty() && lenda.isEmpty() && salla.isEmpty()) {
             showErrorAlert("All fields are required.");
             return;
         }
@@ -127,9 +126,9 @@ public class RegjistroOrenController implements Initializable {
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 showAlert("Ora u regjistrua me sukses.");
-                PreparedStatement statement1 = conn.prepareStatement("UPDATE schedule SET available = ? WHERE sid = ?");
+                PreparedStatement statement1 = conn.prepareStatement("UPDATE class SET available = ? WHERE classname = ?");
                 statement1.setInt(1, available);
-                statement1.setString(2, zgjedhOrenId);
+                statement1.setString(2, salla);
                 statement1.executeUpdate();
             } else {
                 showErrorAlert("Failed to update schedule. Please try again.");
