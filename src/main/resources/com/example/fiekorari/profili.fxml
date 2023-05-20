@@ -87,19 +87,19 @@
             <VBox layoutY="137.0" prefHeight="294.0" prefWidth="418.0" style="-fx-background-color: white;">
                <children>
                   <Label prefHeight="18.0" prefWidth="94.0" />
-                  <Label fx:id="userNameLabel" prefHeight="18.0" prefWidth="128.0" text="ID e përdoruesit">
+                  <Label fx:id="idNumberLabel" prefHeight="18.0" prefWidth="128.0" text="ID e përdoruesit">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <TextField fx:id="idNumberTextField" prefWidth="200" />
-                  <Label fx:id="passwordLabel1" prefHeight="20.0" prefWidth="143.0" text="Fjalëkalimi i tanishëm">
+                  <Label fx:id="passwordLabel" prefHeight="20.0" prefWidth="143.0" text="Fjalëkalimi i tanishëm">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <PasswordField fx:id="passwordField" prefWidth="200" />
-                  <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi i ri">
+                  <Label fx:id="newPasswordLabel" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi i ri">
                      <font>
                         <Font size="14.0" />
                      </font>
