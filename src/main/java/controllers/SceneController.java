@@ -123,5 +123,18 @@ abstract class SceneController {
         stage.setScene(scene);
         stage.show();
     }
-
+    @FXML
+    public void switchToStatistika(ActionEvent event) throws IOException {
+        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/barChart.fxml"), bundle);
+        root = loader.load();
+        NdihmaController ndihmaController = loader.getController();
+        ndihmaController.setSelectedLanguageCode(selectedLanguageCode);
+        ndihmaController.updateTexts(); // Call updateTexts() in the SignupController
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Statistika e regjistrimit te oreve per dite");
+        stage.setScene(scene);
+        stage.show();
+    }
     }
