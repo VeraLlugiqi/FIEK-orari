@@ -1,10 +1,12 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,12 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.LocaleBundle;
 import service.ConnectionUtil;
 import service.PasswordUtil;
+import service.Translate;
 
 public class SignupController {
 
@@ -33,7 +38,16 @@ public class SignupController {
     private PasswordField confirmPasswordField;
     @FXML
     private Label signupLabel;
+    @FXML
+    private Button signUpButton;
+    @FXML
+    private Label questionSignupLabel;
+    @FXML
+    private Button loginButton;
 
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateTexts(); // Call updateTexts() during initialization
+    }
     public void registerUser(){
         String idNumber = idNumberTextField.getText();
         String password = passwordField.getText();
@@ -41,24 +55,24 @@ public class SignupController {
 
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            PasswordUtil.showErrorAlert("All fields are required.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.emptyFields"));
             return;
         }
 
         // Check if the ID number exists in the user table
         if (!isIdNumberValid(idNumber)) {
-            PasswordUtil.showErrorAlert("Invalid ID number.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.invalidId"));
             return;
         }
 
         if (password.length() < 8) {
-            PasswordUtil.showErrorAlert("Password must be at least 8 characters.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
             return;
         }
 
         // Validate password match
         if (!password.equals(confirmPassword)) {
-            PasswordUtil.showErrorAlert("Password does not match.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordMismatch"));
             return ;
         }
 
@@ -76,7 +90,7 @@ public class SignupController {
             statement.setString(3, idNumber);
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                PasswordUtil.showAlert("Registred successfully.");
+                PasswordUtil.showAlert(Translate.get("login.RegisterdSuccesfully"));
 
                 // Load the login.fxml file
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
@@ -87,14 +101,14 @@ public class SignupController {
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
-                    PasswordUtil.showErrorAlert("Failed to load login page. Please try again.");
+                    PasswordUtil.showErrorAlert(Translate.get("login.error.loadScreen"));
                     e.printStackTrace();
                 }
             } else {
-                PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
+                PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
             }
         } catch (SQLException e) {
-            PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.PassowrdUpdateFail"));
             e.printStackTrace();
         }
     }
@@ -115,11 +129,33 @@ public class SignupController {
         return false;
     }
 
-    public void switchBackToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    @FXML
+    private void switchToLogin() {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+//            Parent root = loader.load();
+//            Scene scene = new Scene(root);
+//            Stage stage = (Stage) signUpButton.getScene().getWindow();
+//            stage.setScene(scene);
+//
+//            LoginController loginController = loader.getController();
+//            loginController.updateTexts(); // Call updateTexts() in LoginController to update the texts
+//
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
+
+    public void updateTexts() {
+        signUpButton.setText(Translate.get("signUpButton"));
+        questionSignupLabel.setText(Translate.get("questionSignupLabel"));
+        loginButton.setText(Translate.get("loginButton"));
+        signupLabel.setText(Translate.get("signupLabel"));
+        passwordField.setPromptText(Translate.get("passwordPrompt"));
+        confirmPasswordField.setPromptText(Translate.get("confirmPasswordPrompt"));
+        idNumberTextField.setPromptText(Translate.get("idNumberPrompt"));
+    }
+
+
 }

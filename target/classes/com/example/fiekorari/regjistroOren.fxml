@@ -21,6 +21,7 @@
         </rowConstraints>
          <children>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <Label fx:id="numriOraritLabel" alignment="CENTER" contentDisplay="CENTER" text="Numri i orarit:" GridPane.rowIndex="1" />
             <TextField fx:id="zgjedhOrenIdField" prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="subjectLabel" alignment="CENTER" contentDisplay="CENTER" text="Lenda:" GridPane.rowIndex="2" />
@@ -33,11 +34,19 @@
 =======
             <Label alignment="CENTER" contentDisplay="CENTER" text="Zgjedhni lenden:" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="Sallat e lira" GridPane.rowIndex="1" />
+=======
+            <Label text="Lendet" />
+            <Label text="Sallat e lira:" GridPane.rowIndex="1" />
+>>>>>>> Stashed changes
             <ComboBox fx:id="lendaCombobox" prefWidth="150.0" GridPane.columnIndex="1" />
             <ComboBox fx:id="sallaCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
+<<<<<<< Updated upstream
       <Button layoutX="106.0" layoutY="160.0" mnemonicParsing="false" onAction="#zgjedhOrarin" text="Zgjedh orarin" />
 >>>>>>> Stashed changes
    </children>
+=======
+    </children>
+>>>>>>> Stashed changes
 </AnchorPane>

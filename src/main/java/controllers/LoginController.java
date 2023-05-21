@@ -119,10 +119,17 @@ package controllers;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< Updated upstream
+=======
+import java.util.Locale;
+import java.util.ResourceBundle;
+import service.Translate;
+>>>>>>> Stashed changes
 
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
@@ -134,15 +141,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.LocaleBundle;
 import models.User;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 
 public class LoginController {
     private UserController userController;
+<<<<<<< Updated upstream
     public LoginController(){
+=======
+    private ResourceBundle resources;
+
+    public LoginController() {
+>>>>>>> Stashed changes
         userController = new UserController();
     }
+
     @FXML
     private TextField idTextField;
     @FXML
@@ -151,6 +166,25 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
+<<<<<<< Updated upstream
+=======
+   public static String selectedLanguageCode = "sq"; // Default language code
+//
+//    public void initialize() {
+//        selectedLanguageCode = "en";
+//    }
+
+
+
+   public void updateTexts() {
+        fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));
+        idTextField.setPromptText(Translate.get("idTextField.promptText"));
+        passwordField.setPromptText(Translate.get("passwordField.promptText"));
+        loginButton.setText(Translate.get("loginButton.text"));
+        notRegisteredLabel.setText(Translate.get("notRegisteredLabel.text"));
+        signUpButton.setText(Translate.get("signUpButton.text"));
+    }
+>>>>>>> Stashed changes
 
     public void loginUser() {
         String idNumber = idTextField.getText();
@@ -158,7 +192,11 @@ public class LoginController {
 
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty()) {
+<<<<<<< Updated upstream
             showErrorAlert("ID Number and password are required.");
+=======
+            showErrorAlert(Translate.get("login.error.emptyFields"));
+>>>>>>> Stashed changes
             return;
         }
 
@@ -186,6 +224,7 @@ public class LoginController {
                         stage.setScene(scene);
                         stage.show();
                     } catch (IOException e) {
+<<<<<<< Updated upstream
                         showErrorAlert("Failed to load the next screen. Please try again.");
                         e.printStackTrace();
                     }
@@ -198,6 +237,20 @@ public class LoginController {
             }
         } catch (SQLException e) {
             showErrorAlert("Failed to login. Please try again.");
+=======
+                        showErrorAlert(Translate.get("login.error.loadScreen"));
+                        e.printStackTrace();
+                    }
+                } else {
+                    showErrorAlert(Translate.get("login.error.invalidCredentials"));
+                }
+
+            } else {
+                showErrorAlert(Translate.get("login.error.invalidCredentials"));
+            }
+        } catch (SQLException e) {
+            showErrorAlert(Translate.get("login.error.loginFailed"));
+>>>>>>> Stashed changes
             e.printStackTrace();
         }
     }
@@ -211,16 +264,35 @@ public class LoginController {
     }
 
 
-
     public void switchToSignUp(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/signup.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+<<<<<<< Updated upstream
         stage.setTitle("Regjistrohu");
+=======
+        stage.setTitle(Translate.get("signupButton.text"));
+>>>>>>> Stashed changes
         stage.setScene(scene);
         stage.show();
     }
 
+<<<<<<< Updated upstream
+=======
+    public void switchToEnglish(ActionEvent event) {
+        Translate.setLocale(Locale.ENGLISH);
+        updateTexts();
+    }
+
+
+    public void switchToAlbanian(ActionEvent event) {
+        Translate.setLocale(new Locale("sq"));
+        updateTexts();
+    }
+
+
+>>>>>>> Stashed changes
     public static byte[] hexStringToByteArray(String hexString) {
         int len = hexString.length();
         byte[] byteArray = new byte[len / 2];
