@@ -35,7 +35,7 @@
                 </Pane>
             </children>
         </VBox>
-        <Button layoutX="544.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
-        <Button layoutX="596.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
+        <Button layoutX="544.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToEnglish" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
+        <Button layoutX="596.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToAlbanian" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
     </children>
 </Pane>

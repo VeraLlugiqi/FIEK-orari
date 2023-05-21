@@ -16,12 +16,12 @@
             <children>
                 <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
                     <children>
-                        <ImageView fx:id="LogoLoginImage" fitHeight="150.0" fitWidth="161.0" layoutX="124.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="LogoLoginImage" fitHeight="150.0" fitWidth="161.0" layoutX="145.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../images/fiek-logo.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="fiek_orariLabel" layoutX="134.0" layoutY="170.0" prefHeight="27.0" prefWidth="200.0" text="FIEK - ORARI">
+                        <Label fx:id="fiek_orariLabel" layoutX="154.0" layoutY="170.0" prefHeight="32.0" prefWidth="180.0" text="FIEK - ORARI">
                             <font>
                                 <Font size="22.0" />
                             </font>
@@ -29,13 +29,13 @@
                         <TextField id="usernameField" fx:id="idTextField" layoutX="124.0" layoutY="220.0" prefHeight="25.0" prefWidth="200.0" promptText="ID e perdoruesit" />
                         <PasswordField id="passwordField" fx:id="passwordField" layoutX="124.0" layoutY="250.0" prefHeight="25.0" prefWidth="200.0" promptText="Fjalkalimi" />
                         <Button id="loginButton" fx:id="loginButton" layoutX="143.0" layoutY="280.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: DARKCYAN;" text="Kyçu" textFill="WHITE" />
-                        <Label fx:id="notRegisteredLabel" layoutX="98.0" layoutY="315.0" prefHeight="30.0" prefWidth="250.0" text="              Nuk jeni regjistruar akoma?" />
+                        <Label fx:id="notRegisteredLabel" layoutX="148.0" layoutY="315.0" prefHeight="30.0" prefWidth="200.0" text="Nuk jeni regjistruar akoma?" />
                         <Button fx:id="signUpButton" layoutX="130.0" layoutY="345.0" mnemonicParsing="false" onAction="#switchToSignUp" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: TRANSPARENT;" styleClass="tr" text="Regjistrohu" textFill="#6c88ec" underline="true" />
                     </children>
                 </Pane>
             </children>
         </VBox>
-        <Button layoutX="544.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
-        <Button layoutX="596.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
+        <Button layoutX="544.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToEnglish" style="-fx-background-color: DARKCYAN;" text="English" textFill="WHITE" />
+        <Button layoutX="596.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToAlbanian" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: DARKCYAN;" text="Shqip" textFill="WHITE" />
     </children>
 </Pane>

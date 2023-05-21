@@ -23,13 +23,14 @@ import models.LocaleBundle;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 import service.Translate;
+//import service.getTranslation;
 
 public class SignupController extends SceneController {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    private String selectedLanguageCode;
     @FXML
     private TextField idNumberTextField;
     @FXML
@@ -45,8 +46,13 @@ public class SignupController extends SceneController {
     @FXML
     private Button loginButton;
 
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateTexts(); // Call updateTexts() during initialization
+    }
+
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
     }
     public void registerUser(){
         String idNumber = idNumberTextField.getText();
@@ -55,24 +61,25 @@ public class SignupController extends SceneController {
 
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.emptyFields"));
+            PasswordUtil.showErrorAlert(getTranslation("login.error.emptyFields"));
             return;
         }
 
         // Check if the ID number exists in the user table
         if (!isIdNumberValid(idNumber)) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.invalidId"));
+            PasswordUtil.showErrorAlert(getTranslation("login.error.invalidId"));
             return;
+
         }
 
         if (password.length() < 8) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
+            PasswordUtil.showErrorAlert(getTranslation("login.error.passwordTooShort"));
             return;
         }
 
         // Validate password match
         if (!password.equals(confirmPassword)) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordMismatch"));
+            PasswordUtil.showErrorAlert(getTranslation("login.error.passwordMismatch"));
             return ;
         }
 
@@ -90,7 +97,7 @@ public class SignupController extends SceneController {
             statement.setString(3, idNumber);
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                PasswordUtil.showAlert(Translate.get("login.RegisterdSuccesfully"));
+                PasswordUtil.showAlert(getTranslation("login.RegisterdSuccesfully"));
 
                 // Load the login.fxml file
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
@@ -101,14 +108,14 @@ public class SignupController extends SceneController {
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
-                    PasswordUtil.showErrorAlert(Translate.get("login.error.loadScreen"));
+                    PasswordUtil.showErrorAlert(getTranslation("login.error.loadScreen"));
                     e.printStackTrace();
                 }
             } else {
-                PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
+                PasswordUtil.showErrorAlert(getTranslation("login.error.passwordTooShort"));
             }
         } catch (SQLException e) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.PassowrdUpdateFail"));
+            PasswordUtil.showErrorAlert(getTranslation("login.error.PassowrdUpdateFail"));
             e.printStackTrace();
         }
     }
@@ -134,14 +141,16 @@ public class SignupController extends SceneController {
     }
 
     public void updateTexts() {
-        signUpButton.setText(Translate.get("signUpButton"));
-        questionSignupLabel.setText(Translate.get("questionSignupLabel"));
-        loginButton.setText(Translate.get("loginButton"));
-        signupLabel.setText(Translate.get("signupLabel"));
-        passwordField.setPromptText(Translate.get("passwordPrompt"));
-        confirmPasswordField.setPromptText(Translate.get("confirmPasswordPrompt"));
-        idNumberTextField.setPromptText(Translate.get("idNumberPrompt"));
+        signUpButton.setText(getTranslation("signUpButton.text"));
+        questionSignupLabel.setText(getTranslation("questionSignupLabel.text"));
+        loginButton.setText(getTranslation("loginButton.text"));
+        signupLabel.setText(getTranslation("signupLabel.text"));
+        passwordField.setPromptText(getTranslation("passwordLabel.text"));
+        confirmPasswordField.setPromptText(getTranslation("confirmPasswordField.promptText"));
+        idNumberTextField.setPromptText(getTranslation("idNumberLabel.text"));
     }
-
+    private String getTranslation(String key) {
+        return Translate.get(key, selectedLanguageCode);
+    }
 
 }
