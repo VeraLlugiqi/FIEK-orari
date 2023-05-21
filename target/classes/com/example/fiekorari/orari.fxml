@@ -132,6 +132,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
+            <Button fx:id="closeButton" layoutX="355.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToClose" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: TRANSPARENT;" text="X" textFill="WHITE" />
             </children>
         </Pane>
     </children>
