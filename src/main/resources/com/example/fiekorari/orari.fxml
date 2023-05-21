@@ -109,7 +109,7 @@
                     </font>
                 </Label>
             <Button fx:id="closeButton" layoutX="355.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToClose" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: TRANSPARENT;" text="X" textFill="WHITE" />
-            <Button fx:id="statistikaButton" layoutX="330.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchToStatistika" text="Statistika" />
+            <Button fx:id="statistikaButton" layoutX="329.0" layoutY="37.0" mnemonicParsing="false" onAction="#switchToStatistika" text="Statistika" />
             </children>
         </Pane>
     </children>
