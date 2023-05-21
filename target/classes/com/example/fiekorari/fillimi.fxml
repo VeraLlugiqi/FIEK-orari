@@ -109,10 +109,13 @@
                            </columnResizePolicy>
                         </TableView>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
                         <Button fx:id="pickScheduleButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" text="Zgjedh nje ore" textAlignment="CENTER" textOverrun="CLIP" />
 =======
             
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                         <GridPane>
                           <columnConstraints>
