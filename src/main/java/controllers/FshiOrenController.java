@@ -47,9 +47,11 @@ public class FshiOrenController {
             return;
         }
 
+
+
         try{
 
-            conn = ConnectionUtil.getConnection();
+
             ps = conn.prepareStatement("UPDATE orarizgjedhur SET availableOrariZgjedhur = 0 WHERE oid = ?");
             ps.setString(1, indeksi);
             ps.executeUpdate();
