@@ -113,7 +113,11 @@ public class FillimiController extends SceneController implements Initializable{
         table_orari.setItems(list);
     }
 
+    @FXML
+    public void switchToClose(ActionEvent event) {
 
+        System.exit(0);
+    }
     @FXML
     public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
 
@@ -202,5 +206,6 @@ public class FillimiController extends SceneController implements Initializable{
     public void setSelectedLanguageCode(String languageCode) {
         selectedLanguageCode = languageCode;
     }
+
 
 }
