@@ -19,10 +19,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="17.0" prefWidth="105.0" text="Shenoni indeksin: " />
+            <Label fx:id="writeIndexLabel" prefHeight="17.0" prefWidth="105.0" text="Shenoni indeksin: " />
             <TextField fx:id="indeksiField" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="136.0" layoutY="111.0" mnemonicParsing="false" onAction="#fshi" text="Fshi" />
+      <Button fx:id="deleteButton" layoutX="136.0" layoutY="111.0" mnemonicParsing="false" onAction="#fshi" text="Fshi" />
    </children>
 </AnchorPane>
