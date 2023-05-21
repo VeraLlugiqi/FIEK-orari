@@ -200,7 +200,8 @@ values
 ( '16', '13');
 
 
-#-----------------------------
+#-------------------------------------------------------------------------------
+#Prej qetu e boni update pjesen e databazes
 
 create table professor_subject (
 id int not null auto_increment,
@@ -253,7 +254,7 @@ primary key(scid),
 foreign key(cid) references class(cid),
 foreign key(sid) references schedule(sid)
 );
-
+#Qetu duhet me i shtu krejt kombinimet, e boj ma vone
 insert into schedule_class (sid, cid, available) values
 ('1009', '1', 0 ),
 ('1009', '2', 0),
