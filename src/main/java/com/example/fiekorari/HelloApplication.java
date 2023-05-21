@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import service.Translate;
 
 import java.io.IOException;
 
@@ -17,7 +18,7 @@ public class HelloApplication extends Application  {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("logIn.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Login");
+        stage.setTitle(Translate.get("login.text"));
         stage.setScene(scene);
         stage.show();
     }

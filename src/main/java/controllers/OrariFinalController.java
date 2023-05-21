@@ -127,6 +127,10 @@ public class OrariFinalController extends SceneController implements Initializab
         manageClassButton.setText(Translate.get("manageClassButton.text"));
         startButton.setText(Translate.get("startButton.text"));
         fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));
+        columnLenda.setText(Translate.get("columnLenda.text"));
+        columnSalla.setText(Translate.get("columnSalla.text"));
+        columnOra.setText(Translate.get("columnOra.text"));
+        columnDita.setText(Translate.get("columnDita.text"));
 
     }
 

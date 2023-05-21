@@ -43,17 +43,19 @@ public class FshiOrenController {
         String indeksi = indeksiField.getText();
 
         if(indeksi.isEmpty()){
-            showErrorAlert("Shkruani indeksin e ores!");
+            showErrorAlert(Translate.get("shkruajIndeksinAlert.text"));
             return;
         }
 
+
+
         try{
 
-            conn = ConnectionUtil.getConnection();
+
             ps = conn.prepareStatement("UPDATE orarizgjedhur SET availableOrariZgjedhur = 0 WHERE oid = ?");
             ps.setString(1, indeksi);
             ps.executeUpdate();
-            showAlert("Ora u fshi me sukses!");
+            showAlert(Translate.get("regjistroAlert.text"));
 
 
         }catch(Exception e){

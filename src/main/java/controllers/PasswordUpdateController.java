@@ -196,7 +196,7 @@ public class PasswordUpdateController extends SceneController {
         repeatPasswordLabel.setText(getTranslation("repeatPasswordLabel.text"));
         newPasswordLabel.setText(getTranslation("newPasswordLabel.text"));
         passwordLabel.setText(getTranslation("passwordLabel.text"));
-        idNumberLabel.setText(getTranslation("idNumberLabel.text"));
+        // idNumberLabel.setText(getTranslation("idNumberLabel.text"));
 
     }
     private String getTranslation(String key) {

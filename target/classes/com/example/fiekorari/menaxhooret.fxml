@@ -117,7 +117,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Shkruani indeksin e ores:" />
+                              <Label fx:id="writeScheduleLabel" text="Shkruani indeksin e ores:" />
                               <TextField fx:id="indeksiField" GridPane.columnIndex="1" />
                               <Button fx:id="fshiOren" mnemonicParsing="false" onAction="#fshiOren" text="Fshi" GridPane.columnIndex="2">
                                  <GridPane.margin>
