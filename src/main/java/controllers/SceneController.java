@@ -42,7 +42,7 @@ abstract class SceneController {
         fillimiController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Fillimi");
+        stage.setTitle(Translate.get("fillimi.text"));
         stage.setScene(scene);
         stage.show();
     }
@@ -56,7 +56,7 @@ abstract class SceneController {
         menaxhoOretController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Menaxho Oret");
+        stage.setTitle(Translate.get("menaxhoOret.text"));
         stage.setScene(scene);
         stage.show();
     }
@@ -70,7 +70,7 @@ abstract class SceneController {
         passwordUpdateController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Ndihma");
+        stage.setTitle(Translate.get("profili.text"));
         stage.setScene(scene);
         stage.show();
     }
@@ -82,11 +82,9 @@ abstract class SceneController {
         root = loader.load();
         LoginController loginController = loader.getController();
         loginController.setSelectedLanguageCode(selectedLanguageCode);
-
-        loginController.updateTexts(); // Call updateTexts() in the LoginController
-
-        // Switch to the login screen
+        loginController.updateTexts();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle(Translate.get("login.text"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -103,7 +101,7 @@ abstract class SceneController {
         ndihmaController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Ndihma");
+        stage.setTitle(Translate.get("ndihma.text"));
         stage.setScene(scene);
         stage.show();
     }
@@ -119,7 +117,7 @@ abstract class SceneController {
         orariController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Orari");
+        stage.setTitle(Translate.get("orari.text"));
         stage.setScene(scene);
         stage.show();
     }

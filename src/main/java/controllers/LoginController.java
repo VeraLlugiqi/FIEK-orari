@@ -154,7 +154,7 @@ public void switchToSignUp(ActionEvent event) throws IOException {
     signupController.updateTexts(); // Call updateTexts() in the SignupController
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
-    stage.setTitle(Translate.get("signUpButton.text"));
+    stage.setTitle(Translate.get("signup.text"));
     stage.setScene(scene);
     stage.show();
 }
