@@ -62,10 +62,15 @@ abstract class SceneController {
     }
     @FXML
     public void switchToProfili(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/profili.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/profili.fxml"), bundle);
+        root = loader.load();
+        PasswordUpdateController passwordUpdateController = loader.getController();
+        passwordUpdateController.setSelectedLanguageCode(selectedLanguageCode);
+        passwordUpdateController.updateTexts();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Profili");
+        stage.setTitle("Ndihma");
         stage.setScene(scene);
         stage.show();
     }
