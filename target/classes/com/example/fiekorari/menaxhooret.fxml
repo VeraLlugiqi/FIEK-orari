@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -106,7 +107,25 @@
                               <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
                                     </columns>
                                 </TableView>
-                        <Button fx:id="fshiOren" mnemonicParsing="false" onAction="#fshiOren" text="Fshi oren" />
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Shkruani indeksin e ores:" />
+                              <TextField fx:id="indeksiField" GridPane.columnIndex="1" />
+                              <Button fx:id="fshiOren" mnemonicParsing="false" onAction="#fshiOren" text="Fshi" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                        </GridPane>
                             </children>
                         </GridPane>
                     </children>

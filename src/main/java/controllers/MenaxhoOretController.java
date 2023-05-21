@@ -9,16 +9,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.LocaleBundle;
 import models.User;
+import org.w3c.dom.Text;
 import service.ConnectionUtil;
+import service.FillimiService;
 import service.Translate;
 
 import java.io.IOException;
@@ -28,7 +27,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import static service.PasswordUtil.showAlert;
+import static service.PasswordUtil.showErrorAlert;
+
 public class MenaxhoOretController extends SceneController implements Initializable {
+
     ActionEvent actionEvent;
     public static String selectedLanguageCode = "sq";
     private Stage stage;
@@ -37,7 +40,12 @@ public class MenaxhoOretController extends SceneController implements Initializa
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
+    String getSalla;
+    String getLenda;
+    String getSid;
     ObservableList lista;
+    @FXML
+    TextField indeksiField;
     @FXML
     Label fiek_orariLabel;
     @FXML
@@ -96,11 +104,11 @@ public class MenaxhoOretController extends SceneController implements Initializa
     public void loadFromDatabase(){
         try{
             System.out.println(UserController.loggedInUserId);
-            ps = conn.prepareStatement("Select * from orarizgjedhur where idNumber = ? AND available!=0");
+            ps = conn.prepareStatement("Select * from orarizgjedhur where idNumber = ? AND availableOrariZgjedhur!=0");
             ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
-                lista.add(new MenaxhoOretTable(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista.add(new MenaxhoOretTable(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(5), rs.getString(4)));
             }
             table_menaxhoOret.setItems(lista);
 
@@ -110,20 +118,53 @@ public class MenaxhoOretController extends SceneController implements Initializa
     }
 
     @FXML
-    public void fshiOren(ActionEvent event) throws IOException {
-        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fshiOren.fxml"), bundle);
-        root = loader.load();
-        FshiOrenController fshiOrenController = loader.getController();
-        fshiOrenController.setSelectedLanguageCode(selectedLanguageCode);
-        fshiOrenController.updateTexts(); // Call updateTexts() in the SignupController
-        Stage addDialogStage = new Stage();
-        addDialogStage.setTitle("Fshi oren");
-        addDialogStage.initModality(Modality.WINDOW_MODAL);
-        addDialogStage.initOwner(stage);
-        scene = new Scene(root);
-        addDialogStage.setScene(scene);
-        addDialogStage.showAndWait();
+    public void fshiOren() {
+            String indeksi = indeksiField.getText();
+            if(indeksi.isEmpty()){
+                showErrorAlert("Shkruani indeksin e ores!");
+                return;
+            }
+            try{
+                conn = ConnectionUtil.getConnection();
+                ps = conn.prepareStatement("UPDATE orarizgjedhur SET availableOrariZgjedhur = 0 WHERE oid = ?");
+                ps.setString(1, indeksi);
+                ps.executeUpdate();
+                //Marrim vlerat e salles the lendes
+                conn = ConnectionUtil.getConnection();
+                ps = conn.prepareStatement("Select * from orarizgjedhur where oid = ?");
+                ps.setString(1, indeksi);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    getSalla = rs.getString(4);
+                    getLenda = rs.getString(5);
+                    getSid = rs.getString(2);
+                }
+                //Rikthejme availability te salles
+                ps = conn.prepareStatement("UPDATE schedule_class " +
+                        "INNER JOIN schedule ON schedule_class.sid = schedule.sid " +
+                        "INNER JOIN class ON schedule_class.cid = class.cid " +
+                        "SET available = 0 " +
+                        "WHERE schedule.sid = ? AND class.classname = ?");
+
+                ps.setString(1, getSid);
+                ps.setString(2, getSalla);
+                ps.executeUpdate();
+                //Rikthejme availability te lendes
+                ps = conn.prepareStatement("UPDATE professor_subject " +
+                        "INNER JOIN subject ON subject.id = professor_subject.subject_id " +
+                        "INNER JOIN user ON user.uid = professor_subject.professor_id " +
+                        "SET professor_subject.availableProfessorSubject = 0 " +
+                        "WHERE user.idNumber = ? AND subject.name = ?;");
+                ps.setString(1, UserController.loggedInUserId);
+                ps.setString(2, getLenda);
+                ps.executeUpdate();
+                showAlert("Ora u fshi me sukses!");
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
 
 
 //        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -131,7 +172,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
 //        stage.setTitle("Ndihma");
 //        stage.setScene(scene);
 //        stage.show();
-    }
+
 
     public void switchToFillimi() throws IOException{
         switchToFillimi(actionEvent);

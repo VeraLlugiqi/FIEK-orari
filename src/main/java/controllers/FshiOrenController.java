@@ -48,14 +48,12 @@ public class FshiOrenController {
         }
 
         try{
-            available = 0;
-            Connection conn1 = ConnectionUtil.getConnection();
-            PreparedStatement statement1 = conn1.prepareStatement("UPDATE class SET available = ? WHERE oid = ?");
-            statement1.setInt(1, available);
-            statement1.setString(2, indeksi);
-            statement1.executeUpdate();
-            showAlert("Ora u fshi me sukses!");
 
+            conn = ConnectionUtil.getConnection();
+            ps = conn.prepareStatement("UPDATE orarizgjedhur SET availableOrariZgjedhur = 0 WHERE oid = ?");
+            ps.setString(1, indeksi);
+            ps.executeUpdate();
+            showAlert("Ora u fshi me sukses!");
 
 
         }catch(Exception e){
