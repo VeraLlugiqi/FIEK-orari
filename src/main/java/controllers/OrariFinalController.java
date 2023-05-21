@@ -82,7 +82,7 @@ public class OrariFinalController extends SceneController implements Initializab
     public void loadFromDatabase(){
         try{
             System.out.println(UserController.loggedInUserId);
-            ps = conn.prepareStatement("Select * from orarizgjedhur where availableOrariZgjedhur!=0");
+            ps = conn.prepareStatement("Select * from orarizgjedhur where availableOrariZgjedhur!=0;");
             rs = ps.executeQuery();
             while(rs.next()){
                 lista.add(new OrariTable(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));

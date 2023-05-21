@@ -266,3 +266,8 @@ insert into schedule_class (sid, cid, available) values
 ('1008', '3', 0),
 ('1008', '4', 0 ),
 ('1008', '5', 0);
+
+
+select firstname, lastname from professor_subject inner join user on professor_subject.professor_id = user.uid
+inner join subject on professor_subject.subject_id = subject.id
+ where subject.id = '15';
