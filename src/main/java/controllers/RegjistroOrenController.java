@@ -126,7 +126,6 @@ public class RegjistroOrenController implements Initializable {
             statement.setString(6, day);
             statement.setInt(7, 1);
 
-<<<<<<< Updated upstream
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 showAlert("Ora u regjistrua me sukses.");
@@ -150,34 +149,6 @@ public class RegjistroOrenController implements Initializable {
                 ps.setString(2, lenda);
                 ps.executeUpdate();
             } else {
-=======
-                int rowsAffected = statement.executeUpdate();
-                if (rowsAffected > 0) {
-                    showAlert("Ora u regjistrua me sukses.");
-                    //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
-                    ps = conn.prepareStatement("UPDATE schedule_class " +
-                            "INNER JOIN schedule ON schedule_class.sid = schedule.sid " +
-                            "INNER JOIN class ON schedule_class.cid = class.cid " +
-                            "SET available = 1 " +
-                            "WHERE schedule.sid = ? AND class.classname = ?");
-
-                    ps.setString(1, FillimiService.getIndeksi);
-                    ps.setString(2, salla);
-                    ps.executeUpdate();
-                    //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
-                    ps = conn.prepareStatement("UPDATE professor_subject " +
-                            "INNER JOIN subject ON subject.id = professor_subject.subject_id " +
-                            "INNER JOIN user ON user.uid = professor_subject.professor_id " +
-                            "SET professor_subject.availableProfessorSubject = 1 " +
-                            "WHERE user.idNumber = ? AND subject.name = ?;");
-                    ps.setString(1, UserController.loggedInUserId);
-                    ps.setString(2, lenda);
-                    ps.executeUpdate();
-                } else {
-                    showErrorAlert("Failed to update schedule. Please try again.");
-                }
-            } catch (SQLException e) {
->>>>>>> Stashed changes
                 showErrorAlert("Failed to update schedule. Please try again.");
             }
         } catch (SQLException e) {
