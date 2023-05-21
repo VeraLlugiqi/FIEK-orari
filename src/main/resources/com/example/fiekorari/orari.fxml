@@ -91,7 +91,6 @@
                       <TableColumn fx:id="columnOra" prefWidth="75.0" text="Ora" />
                         <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
                         <TableColumn fx:id="columnLenda" prefWidth="75.0" text="Lenda" />
-                        <TableColumn fx:id="columnProf" prefWidth="75.0" text="Prof." />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
