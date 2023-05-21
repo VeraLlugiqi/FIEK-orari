@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.LocaleBundle;
 import models.User;
 import service.ConnectionUtil;
 import service.Translate;
@@ -109,8 +111,12 @@ public class MenaxhoOretController extends SceneController implements Initializa
 
     @FXML
     public void fshiOren(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/fshiOren.fxml"));
-
+        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fshiOren.fxml"), bundle);
+        root = loader.load();
+        FshiOrenController fshiOrenController = loader.getController();
+        fshiOrenController.setSelectedLanguageCode(selectedLanguageCode);
+        fshiOrenController.updateTexts(); // Call updateTexts() in the SignupController
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Fshi oren");
         addDialogStage.initModality(Modality.WINDOW_MODAL);
@@ -118,6 +124,13 @@ public class MenaxhoOretController extends SceneController implements Initializa
         scene = new Scene(root);
         addDialogStage.setScene(scene);
         addDialogStage.showAndWait();
+
+
+//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setTitle("Ndihma");
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     public void switchToFillimi() throws IOException{
