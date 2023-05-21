@@ -102,8 +102,8 @@
                         <RowConstraints maxHeight="264.0000061035156" minHeight="10.0" prefHeight="44.40001220703124" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label prefHeight="18.0" prefWidth="256.0" text="Si mund te ndryshoj fjalekalimin?" />
-                        <Label prefHeight="58.0" prefWidth="531.0" text="Kaloni tek Profile, vazhdoni te plotësoni kredenciale të sakta aktuale, shtypni fjalëkalimin e ri, ruani ndryshimet." wrapText="true" GridPane.rowIndex="1" />
+                        <Label fx:id="question1Label" prefHeight="18.0" prefWidth="256.0" text="Si mund te ndryshoj fjalekalimin?" />
+                        <Label fx:id="answer1Label" prefHeight="58.0" prefWidth="531.0" text="Kaloni tek Profile, vazhdoni te plotësoni kredenciale të sakta aktuale, shtypni fjalëkalimin e ri, ruani ndryshimet." wrapText="true" GridPane.rowIndex="1" />
                         <ImageView fitHeight="48.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
                               <Image url="@../../../images/profile.png" />
@@ -114,15 +114,15 @@
                               <Image url="@../../../images/question.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="18.0" prefWidth="366.0" text="Si mund të përzgjedh orët?" GridPane.rowIndex="2" />
-                        <Label prefHeight="60.0" prefWidth="366.0" text="Kaloni tek Fillimi, përzgjedhni sallën, klikoni butonin ruaj " wrapText="true" GridPane.rowIndex="3" />
+                        <Label fx:id="question2Label" prefHeight="18.0" prefWidth="366.0" text="Si mund të përzgjedh orët?" GridPane.rowIndex="2" />
+                        <Label fx:id="answer2Label" prefHeight="60.0" prefWidth="366.0" text="Kaloni tek Fillimi, përzgjedhni sallën, klikoni butonin ruaj " wrapText="true" GridPane.rowIndex="3" />
                         <ImageView fitHeight="48.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
                               <Image url="@../../../images/list.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="18.0" prefWidth="279.0" text="Si mund të ndryshoj gjuhën e ndërfaqes?" GridPane.rowIndex="4" />
-                        <Label prefHeight="58.0" prefWidth="531.0" text="Kaloni tek pjesa LogIn, para se të klikoni butonin kyçu kujdes të klikoni butonin duke përzgjedhur gjuhën që dëshironi" wrapText="true" GridPane.rowIndex="5" />
+                        <Label fx:id="question3Label" prefHeight="18.0" prefWidth="279.0" text="Si mund të ndryshoj gjuhën e ndërfaqes?" GridPane.rowIndex="4" />
+                        <Label fx:id="answer3Label" prefHeight="58.0" prefWidth="531.0" text="Kaloni tek pjesa LogIn, para se të klikoni butonin kyçu kujdes të klikoni butonin duke përzgjedhur gjuhën që dëshironi" wrapText="true" GridPane.rowIndex="5" />
                         <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <image>
                               <Image url="@../../../images/logout.png" />
@@ -147,12 +147,12 @@
                   </GridPane>
                </children>
             </VBox>
-            <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Ndihma">
+            <Label fx:id="helpLabel" layoutX="14.0" layoutY="26.0" prefHeight="30.0" prefWidth="181.0" text="Ndihma">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="longTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të gjeni informata rreth përdorimit të aplikacionit ">
+            <Label fx:id="helpLongTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të gjeni informata rreth përdorimit të aplikacionit ">
                <font>
                   <Font size="14.0" />
                </font>

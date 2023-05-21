@@ -152,7 +152,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="hepLongTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të gjeni informata rreth përdorimit të aplikacionit ">
+            <Label fx:id="helpLongTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të gjeni informata rreth përdorimit të aplikacionit ">
                <font>
                   <Font size="14.0" />
                </font>
