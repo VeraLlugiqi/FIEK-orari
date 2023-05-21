@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 
@@ -29,9 +31,19 @@ public class PasswordUpdateController extends SceneController {
     @FXML
     private Button saveChangesButton;
 
-    @FXML
-    //@SuppressWarnings("unused")
-    private void saveChanges(ActionEvent event) {
+
+    public void updatePassword(ActionEvent event) {
+        saveChanges();
+    }
+
+    public void updatePasswordWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            saveChanges();
+        }
+    }
+
+
+    private void saveChanges() {
         String idNumber = idNumberTextField.getText();
         String currentPassword = passwordField.getText();
         String newPassword = newPasswordField.getText();
