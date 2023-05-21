@@ -131,6 +131,9 @@ public class PasswordUpdateController extends SceneController {
     }
 
 
+    public void switchToClose(ActionEvent event) {
+        System.exit(0);
+    }
 }
 
 

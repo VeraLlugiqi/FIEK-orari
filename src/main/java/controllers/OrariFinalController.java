@@ -75,4 +75,8 @@ public class OrariFinalController extends SceneController {
 
     }
 
+    @FXML
+    public void switchToClose(ActionEvent event) {
+        System.exit(0);
+    }
 }

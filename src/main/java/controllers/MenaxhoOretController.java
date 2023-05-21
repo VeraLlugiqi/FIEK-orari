@@ -162,4 +162,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
         selectedLanguageCode = languageCode;
     }
 
+    public void switchToClose(ActionEvent event) {
+        System.exit(0);
+    }
 }
