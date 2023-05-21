@@ -1,14 +1,6 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -33,8 +25,10 @@ public class OrariController {
         this.timestamp = timestamp;
         this.day = day;
     }
+
     public OrariController() {
     }
+
     public String getSid() {
         return sid;
     }
@@ -58,6 +52,7 @@ public class OrariController {
     public void setDay(String day) {
         this.day = day;
     }
+
     @FXML
     private BarChart<String, Integer> barChart;
 
@@ -68,7 +63,6 @@ public class OrariController {
 
     public void initialize() {
         // Connect to the database
-
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/knk_orari", "root", "valtrina1*");
              Statement statement = connection.createStatement()) {
 
@@ -98,6 +92,4 @@ public class OrariController {
             e.printStackTrace();
         }
     }
-
-
 }
