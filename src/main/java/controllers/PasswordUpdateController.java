@@ -24,8 +24,7 @@ import java.util.ResourceBundle;
 
 public class PasswordUpdateController extends SceneController {
     ActionEvent actionEvent;
-    @FXML
-    private TextField idNumberTextField;
+
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -81,13 +80,12 @@ public class PasswordUpdateController extends SceneController {
 
 
     private void saveChanges() {
-        String idNumber = idNumberTextField.getText();
         String currentPassword = passwordField.getText();
         String newPassword = newPasswordField.getText();
         String confirmPassword = confirmNewPasswordField.getText();
 
         // Validate if any field is empty
-        if (idNumber.isEmpty() || currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+        if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
             PasswordUtil.showErrorAlert("All fields are required.");
             return;
         }
@@ -97,7 +95,7 @@ public class PasswordUpdateController extends SceneController {
         byte[] salt = null;
         try (Connection conn = ConnectionUtil.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT salt, password FROM user WHERE idNumber = ?")) {
-            statement.setString(1, idNumber);
+            statement.setString(1, UserController.loggedInUserId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 salt = PasswordUtil.hexStringToByteArray(resultSet.getString("salt"));
@@ -146,7 +144,7 @@ public class PasswordUpdateController extends SceneController {
              PreparedStatement statement = conn.prepareStatement("UPDATE user SET password = ?, salt = ? WHERE idNumber = ?")) {
             statement.setString(1, newSaltedHashedPassword);
             statement.setString(2, PasswordUtil.byteArrayToHexString(newSalt));
-            statement.setString(3, idNumber);
+            statement.setString(3, UserController.loggedInUserId);
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 PasswordUtil.showAlert("Password updated successfully.");

@@ -1,14 +1,6 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -34,6 +26,9 @@ public class OrariController {
         this.day = day;
     }
 
+    public OrariController() {
+    }
+
     public String getSid() {
         return sid;
     }
@@ -57,6 +52,7 @@ public class OrariController {
     public void setDay(String day) {
         this.day = day;
     }
+
     @FXML
     private BarChart<String, Integer> barChart;
 
@@ -71,7 +67,7 @@ public class OrariController {
              Statement statement = connection.createStatement()) {
 
             // Execute the query
-            ResultSet resultSet = statement.executeQuery("SELECT day, COUNT(*) AS booked_schedules FROM orarizgjedhur GROUP BY day");
+            ResultSet resultSet = statement.executeQuery("SELECT day, COUNT(*) AS booked_schedules FROM orarizgjedhur GROUP BY day;");
 
             // Create a list to hold the XYChart.Series objects
             List<XYChart.Series<String, Integer>> seriesList = new ArrayList<>();
@@ -96,6 +92,4 @@ public class OrariController {
             e.printStackTrace();
         }
     }
-
-
 }
