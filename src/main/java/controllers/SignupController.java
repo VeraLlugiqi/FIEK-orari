@@ -24,7 +24,7 @@ import service.ConnectionUtil;
 import service.PasswordUtil;
 import service.Translate;
 
-public class SignupController {
+public class SignupController extends SceneController {
 
     private Stage stage;
     private Scene scene;
@@ -129,22 +129,8 @@ public class SignupController {
         return false;
     }
 
-    @FXML
-    private void switchToLogin() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-//            Parent root = loader.load();
-//            Scene scene = new Scene(root);
-//            Stage stage = (Stage) signUpButton.getScene().getWindow();
-//            stage.setScene(scene);
-//
-//            LoginController loginController = loader.getController();
-//            loginController.updateTexts(); // Call updateTexts() in LoginController to update the texts
-//
-//            stage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    private void switchToLogin(){
+        switchToLogin();
     }
 
     public void updateTexts() {

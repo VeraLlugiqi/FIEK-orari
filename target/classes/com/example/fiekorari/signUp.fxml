@@ -47,7 +47,7 @@
                 <TextField fx:id="idNumberTextField" layoutX="105.0" layoutY="247.0" prefWidth="208.0" promptText="Numri i ID-së" />
                 <Button fx:id="signupButton" layoutX="155.0" layoutY="361.0" mnemonicParsing="false" onAction="#registerUser" style="-fx-background-color: DARKCYAN;" text="Regjistrohu" textFill="WHITE" />
                 <Label fx:id="questionSignupLabel" layoutX="105.0" layoutY="398.0" text="Tashmë keni një llogari?" />
-                <Button fx:id="loginButton" layoutX="232.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchBackToLogin" style="-fx-background-color: trasparent;" styleClass="tr" text="Kyçu" textFill="#6c88ec" underline="true">
+                <Button fx:id="loginButton" layoutX="232.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-color: trasparent;" styleClass="tr" text="Kyçu" textFill="#6c88ec" underline="true">
                     <font>
                         <Font size="13.0" />
                     </font>
