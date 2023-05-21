@@ -33,7 +33,8 @@ public class OrariController {
         this.timestamp = timestamp;
         this.day = day;
     }
-
+    public OrariController() {
+    }
     public String getSid() {
         return sid;
     }
@@ -67,11 +68,12 @@ public class OrariController {
 
     public void initialize() {
         // Connect to the database
+
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/knk_orari", "root", "valtrina1*");
              Statement statement = connection.createStatement()) {
 
             // Execute the query
-            ResultSet resultSet = statement.executeQuery("SELECT day, COUNT(*) AS booked_schedules FROM orarizgjedhur GROUP BY day");
+            ResultSet resultSet = statement.executeQuery("SELECT day, COUNT(*) AS booked_schedules FROM orarizgjedhur GROUP BY day;");
 
             // Create a list to hold the XYChart.Series objects
             List<XYChart.Series<String, Integer>> seriesList = new ArrayList<>();
