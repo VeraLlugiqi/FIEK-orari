@@ -118,13 +118,13 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Sheno Indeksin: ">
+                              <Label fx:id="indexWriteLabel" text="Sheno Indeksin: ">
                                  <GridPane.margin>
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </Label>
                               <TextField fx:id="indeksiField" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" text="Zgjedh oren" GridPane.columnIndex="2">
+                              <Button fx:id="pickScheduleButton" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" text="Zgjedh oren" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="20.0" />
                                  </GridPane.margin>

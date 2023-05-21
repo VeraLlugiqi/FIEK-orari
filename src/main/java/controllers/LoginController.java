@@ -67,9 +67,10 @@ public class LoginController {
         signUpButton.setText(Translate.get("signUpButton.text"));
     }
 
-    public void loginUser() {
+    public void loginUser(ActionEvent event) {
         String idNumber = idTextField.getText();
         String password = passwordField.getText();
+        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
 
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty()) {
@@ -96,8 +97,14 @@ public class LoginController {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
                         root = loader.load();
-                        stage = (Stage) idTextField.getScene().getWindow();
+                        FillimiController fillimiController = loader.getController();
+                        fillimiController.setSelectedLanguageCode(selectedLanguageCode);
+
+                        fillimiController.updateTexts(); // Call updateTexts() in the SignupController
+
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
+                        stage.setTitle(Translate.get("signUpButton.text"));
                         stage.setScene(scene);
                         stage.show();
                     } catch (IOException e) {

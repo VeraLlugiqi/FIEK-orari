@@ -11,15 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import service.ConnectionUtil;
 import service.FillimiService;
+import service.Translate;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +36,7 @@ public class FillimiController extends SceneController implements Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;
+    public static String selectedLanguageCode = "sq";
     private Connection conn = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
@@ -44,6 +44,35 @@ public class FillimiController extends SceneController implements Initializable{
 
     @FXML
     TextField indeksiField;
+    @FXML
+    Label fiek_orariLabel;
+    @FXML
+    Button startButton;
+    @FXML
+    Button manageClassButton;
+    @FXML
+    Button profileButton;
+    @FXML
+    Button Oraributton;
+    @FXML
+    Button NdihmaButton;
+    @FXML
+   Button logoutButton;
+    @FXML
+    Label welcomeLabel;
+    @FXML
+    Label longTextLabel;
+    @FXML
+    Label indexWriteLabel;
+    @FXML
+    Button pickScheduleButton;
+
+
+
+
+
+
+
     @FXML
     private TableView<?> table_orari;
     @FXML
@@ -62,6 +91,7 @@ public class FillimiController extends SceneController implements Initializable{
         }catch(Exception e){
 
         }
+        updateTexts();
     }
 
     private void setCellTable(){
@@ -152,6 +182,25 @@ public class FillimiController extends SceneController implements Initializable{
     }
     public void switchToOrari() throws IOException{
         switchToOrari(actionEvent);
+    }
+    public void updateTexts() {
+        longTextLabel.setText(Translate.get("fiek_orariLabel.text"));
+        welcomeLabel.setText(Translate.get("welcomeLabel.text"));
+        columnTime.setText(Translate.get("columnTime.text"));
+        columnDay.setText(Translate.get("columnDay.text"));
+        columnId.setText(Translate.get("columnId.text"));
+        logoutButton.setText(Translate.get("logoutButton.text"));
+        NdihmaButton.setText(Translate.get("NdihmaButton.text"));
+        Oraributton.setText(Translate.get("Oraributton.text"));
+        profileButton.setText(Translate.get("profileButton.text"));
+        manageClassButton.setText(Translate.get("manageClassButton.text"));
+        startButton.setText(Translate.get("startButton.text"));
+        fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));
+        indexWriteLabel.setText(Translate.get("indexWriteLabel.text"));
+        pickScheduleButton.setText(Translate.get("pickScheduleButton.text"));
+    }
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
     }
 
 }
