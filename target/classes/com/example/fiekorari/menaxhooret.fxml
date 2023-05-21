@@ -21,7 +21,7 @@
             <children>
                 <Pane prefHeight="156.0" prefWidth="208.0">
                     <children>
-                        <Label fx:id="fiek_orariButton" layoutX="14.0" layoutY="52.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
+                        <Label fx:id="fiek_orariLabel" layoutX="14.0" layoutY="52.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
                             <font>
                                 <Font size="19.0" />
                             </font>

@@ -135,14 +135,11 @@ public class LoginController {
 
 public void switchToSignUp(ActionEvent event) throws IOException {
     ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
     root = loader.load();
     SignupController signupController = loader.getController();
     signupController.setSelectedLanguageCode(selectedLanguageCode);
-
     signupController.updateTexts(); // Call updateTexts() in the SignupController
-
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setTitle(Translate.get("signUpButton.text"));

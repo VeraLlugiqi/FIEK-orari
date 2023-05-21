@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.User;
 import service.ConnectionUtil;
+import service.Translate;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class MenaxhoOretController extends SceneController implements Initializable {
     ActionEvent actionEvent;
+    public static String selectedLanguageCode = "sq";
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -32,6 +36,26 @@ public class MenaxhoOretController extends SceneController implements Initializa
     private PreparedStatement ps;
     private ResultSet rs;
     ObservableList lista;
+    @FXML
+    Label fiek_orariLabel;
+    @FXML
+    Button startButton;
+    @FXML
+    Button manageClassButton;
+    @FXML
+    Button profileButton;
+    @FXML
+    Button Oraributton;
+    @FXML
+    Button NdihmaButton;
+    @FXML
+    Button logoutButton;
+    @FXML
+    Button fshiOren;
+    @FXML
+    Label manageClassesTextLabel;
+    @FXML
+    Label textMenageClassesLabel;
 
     @FXML
     private TableView<?> table_menaxhoOret;
@@ -56,6 +80,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
         }catch(Exception e){
 
         }
+        updateTexts();
     }
 
     public void setCellTable(){
@@ -114,5 +139,27 @@ public class MenaxhoOretController extends SceneController implements Initializa
         switchToOrari(actionEvent);
     }
 
+    public void updateTexts() {
+
+        columnSalla.setText(Translate.get("columnSalla.text"));
+        fshiOren.setText(Translate.get("fshiOren.text"));
+        manageClassesTextLabel.setText(Translate.get("manageClassesTextLabel.text"));
+        textMenageClassesLabel.setText(Translate.get("textMenageClassesLabel.text"));
+        columnIndeksi.setText(Translate.get("columnIndeksi.text"));
+        columnLenda.setText(Translate.get("columnLenda.text"));
+        columnDita.setText(Translate.get("columnDita.text"));
+        columnOra.setText(Translate.get("columnOra.text"));
+        logoutButton.setText(Translate.get("logoutButton.text"));
+        NdihmaButton.setText(Translate.get("NdihmaButton.text"));
+        Oraributton.setText(Translate.get("Oraributton.text"));
+        profileButton.setText(Translate.get("profileButton.text"));
+        manageClassButton.setText(Translate.get("manageClassButton.text"));
+        startButton.setText(Translate.get("startButton.text"));
+        fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));
+
+    }
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
+    }
 
 }

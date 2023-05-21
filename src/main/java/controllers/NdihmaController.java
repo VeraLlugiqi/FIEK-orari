@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NdihmaController extends SceneController {
+
     @FXML
     Label fiek_orariLabel;
     @FXML
