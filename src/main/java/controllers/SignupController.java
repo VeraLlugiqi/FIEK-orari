@@ -19,6 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import models.LocaleBundle;
 import service.ConnectionUtil;
@@ -56,6 +58,18 @@ public class SignupController extends SceneController {
     public void setSelectedLanguageCode(String languageCode) {
         selectedLanguageCode = languageCode;
     }
+
+    public void signupUser(ActionEvent event) {
+        registerUser();
+    }
+
+    public void signupUserWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            registerUser();
+        }
+    }
+
+
     public void registerUser(){
         String idNumber = idNumberTextField.getText();
         String password = passwordField.getText();

@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="562.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+<AnchorPane prefHeight="562.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController" onKeyPressed="#signupUserWithEnter">
     <children>
         <Pane layoutX="138.0" layoutY="70.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">
             <children>
                 <TextField fx:id="idNumberTextField" layoutX="105.0" layoutY="247.0" prefWidth="208.0" promptText="Numri i ID-së" />
-                <Button fx:id="signUpButton" layoutX="155.0" layoutY="361.0" mnemonicParsing="false" onAction="#registerUser" style="-fx-background-color: DARKCYAN;" text="Regjistrohu" textFill="WHITE" />
+                <Button fx:id="signUpButton" layoutX="155.0" layoutY="361.0" mnemonicParsing="false" onAction="#signupUser" onKeyPressed="#signupUserWithEnter" style="-fx-background-color: DARKCYAN;" text="Regjistrohu" textFill="WHITE" />
                 <Label fx:id="questionSignupLabel" layoutX="105.0" layoutY="398.0" text="Tashmë keni një llogari?" />
                 <Button fx:id="loginButton" layoutX="232.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-color: trasparent;" styleClass="tr" text="Kyçu" textFill="#6c88ec" underline="true">
                     <font>

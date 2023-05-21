@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import service.Translate;
 
 import javafx.scene.Parent;
@@ -66,8 +69,17 @@ public class LoginController {
         notRegisteredLabel.setText(Translate.get("notRegisteredLabel.text"));
         signUpButton.setText(Translate.get("signUpButton.text"));
     }
-
     public void loginUser(ActionEvent event) {
+        performLogin();
+    }
+
+    public void loginUserWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            performLogin();
+        }
+    }
+
+    private void performLogin() {
         String idNumber = idTextField.getText();
         String password = passwordField.getText();
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
@@ -101,8 +113,8 @@ public class LoginController {
                         fillimiController.setSelectedLanguageCode(selectedLanguageCode);
 
                         fillimiController.updateTexts(); // Call updateTexts() in the SignupController
-
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Stage stage = (Stage) idTextField.getScene().getWindow();
+//                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setTitle(Translate.get("signUpButton.text"));
                         stage.setScene(scene);
@@ -172,6 +184,7 @@ public void switchToSignUp(ActionEvent event) throws IOException {
         }
         return byteArray;
     }
+
 
 }
 
