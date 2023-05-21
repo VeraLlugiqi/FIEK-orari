@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -30,6 +31,7 @@ public class SignupController extends SceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private static Locale selectedLanguage;
     private String selectedLanguageCode;
     @FXML
     private TextField idNumberTextField;
@@ -136,9 +138,32 @@ public class SignupController extends SceneController {
         return false;
     }
 
-    private void switchToLogin(){
-        switchToLogin();
+
+
+    public static Locale getSelectedLanguage() {
+        return selectedLanguage;
     }
+
+    public void switchToLogin(ActionEvent event) throws IOException {
+        // Load the login screen FXML using the selected language bundle
+        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/login.fxml"), bundle);
+        root = loader.load();
+        LoginController loginController = loader.getController();
+        loginController.setSelectedLanguageCode(selectedLanguageCode);
+
+        loginController.updateTexts(); // Call updateTexts() in the LoginController
+
+        // Switch to the login screen
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+
 
     public void updateTexts() {
         signUpButton.setText(getTranslation("signUpButton.text"));

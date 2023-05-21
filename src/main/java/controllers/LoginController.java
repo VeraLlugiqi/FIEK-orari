@@ -126,29 +126,6 @@ public class LoginController {
     }
 
 
-//    public void switchToSignUp(ActionEvent event) throws IOException {
-//        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-//        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setTitle(Translate.get("signUpButton.text"));
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
-//    public void switchToSignUp(ActionEvent event) throws IOException {
-//        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-//
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
-//        root = loader.load();
-//        SignupController signupController = loader.getController(); // Get the SignupController instance
-//        signupController.setSelectedLanguageCode(selectedLanguageCode); // Pass the selected language code
-//                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setTitle(Translate.get("signUpButton.text"));
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 public void switchToSignUp(ActionEvent event) throws IOException {
     ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
 
@@ -166,7 +143,9 @@ public void switchToSignUp(ActionEvent event) throws IOException {
     stage.show();
 }
 
-
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
+    }
 
     public void switchToEnglish(ActionEvent event) {
         Translate.setLocale(Locale.ENGLISH);
