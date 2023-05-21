@@ -198,3 +198,70 @@ values
 ( '14', '19'),
 ( '15', '20'),
 ( '16', '13');
+
+
+#-----------------------------
+
+create table professor_subject (
+id int not null auto_increment,
+  professor_id int not null,
+  subject_id int not null,
+  availableProfessorSubject int,
+  primary key (id),
+  foreign key (professor_id) references user(uid),
+ foreign key (subject_id) references subject(id)
+);
+
+insert into professor_subject(professor_id, subject_id, availableProfessorSubject)
+values
+( '1', '15', '0'),
+( '1', '21', '0'),
+( '2', '23', '0'),
+( '3', '16', '0'),
+( '3', '21', '0'),
+( '4', '17', '0'),
+( '5', '9', '0'),
+( '5', '19', '0'),
+('5','20', '0'),
+( '6', '11', '0'),
+( '7', '12', '0'),
+( '8', '14', '0'),
+( '9', '10', '0'),
+( '10', '14', '0'),
+( '11', '16', '0'),
+( '11', '18', '0'),
+( '11', '22', '0'),
+( '12', '16', '0'),
+( '12', '23', '0'),
+( '12', '18', '0'),
+( '13', '12', '0'),
+( '14', '19', '0'),
+( '15', '20', '0'),
+( '16', '13', '0');
+
+
+
+
+
+#---------------------------------------------------------------
+create table schedule_class(
+scid int auto_increment,
+cid int,
+sid varchar(4),
+available 0,
+primary key(scid),
+foreign key(cid) references class(cid),
+foreign key(sid) references schedule(sid)
+);
+
+insert into schedule_class (sid, cid, available) values
+('1009', '1', 0 ),
+('1009', '2', 0),
+('1009', '3', 0 ),
+('1009', '4', 0),
+('1009', '5', 0 ),
+('1008', '1', 0),
+('1008', '2', 0 ),
+('1008', '3', 0),
+('1008', '4', 0 ),
+('1008', '5', 0);
