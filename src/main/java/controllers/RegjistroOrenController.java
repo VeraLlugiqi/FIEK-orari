@@ -53,11 +53,12 @@ public class RegjistroOrenController implements Initializable {
 
     private void loadLendetFromDatabase() {
         try {
-            ps = conn.prepareStatement("select s.name from subject s\n" +
-                    "inner join professor_subject ps on s.id = ps.subject_id\n" +
-                    "inner join user u\n" +
-                    "on u.uid = ps.professor_id\n" +
-                    "where u.idNumber = ? AND availableSubject = 0;");
+            ps = conn.prepareStatement("SELECT s.name FROM subject s " +
+                    "INNER JOIN professor_subject ps ON s.id = ps.subject_id " +
+                    "INNER JOIN user u " +
+                    "ON u.uid = ps.professor_id " +
+                    "WHERE u.idNumber = ? AND availableProfessorSubject = 0;");
+
             ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -70,12 +71,15 @@ public class RegjistroOrenController implements Initializable {
         lendaCombobox.setItems(lendet);
 
         try {
-            ps = conn.prepareStatement("SELECT * FROM class, schedule, user WHERE sid = ? AND idNumber = ? AND availableClass = 0 ");
+            ps = conn.prepareStatement("SELECT * FROM schedule_class " +
+                    "INNER JOIN schedule ON schedule_class.sid = schedule.sid " +
+                    "INNER JOIN class ON schedule_class.cid = class.cid " +
+                    "WHERE available = 0 AND schedule.sid = ?;");
+
             ps.setString(1, FillimiService.getIndeksi);
-            ps.setString(2, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                sallat.add(rs.getString(2));
+                sallat.add(rs.getString(10));
             }
         } catch (Exception e) {
             showAlert("Ka ndodhur nje gabim gjate marrjes se sallave nga databaza");
@@ -111,36 +115,48 @@ public class RegjistroOrenController implements Initializable {
         }
         //Nese jane zgjedhur fushat me sukses, i vendosim te dhenat ne tabelen orarizgjedhur
 
-            try {
-                Connection conn = ConnectionUtil.getConnection();
-                PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, availableOrariZgjedhur) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                statement.setString(1, FillimiService.getIndeksi);
-                statement.setString(2, UserController.loggedInUserId);
-                statement.setString(3, salla);
-                statement.setString(4, lenda);
-                statement.setString(5, timestamp);
-                statement.setString(6, day);
-                statement.setInt(7, 1);
+        try {
+            Connection conn = ConnectionUtil.getConnection();
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, availableOrariZgjedhur) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            statement.setString(1, FillimiService.getIndeksi);
+            statement.setString(2, UserController.loggedInUserId);
+            statement.setString(3, salla);
+            statement.setString(4, lenda);
+            statement.setString(5, timestamp);
+            statement.setString(6, day);
+            statement.setInt(7, 1);
 
-                int rowsAffected = statement.executeUpdate();
-                if (rowsAffected > 0) {
-                    showAlert("Ora u regjistrua me sukses.");
-                    //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
-                    ps = conn.prepareStatement("UPDATE class, schedule, user, subject SET availableSubject = 1, availableClass = 1, availableSchedule = 1 WHERE sid = ? AND classname = ? AND idNumber = ? AND name = ?");
-                    ps.setString(1, FillimiService.getIndeksi);
-                    ps.setString(2, salla);
-                    ps.setString(3, UserController.loggedInUserId);
-                    ps.setString(4, lenda);
-                    ps.executeUpdate();
-                } else {
-                    showErrorAlert("Failed to update schedule. Please try again.");
-                }
-            } catch (SQLException e) {
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                showAlert("Ora u regjistrua me sukses.");
+                //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
+                ps = conn.prepareStatement("UPDATE schedule_class " +
+                        "INNER JOIN schedule ON schedule_class.sid = schedule.sid " +
+                        "INNER JOIN class ON schedule_class.cid = class.cid " +
+                        "SET available = 1 " +
+                        "WHERE schedule.sid = ? AND class.classname = ?");
+
+                ps.setString(1, FillimiService.getIndeksi);
+                ps.setString(2, salla);
+                ps.executeUpdate();
+                //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
+                ps = conn.prepareStatement("UPDATE professor_subject " +
+                        "INNER JOIN subject ON subject.id = professor_subject.subject_id " +
+                        "INNER JOIN user ON user.uid = professor_subject.professor_id " +
+                        "SET professor_subject.availableProfessorSubject = 1 " +
+                        "WHERE user.idNumber = ? AND subject.name = ?;");
+                ps.setString(1, UserController.loggedInUserId);
+                ps.setString(2, lenda);
+                ps.executeUpdate();
+            } else {
                 showErrorAlert("Failed to update schedule. Please try again.");
-                e.printStackTrace();
             }
-
+        } catch (SQLException e) {
+            showErrorAlert("Failed to update schedule. Please try again.");
+            e.printStackTrace();
         }
 
     }
+
+}
 

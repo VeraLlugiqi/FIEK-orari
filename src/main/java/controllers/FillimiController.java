@@ -57,7 +57,7 @@ public class FillimiController extends SceneController implements Initializable{
     @FXML
     Button NdihmaButton;
     @FXML
-   Button logoutButton;
+    Button logoutButton;
     @FXML
     Label welcomeLabel;
     @FXML
@@ -102,7 +102,7 @@ public class FillimiController extends SceneController implements Initializable{
 
     private void loadFromDatabase(){
         try{
-            ps = conn.prepareStatement("SELECT * FROM schedule WHERE availableSchedule = 0");
+            ps = conn.prepareStatement("SELECT * FROM schedule");
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new OrariController(rs.getString(1) ,rs.getString(2), rs.getString(3)));
@@ -125,11 +125,12 @@ public class FillimiController extends SceneController implements Initializable{
         //Shiko sa lende te regjistruara i ka profesori, ashtu qe i del nje alert error kur nuk ka me lende te regjistroje
         try {
             conn = ConnectionUtil.getConnection();
-            ps = conn.prepareStatement("select count(s.name) from subject s\n" +
-                    "                    inner join professor_subject ps on s.id = ps.subject_id\n" +
-                    "                    inner join user u\n" +
-                    "                    on u.uid = ps.professor_id\n" +
-                    "                    where u.idNumber = ? AND availableSubject = 0;");
+            ps = conn.prepareStatement("SELECT COUNT(s.name) FROM subject s " +
+                    "INNER JOIN professor_subject ps ON s.id = ps.subject_id " +
+                    "INNER JOIN user u " +
+                    "ON u.uid = ps.professor_id " +
+                    "WHERE u.idNumber = ? AND availableProfessorSubject = 0;");
+
             ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             if(rs.next()){
@@ -158,6 +159,7 @@ public class FillimiController extends SceneController implements Initializable{
                 addDialogStage.setScene(scene);
                 System.out.println(FillimiService.getIndeksi);
                 addDialogStage.showAndWait();
+
             } catch (Exception e) {
                 //Perndryshe paraqesim error mesazhin
                 showAlert("Indeksi nuk ekziston!");
