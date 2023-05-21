@@ -34,10 +34,6 @@ public class OrariController {
         this.day = day;
     }
 
-    public OrariController() {
-        // Default constructor
-    }
-
     public String getSid() {
         return sid;
     }
