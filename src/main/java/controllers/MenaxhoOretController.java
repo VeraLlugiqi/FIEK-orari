@@ -126,6 +126,20 @@ public class MenaxhoOretController extends SceneController implements Initializa
                 showErrorAlert(Translate.get("shkruajIndeksinAlert.text"));
                 return;
             }
+        try{
+            //Nqs indeksi nuk ndodhet ne liste shfaq error
+            conn = ConnectionUtil.getConnection();
+            ps = conn.prepareStatement("SELECT oid FROM orarizgjedhur where idNumber = ? AND oid = ? and availableOrariZgjedhur=1;\n");
+            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(2, indeksi);
+            rs = ps.executeQuery();
+            if(!rs.next()){
+                showErrorAlert("Indeksi nuk eshte ne liste");
+                return;
+            }
+        }catch(Exception e){
+            showErrorAlert("Indeksi nuk ndohet ne liste");
+        }
             try{
                 conn = ConnectionUtil.getConnection();
                 ps = conn.prepareStatement("UPDATE orarizgjedhur SET availableOrariZgjedhur = 0 WHERE oid = ?");
