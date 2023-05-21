@@ -34,7 +34,7 @@ public class SignupController extends SceneController {
     private Scene scene;
     private Parent root;
     private static Locale selectedLanguage;
-    private String selectedLanguageCode;
+    public static String selectedLanguageCode = "sq";
     @FXML
     private TextField idNumberTextField;
     @FXML
