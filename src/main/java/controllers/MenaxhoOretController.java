@@ -83,6 +83,8 @@ public class MenaxhoOretController extends SceneController implements Initializa
     @FXML
     private TableColumn<?, ?> columnLenda;
 
+
+
     public void initialize(URL url, ResourceBundle resourceBundle){
         try{
             conn = ConnectionUtil.getConnection();

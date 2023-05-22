@@ -82,6 +82,8 @@ public class FillimiController extends SceneController implements Initializable{
     @FXML
     private TableColumn<?, ?> columnId;
 
+    private int nrOreve;
+
     public void initialize(URL url, ResourceBundle resourceBundle){
         try {
             conn = ConnectionUtil.getConnection();
@@ -141,35 +143,56 @@ public class FillimiController extends SceneController implements Initializable{
             showAlert("Ka ndodhur nje gabim gjate marrjes se numrit te lendeve te regjistruara");
             e.printStackTrace();
         }
-        System.out.println(lendetRegjistruara);
-        if(lendetRegjistruara !=0 ) {
-            try {
-                conn = ConnectionUtil.getConnection();
-                ps = conn.prepareStatement("SELECT * FROM schedule WHERE sid = ?");
-                ps.setString(1, indeksi);
-                rs = ps.executeQuery();
-                //Nese ekzekutohet me sukses, kjo id ekziston dhe kalojme ne dritaren tjeter
-                FillimiService.getIndeksi = indeksi;
-                root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
-                Stage addDialogStage = new Stage();
-                addDialogStage.setTitle("Regjistro oren");
-                addDialogStage.initModality(Modality.WINDOW_MODAL);
-                addDialogStage.initOwner(stage);
-                scene = new Scene(root);
-                addDialogStage.setScene(scene);
-                System.out.println(FillimiService.getIndeksi);
-                addDialogStage.showAndWait();
 
-            } catch (Exception e) {
-                //Perndryshe paraqesim error mesazhin
-                showAlert("Indeksi nuk ekziston!");
+        try{
+            //Profesori mos te mund te zgjedhe dy ore ne te njejtin orar check
+            ps = conn.prepareStatement("SELECT count(*) FROM orarizgjedhur WHERE idNumber = ? AND sid = ?");
+            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(2, indeksi);
+            rs = ps.executeQuery();
+            while(rs.next())
+            nrOreve = rs.getInt(1);
+
+        }catch(Exception e){
+            showAlert("Ka ndodhur nje gabim gjate verifikimit te orarit!");
+            e.printStackTrace();
+        }
+
+        System.out.println(lendetRegjistruara);
+        if(nrOreve==0) {
+            if (lendetRegjistruara != 0) {
+                try {
+                    conn = ConnectionUtil.getConnection();
+                    ps = conn.prepareStatement("SELECT * FROM schedule WHERE sid = ?");
+                    ps.setString(1, indeksi);
+                    rs = ps.executeQuery();
+                    //Nese ekzekutohet me sukses, kjo id ekziston dhe kalojme ne dritaren tjeter
+                    FillimiService.getIndeksi = indeksi;
+                    root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
+                    Stage addDialogStage = new Stage();
+                    addDialogStage.setTitle("Regjistro oren");
+                    addDialogStage.initModality(Modality.WINDOW_MODAL);
+                    addDialogStage.initOwner(stage);
+                    scene = new Scene(root);
+                    addDialogStage.setScene(scene);
+                    System.out.println(FillimiService.getIndeksi);
+                    addDialogStage.showAndWait();
+
+                } catch (Exception e) {
+                    //Perndryshe paraqesim error mesazhin
+                    showAlert("Indeksi nuk ekziston!");
+                }
+            } else {
+                showAlert("Nuk keni me lende per te shtuar!");
             }
         }else{
-            showAlert("Nuk keni me lende per te shtuar!");
+            showAlert("Nuk mund te ligjeroni dy lende ne te njejtin orar!");
         }
+        System.out.println(nrOreve);
 
 
     }
+
 
     public void switchToFillimi() throws IOException{
         switchToFillimi(actionEvent);
