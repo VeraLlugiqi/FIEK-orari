@@ -146,7 +146,7 @@ public class FillimiController extends SceneController implements Initializable{
 
         try{
             //Profesori mos te mund te zgjedhe dy ore ne te njejtin orar check
-            ps = conn.prepareStatement("SELECT count(*) FROM orarizgjedhur WHERE idNumber = ? AND sid = ?");
+            ps = conn.prepareStatement("SELECT count(*) FROM orarizgjedhur WHERE idNumber = ? AND sid = ? AND availableOrariZgjedhur!=0");
             ps.setString(1, UserController.loggedInUserId);
             ps.setString(2, indeksi);
             rs = ps.executeQuery();

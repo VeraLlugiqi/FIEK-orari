@@ -79,7 +79,7 @@ public class RegjistroOrenController implements Initializable {
             ps.setString(1, FillimiService.getIndeksi);
             rs = ps.executeQuery();
             while (rs.next()) {
-                sallat.add(rs.getString(10));
+                sallat.add(rs.getString(9));
             }
         } catch (Exception e) {
             showAlert("Ka ndodhur nje gabim gjate marrjes se sallave nga databaza");

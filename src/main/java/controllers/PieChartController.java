@@ -28,7 +28,7 @@ public class PieChartController implements Initializable {
         try {
             Connection conn = ConnectionUtil.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT salla, COUNT(*) AS count " +
-                    "FROM orarizgjedhur " +
+                    "FROM orarizgjedhur WHERE availableOrariZgjedhur = 1 " +
                     "GROUP BY salla " +
                     "ORDER BY count DESC " +
                     "LIMIT 3");
