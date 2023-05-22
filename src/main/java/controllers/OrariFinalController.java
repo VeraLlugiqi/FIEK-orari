@@ -4,13 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import service.ConnectionUtil;
+import service.FillimiService;
 import service.Translate;
 
 import java.io.IOException;
@@ -21,6 +27,9 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class OrariFinalController extends SceneController implements Initializable {
+    private Scene scene;
+    private Parent root;
+    private Stage stage;
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
@@ -91,6 +100,22 @@ public class OrariFinalController extends SceneController implements Initializab
 
         }catch(Exception e){
 
+        }
+    }
+    @FXML
+    public void switchToChart(){
+        try {
+            root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/pie.fxml"));
+            Stage addDialogStage = new Stage();
+            addDialogStage.setTitle("Regjistro oren");
+            addDialogStage.initModality(Modality.WINDOW_MODAL);
+            addDialogStage.initOwner(stage);
+            scene = new Scene(root);
+            addDialogStage.setScene(scene);
+            System.out.println(FillimiService.getIndeksi);
+            addDialogStage.showAndWait();
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 

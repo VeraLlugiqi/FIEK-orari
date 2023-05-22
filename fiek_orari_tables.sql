@@ -51,3 +51,16 @@ primary key(scid),
 foreign key(cid) references class(cid),
 foreign key(sid) references schedule(sid)
 );
+
+create table orarizgjedhur(
+oid int AUTO_INCREMENT,
+sid varchar(4) ,
+idNumber varchar(100) ,
+salla varchar(10) ,
+lenda varchar(100) ,
+timestamp varchar(20) ,
+day varchar(20) ,
+availableOrariZgjedhur int,
+primary key(oid),
+foreign key(sid) references schedule(sid)
+);
