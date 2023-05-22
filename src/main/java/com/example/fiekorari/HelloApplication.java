@@ -16,7 +16,7 @@ public class HelloApplication extends Application  {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("logIn.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("menaxhoOret.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle(Translate.get("login.text"));
         stage.setScene(scene);
