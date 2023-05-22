@@ -14,7 +14,6 @@ CREATE TABLE schedule (
   sid VARCHAR(4),
   timestamp VARCHAR(20) NOT NULL,
   day VARCHAR(20) NOT NULL,
-  availableSchedule INTEGER,
   PRIMARY KEY (sid)
 );
 
@@ -30,7 +29,6 @@ CREATE TABLE schedule_class (
 create table subject (
 id integer not null auto_increment,
 name varchar(80) not null,
-availableSubject integer,
 primary key(id));
 
 create table professor_subject (
@@ -71,6 +69,7 @@ primary key(uid)
 
 insert into user( firstName,lastName,idNumber,password,salt)
 values
+('Blend','Arifaj','121623',null,null),
 ('Isak','Shabani','121514',null,null),
 ('Lule','Ahmeti','121920',null,null),
 ('Dhurate','Hyseni','121001',null,null),
@@ -81,7 +80,6 @@ values
 ('Qefsere','Gjonbalaj','121515',null,null),
 ('Bahri','Prebeza','121678',null,null),
 ('Qamil','Kabashi','121517',null,null),
-('Blend','Arifaj','121623',null,null),
 ('Dalina','Vranovci','121212',null,null),
 ('Synim','Selimi','121819',null,null),
 ('Mergim','Hoti','122020',null,null),
@@ -90,30 +88,63 @@ values
 
 insert into subject(name, availableSubject)
 values
-( 'Matematika l', 0),
-( 'MAtematika ll', 0),
-(  'Fizika l', 0),
-( 'Fizika ll', 0),
-( 'Bazat e inxhinierise elektrike l', 0),
-( 'Bazat e inxhinierise elektrike ll', 0),
-( 'Programimi ne C++', 0),
-( 'Algoritme dhe Struktura e te dhenave', 0),
-( 'Shkathtesi Komunikuese', 0),
-( 'Praktikum ne matematike', 0),
-( 'Carçe digjitle', 0),
-('Arkitektura e kompjutereve', 0),
-('Elektronika', 0),
-('Matematika Diskrete dhe Probabiliteti', 0),
-('POO', 0),
-('Baza e te Dhenave', 0),
-('Programimi ne Ueb l', 0),
-('Sisteme Operative', 0),
-('Siguria e te dhenave', 0),
-('Inxhinieria Kompjuterike', 0),
-('KNK', 0),
-('Programimi ne Ueb ll', 0),
-('Buxheti dhe analiza e shpezimeve', 0),
-('Bazat e te dhenave', 0);
+( 'Matematika l', 0), 1
+( 'Matematika ll', 0),2
+(  'Fizika l', 0),3
+( 'Fizika ll', 0),4
+( 'Bazat e inxhinierise elektrike l', 0),5
+( 'Bazat e inxhinierise elektrike ll', 0),6
+( 'Programimi ne C++', 0),7
+( 'Algoritme dhe Struktura e te dhenave', 0),8
+( 'Shkathtesi Komunikuese', 0),9
+( 'Praktikum ne matematike', 0),10
+( 'Qarqe digjitale', 0),11
+('Arkitektura e kompjutereve', 0),12
+('Elektronika', 0),13
+('Matematika Diskrete dhe Probabiliteti', 0),14
+('POO', 0),15
+('Baza e te Dhenave', 0),16
+('Programimi ne Ueb l', 0),17
+('Sisteme Operative', 0),18
+('Siguria e te dhenave', 0),19
+('Inxhinieria Softuerike', 0),20
+('KNK', 0),21
+('Programimi ne Ueb ll', 0),22
+('Buxheti dhe analiza e shpezimeve', 0),23
+('Bazat e te dhenave', 0);24
+
+insert into professor_subject(professor_id, subject_id)
+values
+( '1', '15'),
+( '1', '21'),
+( '2', '15'),
+( '2', '21'),
+( '3', '24'),
+( '4', '17'),
+( '4', '22'),
+( '5', '11'),
+('5','18'),
+( '6', '9'),
+( '6', '19'),
+( '6', '20'),
+( '7', '12'),
+( '8', '13'),
+( '9', '1'),
+( '9', '2'),
+( '9', '14'),
+( '10', '23'),
+( '11', '13'),
+( '12', '16'),
+( '12', '17'),
+( '12', '18'),
+( '12', '11'),
+( '12', '22');
+( '13', '19'),
+( '13', '12'),
+( '14', '19');
+( '15', '20'),
+( '16', '13');
+
 
 insert into class(classname, availableClass)
 values
@@ -172,7 +203,7 @@ values
 ('1035','17:00', 'E premte','0');
 
 
-insert into professor_subject(professor_id, subject_id)
+insert into professor_subject(professor_id, subject_id, availableProfessorSubject)
 values
 ( '1', '15'),
 ( '1', '21'),
@@ -182,7 +213,7 @@ values
 ( '4', '17'),
 ( '5', '9'),
 ( '5', '19'),
-('5','20'),
+('5',  '20'),
 ( '6', '11'),
 ( '7', '12'),
 ( '8', '14'),
@@ -730,6 +761,6 @@ inner join subject on professor_subject.subject_id = subject.id
 ('1035', '12', '0'),
 ('1035', '13', '0');
 
-INSERT INTO YourTable (foreign_key_1, foreign_key_2, other_column)
-SELECT TableA.id, TableB.id, 0
-FROM TableA, TableB;
+INSERT INTO schedule_class (sid, cid, available)
+SELECT schedule.sid, class.cid, 0
+FROM schedule, class;
