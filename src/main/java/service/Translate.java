@@ -24,12 +24,12 @@ public final class Translate {
     }
 
     public static List<Locale> getSupportedLocales() {
-        return new ArrayList<>(Arrays.asList(Locale.ENGLISH, Locale.GERMAN));
+        return new ArrayList<>(Arrays.asList(Locale.ENGLISH, new Locale("sq", "AL")));
     }
 
     public static Locale getDefaultLocale() {
         Locale sysDefault = Locale.getDefault();
-        return getSupportedLocales().contains(sysDefault) ? sysDefault : Locale.ENGLISH;
+        return getSupportedLocales().contains(sysDefault) ? sysDefault : new Locale("sq", "AL");
     }
 
     public static Locale getLocale() {
