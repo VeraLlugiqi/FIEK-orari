@@ -266,15 +266,15 @@
          <children>
             <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
                <image>
-                  <Image url="@../../../../../../../../../../../../Downloads/dashboard.png" />
+                  <Image url="@../../../images/dashboard.png" />
                </image>
             </ImageView>
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#switchToFillimi" style="-fx-background-color: TRANSPARENT;" text="Fillimi" GridPane.columnIndex="1" textFill="#000000">
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#switchToFillimi" style="-fx-background-color: TRANSPARENT;" text="Fillimi" textFill="#000000" GridPane.columnIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="manageClassButton" mnemonicParsing="false" onAction="#switchToMenaxhoOret" style="-fx-background-color: TRANSPARENT;" text="Menaxho oret" GridPane.columnIndex="1" GridPane.rowIndex="1" textFill="black">
+            <Button fx:id="manageClassButton" mnemonicParsing="false" onAction="#switchToMenaxhoOret" style="-fx-background-color: TRANSPARENT;" text="Menaxho oret" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
@@ -284,7 +284,7 @@
                   <Image url="@../../../images/list.png" />
                </image>
             </ImageView>
-            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#switchToProfili" style="-fx-background-color: TRANSPARENT;" text="Profili" GridPane.columnIndex="1" GridPane.rowIndex="2" textFill="black">
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#switchToProfili" style="-fx-background-color: TRANSPARENT;" text="Profili" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -294,7 +294,7 @@
                   <Image url="@../../../images/profile.png" />
                </image>
             </ImageView>
-            <Button fx:id="Oraributton" mnemonicParsing="false" onAction="#switchToOrari" style="-fx-background-color: TRANSPARENT;" text="Orari" GridPane.columnIndex="1" GridPane.rowIndex="3" textFill="black">
+            <Button fx:id="Oraributton" mnemonicParsing="false" onAction="#switchToOrari" style="-fx-background-color: TRANSPARENT;" text="Orari" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>

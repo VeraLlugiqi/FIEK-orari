@@ -7,141 +7,154 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#updatePasswordWithEnter" prefHeight="526.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PasswordUpdateController">
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controllers.PasswordUpdateController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="208.0" style="-fx-background-color: GHOSTWHITE;">
+      <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
          <children>
-            <Pane prefHeight="156.0" prefWidth="208.0">
+            <VBox layoutX="1.0" layoutY="155.0" prefHeight="440.0" prefWidth="642.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="fiek_orariLabel" layoutX="14.0" layoutY="52.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="65.0" fitWidth="76.0" layoutX="129.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/fiek-logo.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="startButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToFillimi" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Fillimi" textFill="#050000">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="manageClassButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToMenaxhoOret" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Menaxho orët">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="profileButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToProfili" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Profili">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="Oraributton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToOrari" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: transparent;" text="Orari">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="NdihmaButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToNdihma" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: tranparent;" text="Ndihma">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <GridPane>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: DARKRED;" text="Shkyçu" textFill="WHITE">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-         </children>
-      </VBox>
-<!--      <Pane layoutX="207.0" prefHeight="526.-->
-      <Pane layoutX="207.0" prefHeight="526.0" prefWidth="418.0" style="-fx-background-color: GAINSBORO;">
-         <children>
-            <VBox layoutY="137.0" prefHeight="385.0" prefWidth="418.0" style="-fx-background-color: white;">
-               <children>
-                  <Label prefHeight="18.0" prefWidth="94.0" />
-                  <Label fx:id="passwordLabel" prefHeight="20.0" prefWidth="143.0" text="Fjalëkalimi i tanishëm">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="passwordField" prefWidth="200" />
-                  <Label fx:id="newPasswordLabel" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi i ri">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="newPasswordField" prefWidth="200" />
-                  <Label fx:id="repeatPasswordLabel" prefHeight="20.0" prefWidth="157.0" text="Përsërit fjalëkalimin e ri">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="confirmNewPasswordField" prefWidth="200" />
-                  <Label prefHeight="44.0" prefWidth="148.0" />
-                  <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#updatePassword" onKeyPressed="#updatePasswordWithEnter" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKCYAN;" text="Ruaj Ndryshimet" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Button>
+                  <Pane prefHeight="446.0" prefWidth="642.0">
+                     <children>
+                        <Label fx:id="passwordLabel" layoutX="14.0" layoutY="46.0" prefHeight="20.0" prefWidth="143.0" text="Fjalëkalimi i tanishëm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" layoutX="14.0" layoutY="72.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Label fx:id="newPasswordLabel" layoutX="14.0" layoutY="130.0" prefHeight="18.0" prefWidth="128.0" text="Fjalëkalimi i ri">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="newPasswordField" layoutX="14.0" layoutY="159.0" prefWidth="200" />
+                        <Label fx:id="repeatPasswordLabel" layoutX="301.0" layoutY="129.0" prefHeight="20.0" prefWidth="157.0" text="Përsërit fjalëkalimin e ri">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="confirmNewPasswordField" layoutX="301.0" layoutY="159.0" prefWidth="200" />
+                        <Button fx:id="saveChangesButton" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#updatePassword" onKeyPressed="#updatePasswordWithEnter" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: DARKCYAN;" text="Ruaj Ndryshimet" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
-            <Label fx:id="profileLabel" layoutX="14.0" layoutY="36.0" prefHeight="30.0" prefWidth="181.0" text="Profili">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label fx:id="profileTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të menaxhoni profilin tuaj ">
+            <Label fx:id="profileTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të menaxhoni profilin tuaj " textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="closeButton" layoutX="355.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToClose" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: TRANSPARENT;" text="X" textFill="WHITE" />
-
+            <Label fx:id="profileLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Profili" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
+      <GridPane layoutX="-4.0" layoutY="160.0" prefHeight="434.0" prefWidth="208.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="160.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.19998626708986" minWidth="0.0" prefWidth="46.40001831054687" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.8" minWidth="10.0" prefWidth="162.39998168945314" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="53.200006103515626" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="47.599993896484385" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="47.199993896484386" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="159.3999694824219" minHeight="0.0" prefHeight="44.800006103515614" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="322.9999755859375" minHeight="10.0" prefHeight="46.20001220703122" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="322.9999755859375" minHeight="10.0" prefHeight="207.79998779296875" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
+               <image>
+                  <Image url="@../../../images/dashboard.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#switchToFillimi" style="-fx-background-color: TRANSPARENT;" text="Fillimi" textFill="#000000" GridPane.columnIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageClassButton" mnemonicParsing="false" onAction="#switchToMenaxhoOret" style="-fx-background-color: TRANSPARENT;" text="Menaxho oret" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/list.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#switchToProfili" style="-fx-background-color: TRANSPARENT;" text="Profili" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../images/profile.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="Oraributton" mnemonicParsing="false" onAction="#switchToOrari" style="-fx-background-color: TRANSPARENT;" text="Orari" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../images/schedule.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="NdihmaButton" mnemonicParsing="false" onAction="#switchToNdihma" style="-fx-prompt-text-fill: black; -fx-background-color: TRANSPARENT;" text="Me shume" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../images/question.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="logoutButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: darkcyan;" text="Shkyçu" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@../../../images/logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <Pane layoutY="-123.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="44.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/fiek-logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="104.0" text=" FIEK - Orari">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Line endX="32.69288635253906" endY="-1.52587890625E-5" layoutX="167.0" layoutY="166.0" startX="-141.5" startY="-1.52587890625E-5" />
    </children>
+   <padding>
+      <Insets />
+   </padding>
 </AnchorPane>

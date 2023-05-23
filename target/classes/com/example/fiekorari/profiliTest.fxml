@@ -78,7 +78,7 @@
             <children>
                 <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
                     <image>
-                        <Image url="@../../../../../../../../../../../../Downloads/dashboard.png" />
+                        <Image url="@../../../images/dashboard.png" />
                     </image>
                 </ImageView>
                 <Button fx:id="startButton" mnemonicParsing="false" onAction="#switchToFillimi" style="-fx-background-color: TRANSPARENT;" text="Fillimi" textFill="#000000" GridPane.columnIndex="1">
