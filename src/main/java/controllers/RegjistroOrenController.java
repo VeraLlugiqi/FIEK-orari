@@ -5,7 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import service.ConnectionUtil;
 import service.FillimiService;
@@ -34,6 +36,13 @@ public class RegjistroOrenController implements Initializable {
     String timestamp;
     String day;
     int available;
+    public static String selectedLanguageCode = "sq";
+    @FXML
+    Label sallatLiraLabel;
+    @FXML
+    Label subjectLabel;
+    @FXML
+    Button pickScheduleButton;
 
     @FXML
     ComboBox<String> lendaCombobox;
@@ -49,6 +58,7 @@ public class RegjistroOrenController implements Initializable {
         } catch (Exception e) {
 
         }
+        updateTexts();
     }
 
 
@@ -159,5 +169,13 @@ public class RegjistroOrenController implements Initializable {
 
     }
 
+    public void updateTexts() {
+        pickScheduleButton.setText(Translate.get("pickScheduleButton.text"));
+        sallatLiraLabel.setText(Translate.get("sallatLiraLabel.text"));
+        subjectLabel.setText(Translate.get("subjectLabel.text"));
+    }
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
+    }
 }
 

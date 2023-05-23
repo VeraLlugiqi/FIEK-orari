@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="191.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegjistroOrenController">
     <children>
-        <Button fx:id="pickScheduleLabel" layoutX="106.0" layoutY="152.0" mnemonicParsing="false" onAction="#zgjedhOrarin" text="Zgjedh orarin" />
+        <Button fx:id="pickScheduleButton" layoutX="106.0" layoutY="152.0" mnemonicParsing="false" onAction="#zgjedhOrarin" text="Zgjedh orarin" />
       <GridPane layoutX="23.0" layoutY="52.0" prefHeight="87.0" prefWidth="254.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,8 +23,8 @@
          <children>
             <ComboBox fx:id="lendaCombobox" prefWidth="135.0" GridPane.columnIndex="1" />
             <ComboBox fx:id="sallaCombobox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Lendet:" />
-            <Label text="Sallat e lira:" GridPane.rowIndex="1" />
+            <Label fx:id="subjectLabel" text="Lendet:" />
+            <Label fx:id="sallatLiraLabel" text="Sallat e lira:" GridPane.rowIndex="1" />
          </children>
       </GridPane>
     </children>
