@@ -86,7 +86,7 @@ public class PasswordUpdateController extends SceneController {
 
         // Validate if any field is empty
         if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-            PasswordUtil.showErrorAlert("All fields are required.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.emptyFields"));
             return;
         }
 
@@ -101,11 +101,11 @@ public class PasswordUpdateController extends SceneController {
                 salt = PasswordUtil.hexStringToByteArray(resultSet.getString("salt"));
                 saltedHashedPassword = resultSet.getString("password");
             } else {
-                PasswordUtil.showErrorAlert("Invalid idNumber.");
+                PasswordUtil.showErrorAlert(Translate.get("login.error.invalidId"));
                 return;
             }
         } catch (SQLException e) {
-            PasswordUtil.showErrorAlert("Failed to retrieve user information. Please try again.");
+            PasswordUtil.showErrorAlert("DeshtimMarrjesDhenave.text");
             e.printStackTrace();
             return;
         }
@@ -117,19 +117,19 @@ public class PasswordUpdateController extends SceneController {
 
         // Verify current password
         if (!currentSaltedHashedPassword.equals(saltedHashedPassword)) {
-            PasswordUtil.showErrorAlert("Incorrect current password.");
+            PasswordUtil.showErrorAlert(Translate.get("passwordGabim.text"));
             return;
         }
 
         // Validate new password length
         if (newPassword.length() < 8) {
-            PasswordUtil.showErrorAlert("New password must be at least 8 characters.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
             return;
         }
 
         // Validate password match
         if (!newPassword.equals(confirmPassword)) {
-            PasswordUtil.showErrorAlert("New passwords do not match.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordMismatch"));
             return;
         }
 
@@ -147,12 +147,12 @@ public class PasswordUpdateController extends SceneController {
             statement.setString(3, UserController.loggedInUserId);
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                PasswordUtil.showAlert("Password updated successfully.");
+                PasswordUtil.showAlert(Translate.get("updatedSuccesfuly.text"));
             } else {
-                PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
+                PasswordUtil.showErrorAlert(Translate.get("login.error.PassowrdUpdateFail"));
             }
         } catch (SQLException e) {
-            PasswordUtil.showErrorAlert("Failed to update password. Please try again.");
+            PasswordUtil.showErrorAlert(Translate.get("login.error.PassowrdUpdateFail"));
             e.printStackTrace();
         }
 

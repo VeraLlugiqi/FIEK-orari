@@ -140,7 +140,7 @@ public class FillimiController extends SceneController implements Initializable{
             }
 
         }catch(Exception e){
-            showAlert("Ka ndodhur nje gabim gjate marrjes se numrit te lendeve te regjistruara");
+            showAlert(Translate.get("errorNrLendeDb.text"));
             e.printStackTrace();
         }
 
@@ -154,7 +154,7 @@ public class FillimiController extends SceneController implements Initializable{
             nrOreve = rs.getInt(1);
 
         }catch(Exception e){
-            showAlert("Ka ndodhur nje gabim gjate verifikimit te orarit!");
+            showAlert(Translate.get("verifikimierror.text"));
             e.printStackTrace();
         }
 
@@ -170,7 +170,7 @@ public class FillimiController extends SceneController implements Initializable{
                     FillimiService.getIndeksi = indeksi;
                     root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
                     Stage addDialogStage = new Stage();
-                    addDialogStage.setTitle("Regjistro oren");
+                    addDialogStage.setTitle(Translate.get("regjistroOren.text"));
                     addDialogStage.initModality(Modality.WINDOW_MODAL);
                     addDialogStage.initOwner(stage);
                     scene = new Scene(root);
@@ -180,13 +180,13 @@ public class FillimiController extends SceneController implements Initializable{
 
                 } catch (Exception e) {
                     //Perndryshe paraqesim error mesazhin
-                    showAlert("Indeksi nuk ekziston!");
+                    showAlert(Translate.get("ideksiNukEkziton.text"));
                 }
             } else {
-                showAlert("Nuk keni me lende per te shtuar!");
+                showAlert(Translate.get("joMeLende.text"));
             }
         }else{
-            showAlert("Nuk mund te ligjeroni dy lende ne te njejtin orar!");
+            showAlert(Translate.get("ligheroniDyLendeError.text"));
         }
         System.out.println(nrOreve);
 

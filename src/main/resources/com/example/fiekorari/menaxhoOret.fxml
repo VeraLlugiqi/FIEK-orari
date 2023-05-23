@@ -44,7 +44,7 @@
                                     <children>
                                         <Label fx:id="writeScheduleLabel" text="Shkruani indeksin e ores:" />
                                         <TextField fx:id="indeksiField" GridPane.columnIndex="1" />
-                                        <Button fx:id="fshiOren" mnemonicParsing="false" onAction="#fshiOren" text="Fshi" GridPane.columnIndex="2">
+                                        <Button fx:id="fshiOren" mnemonicParsing="false" onAction="#fshiOren" style="-fx-background-color: BLACK;" text="Fshi" textFill="WHITE" GridPane.columnIndex="2">
                                             <GridPane.margin>
                                                 <Insets left="40.0" />
                                             </GridPane.margin>
@@ -69,7 +69,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="manageClassesTextLabel" layoutX="14.0" layoutY="30.0" prefHeight="53.0" prefWidth="229.0" text="Menaxho orët" textFill="WHITE">
+                <Label fx:id="manageClassesTextLabel" layoutX="14.0" layoutY="30.0" prefHeight="53.0" prefWidth="403.0" text="Menaxho orët" textFill="WHITE">
                     <font>
                         <Font size="30.0" />
                     </font>
@@ -165,7 +165,7 @@
                 </ImageView>
             </children>
         </Pane>
-        <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="104.0" text=" FIEK - Orari">
+        <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="110.0" prefHeight="35.0" prefWidth="162.0" text=" FIEK - Orari">
             <font>
                 <Font size="19.0" />
             </font>

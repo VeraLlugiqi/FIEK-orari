@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controllers.PasswordUpdateController">
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PasswordUpdateController">
    <children>
       <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
          <children>
@@ -147,7 +147,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="104.0" text=" FIEK - Orari">
+      <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="157.0" text=" FIEK - Orari">
          <font>
             <Font size="19.0" />
          </font>

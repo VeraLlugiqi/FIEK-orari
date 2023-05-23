@@ -136,11 +136,11 @@ public class MenaxhoOretController extends SceneController implements Initializa
             ps.setString(2, indeksi);
             rs = ps.executeQuery();
             if(!rs.next()){
-                showErrorAlert("Indeksi nuk eshte ne liste");
+                showErrorAlert(Translate.get("indeksiJoListe.text"));
                 return;
             }
         }catch(Exception e){
-            showErrorAlert("Indeksi nuk ndohet ne liste");
+            showErrorAlert(Translate.get("indeksiJoListe.text"));
         }
             try{
                 conn = ConnectionUtil.getConnection();

@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,6 +49,12 @@ public class OrariFinalController extends SceneController implements Initializab
     Label longTextLabel;
     @FXML
     Label scheduleLabel;
+    @FXML
+    Tab semestriDy;
+    @FXML
+    Tab semestriKater;
+    @FXML
+    Tab semestriGjashte;
 
     public static String selectedLanguageCode = "sq";
     @FXML
@@ -65,6 +68,26 @@ public class OrariFinalController extends SceneController implements Initializab
     private TableColumn<?, ?> columnSalla;
     @FXML
     private TableColumn<?, ?> columnLenda;
+    @FXML
+    private TableColumn<?, ?> columnDita1;
+
+    @FXML
+    private TableColumn<?, ?> columnOra1;
+    @FXML
+    private TableColumn<?, ?> columnSalla1;
+    @FXML
+    private TableColumn<?, ?> columnLenda1;
+
+    @FXML
+    private TableColumn<?, ?> columnDita2;
+
+    @FXML
+    private TableColumn<?, ?> columnOra2;
+    @FXML
+    private TableColumn<?, ?> columnSalla2;
+    @FXML
+    private TableColumn<?, ?> columnLenda2;
+
 
     ActionEvent actionEvent;
 
@@ -107,7 +130,7 @@ public class OrariFinalController extends SceneController implements Initializab
         try {
             root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/pie.fxml"));
             Stage addDialogStage = new Stage();
-            addDialogStage.setTitle("Regjistro oren");
+            addDialogStage.setTitle(Translate.get("statistika.text"));
             addDialogStage.initModality(Modality.WINDOW_MODAL);
             addDialogStage.initOwner(stage);
             scene = new Scene(root);
@@ -156,11 +179,17 @@ public class OrariFinalController extends SceneController implements Initializab
         columnSalla.setText(Translate.get("columnSalla.text"));
         columnOra.setText(Translate.get("columnOra.text"));
         columnDita.setText(Translate.get("columnDita.text"));
-
+        columnLenda1.setText(Translate.get("columnLenda.text"));
+        columnSalla1.setText(Translate.get("columnSalla.text"));
+        columnOra1.setText(Translate.get("columnOra.text"));
+        columnDita1.setText(Translate.get("columnDita.text"));
+        columnLenda2.setText(Translate.get("columnLenda.text"));
+        columnSalla2.setText(Translate.get("columnSalla.text"));
+        columnOra2.setText(Translate.get("columnOra.text"));
+        columnDita2.setText(Translate.get("columnDita.text"));
+        semestriDy.setText(Translate.get("semestriDy.text"));
+        semestriKater.setText(Translate.get("semestriKater.text"));
+        semestriGjashte.setText(Translate.get("semestriGjashte.text"));
     }
 
-    @FXML
-    public void switchToClose(ActionEvent event) {
-        System.exit(0);
-    }
 }

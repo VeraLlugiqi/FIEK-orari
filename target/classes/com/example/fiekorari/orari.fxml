@@ -26,7 +26,7 @@
                     <children>
                         <TabPane prefHeight="440.0" prefWidth="642.0" tabClosingPolicy="UNAVAILABLE">
                             <tabs>
-                                <Tab text="Semestri 2">
+                                <Tab fx:id="semestriDy" text="Semestri 2">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -45,7 +45,7 @@
                                         </AnchorPane>
                                     </content>
                                 </Tab>
-                                <Tab text="Semestri 4">
+                                <Tab fx:id="semestriKater" text="Semestri 4">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -64,7 +64,7 @@
                                         </AnchorPane>
                                     </content>
                                 </Tab>
-                                <Tab text="Semestri 6">
+                                <Tab fx:id="semestriGjashte" text="Semestri 6">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -188,7 +188,7 @@
                 </ImageView>
             </children>
         </Pane>
-        <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="104.0" text=" FIEK - Orari">
+        <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
             <font>
                 <Font size="19.0" />
             </font>

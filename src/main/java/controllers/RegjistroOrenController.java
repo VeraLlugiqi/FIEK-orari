@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import service.ConnectionUtil;
 import service.FillimiService;
 import service.PasswordUtil;
+import service.Translate;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,7 +83,7 @@ public class RegjistroOrenController implements Initializable {
                 sallat.add(rs.getString(9));
             }
         } catch (Exception e) {
-            showAlert("Ka ndodhur nje gabim gjate marrjes se sallave nga databaza");
+            showAlert(Translate.get("gabimMarrjaDhenave.text"));
             e.printStackTrace();
         }
         sallaCombobox.setItems(sallat);
@@ -96,7 +97,7 @@ public class RegjistroOrenController implements Initializable {
 
         // Validate if any field is empty
         if (lenda.isEmpty() && salla.isEmpty()) {
-            showErrorAlert("All fields are required.");
+            showErrorAlert(Translate.get("login.error.emptyFields"));
             return;
         }
 
@@ -111,7 +112,7 @@ public class RegjistroOrenController implements Initializable {
                 day = rs.getString(3);
             }
         } catch (Exception e) {
-            showAlert("Ka ndodhur nje gabim gjate marrjes se time dhe day nga databaza");
+            showAlert(Translate.get("errorDatabaze.text"));
         }
         //Nese jane zgjedhur fushat me sukses, i vendosim te dhenat ne tabelen orarizgjedhur
 
@@ -128,7 +129,7 @@ public class RegjistroOrenController implements Initializable {
 
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                showAlert("Ora u regjistrua me sukses.");
+                showAlert(Translate.get("regjistrimSukses.text"));
                 //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
                 ps = conn.prepareStatement("UPDATE schedule_class " +
                         "INNER JOIN schedule ON schedule_class.sid = schedule.sid " +
@@ -149,10 +150,10 @@ public class RegjistroOrenController implements Initializable {
                 ps.setString(2, lenda);
                 ps.executeUpdate();
             } else {
-                showErrorAlert("Failed to update schedule. Please try again.");
+                showErrorAlert(Translate.get("deshtimPerditesiOrari.text"));
             }
         } catch (SQLException e) {
-            showErrorAlert("Failed to update schedule. Please try again.");
+            showErrorAlert(Translate.get("deshtimPerditesiOrari.text"));
             e.printStackTrace();
         }
 

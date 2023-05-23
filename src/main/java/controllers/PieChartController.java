@@ -6,7 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 import service.ConnectionUtil;
+import service.Translate;
 
 import java.net.PortUnreachableException;
 import java.net.URL;
@@ -21,8 +23,12 @@ import static service.PasswordUtil.showAlert;
 public class PieChartController implements Initializable {
     @FXML
     private PieChart pieChart;
+    @FXML
+    Label sallatMeTePerdorura;
     String[] sallaArray = new String[3];
     int[] numberOfUsage = new int[3];
+    public static String selectedLanguageCode = "sq";
+
 
     public void getSallaNumber() {
         try {
@@ -45,7 +51,7 @@ public class PieChartController implements Initializable {
             ps.close();
             conn.close();
         } catch (Exception e) {
-            showAlert("Ka ndodhur nje gabim gjate marrjes se te dhenave!");
+            showAlert(Translate.get("gabimMarrjaDhenave.text"));
 
         }
 
@@ -61,13 +67,20 @@ public class PieChartController implements Initializable {
         piechartData.forEach(data ->
                 data.nameProperty().bind(
                         Bindings.concat(
-                                data.getName(), " eshte zgjedhur " , data.pieValueProperty() , " here "
-                        )
+                                data.getName(), Translate.get("eshteZgjedhur.text") , data.pieValueProperty() , Translate.get("hereZgjedhur.text =")                        )
                 ));
         pieChart.getData().addAll(piechartData);
+        updateTexts();
     }
 
 
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
+    }
+
+    public void updateTexts(){
+        sallatMeTePerdorura.setText(Translate.get("sallatMeTePerdorura.text"));
+    }
 
 
 }

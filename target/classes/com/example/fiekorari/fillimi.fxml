@@ -227,7 +227,7 @@
                                  </GridPane.margin>
                               </Label>
                               <TextField fx:id="indeksiField" GridPane.columnIndex="1" />
-                              <Button fx:id="pickScheduleButton" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" style="-fx-background-color: BLACK;" text="Zgjedh oren" underline="true" GridPane.columnIndex="2">
+                              <Button fx:id="pickScheduleButton" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" style="-fx-background-color: BLACK;" text="Zgjedh oren" textFill="WHITE" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="20.0" />
                                  </GridPane.margin>
@@ -339,7 +339,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="104.0" text=" FIEK - Orari">
+      <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
          <font>
             <Font size="19.0" />
          </font>
