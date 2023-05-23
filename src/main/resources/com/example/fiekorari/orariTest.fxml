@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrariFinalController">
+    <children>
+        <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+            <children>
+                <VBox layoutX="1.0" layoutY="155.0" prefHeight="440.0" prefWidth="642.0" style="-fx-background-color: white;">
+               <children>
+                  <TabPane prefHeight="440.0" prefWidth="642.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Semestri 2">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="orari_table" prefHeight="414.0" prefWidth="643.0">
+                                       <columns>
+                                          <TableColumn fx:id="columnDita" prefWidth="75.0" text="Dita" />
+                                          <TableColumn fx:id="columnOra" prefWidth="75.0" text="Ora" />
+                                          <TableColumn fx:id="columnSalla" prefWidth="75.0" text="Salla" />
+                                          <TableColumn fx:id="columnLenda" prefWidth="75.0" text="Lenda" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Semestri 4">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="orari_table1" prefHeight="410.0" prefWidth="643.0">
+                                       <columns>
+                                          <TableColumn fx:id="columnDita1" prefWidth="75.0" text="Dita" />
+                                          <TableColumn fx:id="columnOra1" prefWidth="75.0" text="Ora" />
+                                          <TableColumn fx:id="columnSalla1" prefWidth="75.0" text="Salla" />
+                                          <TableColumn fx:id="columnLenda1" prefWidth="75.0" text="Lenda" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Semestri 6">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="orari_table2" prefHeight="414.0" prefWidth="642.0">
+                                       <columns>
+                                          <TableColumn fx:id="columnDita2" prefWidth="75.0" text="Dita" />
+                                          <TableColumn fx:id="columnOra2" prefWidth="75.0" text="Ora" />
+                                          <TableColumn fx:id="columnSalla2" prefWidth="75.0" text="Salla" />
+                                          <TableColumn fx:id="columnLenda2" prefWidth="75.0" text="Lenda" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+                </VBox>
+            <Label fx:id="scheduleLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Orari" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="longTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të shihni orarin e plotë " textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+        <GridPane layoutX="-4.0" layoutY="160.0" prefHeight="434.0" prefWidth="208.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="160.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.19998626708986" minWidth="0.0" prefWidth="46.40001831054687" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.8" minWidth="10.0" prefWidth="162.39998168945314" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="53.200006103515626" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="47.599993896484385" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="47.199993896484386" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="159.3999694824219" minHeight="0.0" prefHeight="44.800006103515614" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="322.9999755859375" minHeight="10.0" prefHeight="46.20001220703122" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="322.9999755859375" minHeight="10.0" prefHeight="207.79998779296875" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
+                    <image>
+                        <Image url="@../../../images/dashboard.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="startButton" mnemonicParsing="false" onAction="#switchToFillimi" style="-fx-background-color: TRANSPARENT;" text="Fillimi" textFill="#000000" GridPane.columnIndex="1">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="manageClassButton" mnemonicParsing="false" onAction="#switchToMenaxhoOret" style="-fx-background-color: TRANSPARENT;" text="Menaxho oret" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                    <image>
+                        <Image url="@../../../images/list.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="profileButton" mnemonicParsing="false" onAction="#switchToProfili" style="-fx-background-color: TRANSPARENT;" text="Profili" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@../../../images/profile.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="Oraributton" mnemonicParsing="false" onAction="#switchToOrari" style="-fx-background-color: TRANSPARENT;" text="Orari" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                    <image>
+                        <Image url="@../../../images/schedule.jpg" />
+                    </image>
+                </ImageView>
+                <Button fx:id="NdihmaButton" mnemonicParsing="false" onAction="#switchToNdihma" style="-fx-background-color: TRANSPARENT;" text="Me shume" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <style>
+                        -fx-prompt-text-fill: black;
+                    </style>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+
+                <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                    <image>
+                        <Image url="@../../../images/question.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="logoutButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: darkcyan;" text="Shkyçu" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </Button>
+                <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                    <image>
+                        <Image url="@../../../images/logout.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </GridPane>
+        <Pane layoutY="-123.0" prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="44.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/fiek-logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="104.0" text=" FIEK - Orari">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+        <Line endX="32.69288635253906" endY="-1.52587890625E-5" layoutX="167.0" layoutY="166.0" startX="-141.5" startY="-1.52587890625E-5" />
+    </children>
+    <padding>
+        <Insets />
+    </padding>
+</AnchorPane>
