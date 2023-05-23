@@ -177,7 +177,7 @@ public class FillimiController extends SceneController implements Initializable{
             if (lendetRegjistruara != 0) {
                 try {
                     conn = ConnectionUtil.getConnection();
-                    ps = conn.prepareStatement("SELECT * FROM schedule WHERE sid = ?");
+                    ps = conn.prepareStatement("SELECT * FROM schedule WHERE sid = ? ");
                     ps.setString(1, indeksi);
                     rs = ps.executeQuery();
                     //Nese ekzekutohet me sukses, kjo id ekziston dhe kalojme ne dritaren tjeter
@@ -195,6 +195,7 @@ public class FillimiController extends SceneController implements Initializable{
                 } catch (Exception e) {
                     //Perndryshe paraqesim error mesazhin
                     showAlert(Translate.get("ideksiNukEkziton.text"));
+                    e.printStackTrace();
                 }
             } else {
                 showAlert(Translate.get("joMeLende.text"));
