@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PieChartController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
+            fx:controller="controllers.pieChartController">
    <children>
       <PieChart fx:id="pieChart" layoutX="14.0" layoutY="57.0" prefHeight="332.0" prefWidth="574.0" />
       <Label fx:id="sallatMeTePerdorura" layoutX="148.0" layoutY="14.0" prefHeight="36.0" prefWidth="305.0" text="SALLAT ME TE PERDORURA">
