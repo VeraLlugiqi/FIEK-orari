@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -120,8 +122,20 @@ public class FillimiController extends SceneController implements Initializable{
 
         System.exit(0);
     }
+
+    public void switchToZgjedhNjeOre(ActionEvent event) {
+        switchTo();
+    }
+
+    public void switchToZgjedhNjeOreWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            switchTo();
+        }
+    }
+
+
     @FXML
-    public void switchToZgjedhNjeOre(ActionEvent event) throws IOException{
+    public void switchTo() {
 
         String indeksi = indeksiField.getText();
         //Shiko sa lende te regjistruara i ka profesori, ashtu qe i del nje alert error kur nuk ka me lende te regjistroje

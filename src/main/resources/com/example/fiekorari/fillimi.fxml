@@ -210,7 +210,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <GridPane prefHeight="137.0" prefWidth="650.0" GridPane.columnIndex="1">
+                        <GridPane prefHeight="137.0" prefWidth="650.0" GridPane.columnIndex="1" onKeyPressed="#switchToZgjedhNjeOreWithEnter">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.5999755859375" minWidth="10.0" prefWidth="212.79998779296875" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.80001220703127" minWidth="10.0" prefWidth="212.79995117187502" />
@@ -227,7 +227,7 @@
                                  </GridPane.margin>
                               </Label>
                               <TextField fx:id="indeksiField" GridPane.columnIndex="1" />
-                              <Button fx:id="pickScheduleButton" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre" style="-fx-background-color: BLACK;" text="Zgjedh oren" textFill="WHITE" GridPane.columnIndex="2">
+                              <Button fx:id="pickScheduleButton" mnemonicParsing="false" onAction="#switchToZgjedhNjeOre"  onKeyPressed="#switchToZgjedhNjeOreWithEnter" style="-fx-background-color: BLACK;" text="Zgjedh oren" textFill="WHITE" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="20.0" />
                                  </GridPane.margin>

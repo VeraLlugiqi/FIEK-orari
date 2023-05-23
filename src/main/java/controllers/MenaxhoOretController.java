@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.LocaleBundle;
@@ -121,8 +123,19 @@ public class MenaxhoOretController extends SceneController implements Initializa
         }
     }
 
+    public void fshiOren(ActionEvent event) {
+        fshiOrenFunction();
+    }
+
+    public void fshiOrenWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            fshiOrenFunction();
+        }
+    }
+
+
     @FXML
-    public void fshiOren() {
+    public void fshiOrenFunction() {
             String indeksi = indeksiField.getText();
             if(indeksi.isEmpty()){
                 showErrorAlert(Translate.get("shkruajIndeksinAlert.text"));
