@@ -57,6 +57,19 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: TRANSPARENT;" text="Ketu" textFill="#3d3ad9" underline="true" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                           <GridPane.margin>
+                              <Insets left="164.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Label prefHeight="26.0" prefWidth="192.0" text="Per informata shtese klioni " GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
                </children></VBox>
