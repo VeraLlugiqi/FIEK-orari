@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.MouseEvent?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ndihma1Controller">
+    <children>
+        <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="206.79999999999995" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+            <children>
+                <VBox layoutX="1.0" layoutY="155.0" prefHeight="440.0" prefWidth="642.0" style="-fx-background-color: white;">
+                    <children>
+                        <GridPane fx:id="gridPane1" prefHeight="440.0" prefWidth="642.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="261.1999877929687" minHeight="0.0" prefHeight="69.60000000000002" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="334.4" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Question 1" GridPane.rowIndex="0" onMouseEntered="#showAnswer" onMouseExited="#hideAnswer" />
+                                <Label text="Question 2" GridPane.rowIndex="1" onMouseEntered="#showAnswer" onMouseExited="#hideAnswer" />
+                                <Label text="Question 3" GridPane.rowIndex="2" onMouseEntered="#showAnswer" onMouseExited="#hideAnswer" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+                <Label fx:id="meShumeLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Ndihma" textFill="WHITE">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                </Label>
+                <Label fx:id="LongTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të merrni informacione shtese" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Button layoutX="575.0" layoutY="44.0" mnemonicParsing="false" text="Kthehu" />
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Pane>
+        <Pane layoutY="-123.0" prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="44.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/fiek-logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Label fx:id="fiek_orariLabel" layoutX="37.0" layoutY="106.0" prefHeight="35.0" prefWidth="154.0" text=" FIEK - Orari">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+        <Line endX="32.69288635253906" endY="-1.52587890625E-5" layoutX="167.0" layoutY="166.0" startX="-141.5" startY="-1.52587890625E-5" />
+        <GridPane fx:id="gridPane2" layoutY="166.0" prefHeight="468.0" prefWidth="206.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+    </children>
+    <padding>
+        <Insets />
+    </padding>
+</AnchorPane>

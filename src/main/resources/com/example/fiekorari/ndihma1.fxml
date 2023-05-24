@@ -15,12 +15,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NdihmaController">
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ndihma1Controller">
     <children>
 
         <!--         <PieChart fx:id="pieChart" layoutX="14.0" layoutY="57.0" prefHeight="332.0" prefWidth="574.0" />-->
 
-        <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+        <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="206.79999999999995" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
             <children>
                 <VBox layoutX="1.0" layoutY="155.0" prefHeight="440.0" prefWidth="642.0" style="-fx-background-color: white;">
                     <children>
@@ -29,14 +29,43 @@
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints maxHeight="261.1999877929687" minHeight="10.0" prefHeight="107.19999389648439" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="261.1999877929687" minHeight="10.0" prefHeight="84.2000244140625" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="292.80000000000007" minHeight="10.0" prefHeight="117.79997558593749" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="292.80000000000007" minHeight="10.0" prefHeight="105.00002441406252" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="141.60001220703128" minHeight="0.0" prefHeight="47.60001220703123" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="97.20000610351562" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="17.99999389648437" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="98.4000244140625" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="9.600012207031284" prefHeight="23.199975585937494" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="10.0" prefHeight="106.40001220703124" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="99.99998779296874" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <PieChart fx:id="pieChart" />
+                                <PieChart fx:id="gridPane2" />
+                        <Label prefHeight="99.0" prefWidth="613.0" text="Kaloni tek pjesa Kyçu, klikoni butonin në të cilin shënon gjuha që doni të përzgjidhni, pasi të kyçeni gjuha e përzgjedhur do të iu shoqërojë deri sa të kyçeni përsëri." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Line endX="541.6929321289062" endY="0.17869801819324493" startX="-100.0" GridPane.rowIndex="1" />
+                        <Label prefHeight="18.0" prefWidth="633.0" text="Klikoni tek pjesa Profili, shtypni kredencialet aktuale, shtypni fjalëkalimin e ri, ruani ndryshimet." GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="gridPane21" />
+                        <Line endX="541.6929931640625" endY="0.5928993225097656" startX="-100.0" GridPane.rowIndex="3" />
+                        <Label prefHeight="123.0" prefWidth="622.0" text="Kaloni tek pjesa Fillimi, shikoni indeksin e orës që iu përshtatet, shënoni indeksin e hapësirën e lejuar, klikoni butonin Zgjedh Indeksin, përzgjidhni nga lëndet tuaja dhe sallën e dëshiruar, ruani përzgjedhjen." wrapText="true" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="541.6929321289062" startX="-100.0" GridPane.rowIndex="5" GridPane.valignment="TOP" />
                             </children>
                         </GridPane>
                     </children></VBox>
@@ -50,8 +79,10 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Button layoutX="587.0" layoutY="28.0" mnemonicParsing="false" text="Kthehu" />
             </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </Pane>
         <Pane layoutY="-123.0" prefHeight="200.0" prefWidth="200.0">
             <children>
@@ -68,15 +99,65 @@
             </font>
         </Label>
         <Line endX="32.69288635253906" endY="-1.52587890625E-5" layoutX="167.0" layoutY="166.0" startX="-141.5" startY="-1.52587890625E-5" />
-      <GridPane layoutY="166.0" prefHeight="468.0" prefWidth="206.0">
+      <GridPane fx:id="gridPane1" layoutY="166.0" prefHeight="418.0" prefWidth="206.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.19998168945312" minWidth="3.2000136375427246" prefWidth="22.399994373321533" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.99998636245726" minWidth="10.0" prefWidth="183.60000562667847" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="151.60001220703126" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="151.60001220703126" minHeight="0.0" prefHeight="13.400000000000006" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="151.60001220703126" minHeight="10.0" prefHeight="99.6" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="276.79998779296875" minHeight="10.0" prefHeight="26.20000610351562" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.79998779296875" minHeight="10.0" prefHeight="94.19999389648436" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.79998779296875" minHeight="10.0" prefHeight="24.19999999999999" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="152.80002441406248" minHeight="10.0" prefHeight="86.60000610351562" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <Label prefHeight="74.0" prefWidth="202.0" text="Si mund të ndryshojë gjuhën?" wrapText="true" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../../../images/more.png" />
+               </image>
+            </ImageView>
+            <Line endX="27.99289894104004" endY="-0.6578265428543091" startX="-141.5" startY="-1.52587890625E-5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Line endX="27.99289894104004" endY="-0.6578265428543091" startX="-141.5" startY="-1.52587890625E-5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="92.0" prefWidth="184.0" text="Si mund të ndryshojë fjalëkalimin?" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../images/more.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="92.0" prefWidth="184.0" text="Si mund të përzgjedh orarin tim?" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../images/more.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="213.0" style="-fx-background-color: DARKCYAN;" text="Kthehu" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Line endX="64.23722076416016" endY="0.1787162721157074" startX="-100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
       </GridPane>
     </children>
     <padding>
