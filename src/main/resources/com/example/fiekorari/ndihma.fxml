@@ -52,12 +52,12 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </BarChart>
-                        <Label prefHeight="18.0" prefWidth="190.0" text="Ditet me te ngarkuara" GridPane.rowIndex="1">
+                        <Label fx:id="ditetNgarkuaraLabel" prefHeight="18.0" prefWidth="190.0" text="Ditet me te ngarkuara" GridPane.rowIndex="1">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: TRANSPARENT;" text="Ketu" textFill="#3d3ad9" underline="true" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                        <Button fx:id="ketuButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: TRANSPARENT;" text="Ketu" textFill="#3d3ad9" underline="true" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets left="164.0" />
                            </GridPane.margin>
@@ -65,7 +65,7 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Label prefHeight="26.0" prefWidth="192.0" text="Per informata shtese klioni " GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Label fx:id="infoShteseLabel" prefHeight="26.0" prefWidth="192.0" text="Per informata shtese klioni " GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -73,12 +73,12 @@
                      </children>
                   </GridPane>
                </children></VBox>
-            <Label fx:id="helpLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Me shume" textFill="WHITE">
+            <Label fx:id="meShumeLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Me shume" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label fx:id="helpLongTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të merrni informacione shtese" textFill="WHITE">
+            <Label fx:id="LongTextLabel" layoutX="14.0" layoutY="79.0" text="Këtu mund të merrni informacione shtese" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
