@@ -98,7 +98,7 @@ abstract class SceneController {
         root = loader.load();
         NdihmaController ndihmaController = loader.getController();
         ndihmaController.setSelectedLanguageCode(selectedLanguageCode);
-        ndihmaController.updateTexts(); // Call updateTexts() in the SignupController
+        ndihmaController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle(Translate.get("ndihma.text"));
