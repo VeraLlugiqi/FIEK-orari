@@ -114,7 +114,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
             ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
-                lista.add(new MenaxhoOretTable(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(5), rs.getString(4)));
+                lista.add(new MenaxhoOretTable(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             table_menaxhoOret.setItems(lista);
 
