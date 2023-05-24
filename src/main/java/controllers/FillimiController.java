@@ -138,8 +138,22 @@ public class FillimiController extends SceneController implements Initializable{
     public void switchTo() {
 
         String indeksi = indeksiField.getText();
+
+        if(indeksi.isEmpty()){
+            showAlert("Ju lutem zgjidheni nje indeks!");
+            return;
+        }
         //Shiko sa lende te regjistruara i ka profesori, ashtu qe i del nje alert error kur nuk ka me lende te regjistroje
         try {
+
+            conn = ConnectionUtil.getConnection();
+            ps = conn.prepareStatement("SELECT sid FROM schedule where schedule.sid = ?");
+            ps.setString(1, indeksi);
+            rs = ps.executeQuery();
+            if(!rs.next()){
+                showAlert("Indeksi nuk ndodhet ne liste!");
+                return;
+            }
             conn = ConnectionUtil.getConnection();
             ps = conn.prepareStatement("SELECT COUNT(s.name) FROM subject s " +
                     "INNER JOIN professor_subject ps ON s.id = ps.subject_id " +

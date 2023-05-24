@@ -139,3 +139,9 @@ VALUES
 ('15','8',0),
 ('16','1',0);
 
+
+
+select * from professor_subject inner join orarizgjedhur on professor_subject.professor_id = orarizgjedhur.idNumber
+inner join subject on professor_subject.subject_id = subject.id
+where subject.semestri = 4 and availableOrariZgjedhur = 1;
+
