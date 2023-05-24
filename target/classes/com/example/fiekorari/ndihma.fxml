@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -18,62 +16,68 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NdihmaController">
+<AnchorPane fx:id="mainPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ndihma1Controller">
    <children>
 
-<!--         <PieChart fx:id="pieChart" layoutX="14.0" layoutY="57.0" prefHeight="332.0" prefWidth="574.0" />-->
+      <!--         <PieChart fx:id="pieChart" layoutX="14.0" layoutY="57.0" prefHeight="332.0" prefWidth="574.0" />-->
 
-      <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+      <Pane fx:id="contentPane" layoutX="207.0" layoutY="-10.0" prefHeight="610.0" prefWidth="643.0" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="206.79999999999995" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
          <children>
             <VBox layoutX="1.0" layoutY="155.0" prefHeight="440.0" prefWidth="642.0" style="-fx-background-color: white;">
                <children>
                   <GridPane prefHeight="440.0" prefWidth="642.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="261.1999877929687" minHeight="10.0" prefHeight="200.4" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="292.80000000000007" minHeight="10.0" prefHeight="47.399993896484375" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="292.80000000000007" minHeight="10.0" prefHeight="189.99998779296874" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="141.60001220703128" minHeight="0.0" prefHeight="47.60001220703123" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="91.6" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="6.600006103515625" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="67.39999389648438" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="8.000018310546864" prefHeight="36.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="10.0" prefHeight="89.20000000000002" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="0.0" prefHeight="58.99996337890627" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="404.0" minHeight="10.0" prefHeight="95.80003662109374" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <PieChart fx:id="pieChart" />
-                        <Label fx:id="sallatMeTePerdorura" prefHeight="33.0" prefWidth="172.0" text="Sallat me te perdorura" GridPane.valignment="TOP">
+                        <PieChart fx:id="gridPane2" />
+                        <Label prefHeight="99.0" prefWidth="613.0" text="Kaloni tek pjesa Kyçu, klikoni butonin në të cilin shënon gjuha që doni të përzgjidhni, pasi të kyçeni gjuha e përzgjedhur do të iu shoqërojë deri sa të kyçeni përsëri." wrapText="true">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
                            </font>
-                        </Label>
-                        <BarChart fx:id="barChart" prefHeight="186.0" prefWidth="642.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </BarChart>
-                        <Label fx:id="ditetNgarkuaraLabel" prefHeight="18.0" prefWidth="190.0" text="Ditet me te ngarkuara" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="ketuButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: TRANSPARENT;" text="Ketu" textFill="#3d3ad9" underline="true" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
-                              <Insets left="164.0" />
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Line endX="541.6929321289062" endY="0.17869801819324493" startX="-100.0" GridPane.rowIndex="1" />
+                        <Label prefHeight="18.0" prefWidth="633.0" text="Klikoni tek pjesa Profili, shtypni kredencialet aktuale, shtypni fjalëkalimin e ri, ruani ndryshimet." GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
                            </GridPane.margin>
                            <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                        <Label fx:id="infoShteseLabel" prefHeight="26.0" prefWidth="192.0" text="Per informata shtese klioni " GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
                            </font>
                         </Label>
+                        <PieChart fx:id="gridPane21" />
+                        <Line endX="541.6929931640625" endY="0.5928993225097656" startX="-100.0" GridPane.rowIndex="3" />
+                        <Label prefHeight="123.0" prefWidth="622.0" text="Kaloni tek pjesa Fillimi, shikoni indeksin e orës që iu përshtatet, shënoni indeksin e hapësirën e lejuar, klikoni butonin Zgjedh Indeksin, përzgjidhni nga lëndet tuaja dhe sallën e dëshiruar, ruani përzgjedhjen." wrapText="true" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="541.6929321289062" startX="-100.0" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                        <Button fx:id="pieChartButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="248.0" style="-fx-background-color: DARKSLATEGREY;" text="Kliko per sallat me te rezervuara" GridPane.rowIndex="6" GridPane.valignment="TOP" />
+                        <Button fx:id="barChartButton" mnemonicParsing="false" style="-fx-background-color: DARKSLATEGREY;" text="Kliko per rezervimin e diteve" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="250.0" />
+                           </GridPane.margin>
+                        </Button>
                      </children>
                   </GridPane>
                </children></VBox>
-            <Label fx:id="meShumeLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Me shume" textFill="WHITE">
+            <Label fx:id="meShumeLabel" layoutX="14.0" layoutY="34.0" prefHeight="30.0" prefWidth="181.0" text="Ndihma" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
@@ -84,87 +88,10 @@
                </font>
             </Label>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Pane>
-      <GridPane layoutX="-4.0" layoutY="160.0" prefHeight="434.0" prefWidth="208.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="160.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.19998626708986" minWidth="0.0" prefWidth="46.40001831054687" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.8" minWidth="10.0" prefWidth="162.39998168945314" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="53.200006103515626" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="47.599993896484385" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="142.9999755859375" minHeight="0.0" prefHeight="47.199993896484386" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="159.3999694824219" minHeight="0.0" prefHeight="44.800006103515614" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="322.9999755859375" minHeight="10.0" prefHeight="46.20001220703122" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="322.9999755859375" minHeight="10.0" prefHeight="207.79998779296875" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
-               <image>
-                  <Image url="@../../../images/dashboard.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#switchToFillimi" style="-fx-background-color: TRANSPARENT;" text="Fillimi" textFill="#000000" GridPane.columnIndex="1">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="manageClassButton" mnemonicParsing="false" onAction="#switchToMenaxhoOret" style="-fx-background-color: TRANSPARENT;" text="Menaxho oret" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../images/list.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#switchToProfili" style="-fx-background-color: TRANSPARENT;" text="Profili" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../../images/profile.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="Oraributton" mnemonicParsing="false" onAction="#switchToOrari" style="-fx-background-color: TRANSPARENT;" text="Orari" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../../../images/schedule.jpg" />
-               </image>
-            </ImageView>
-            <Button fx:id="NdihmaButton" mnemonicParsing="false" onAction="#switchToNdihma" style="-fx-background-color: TRANSPARENT;" text="Me shume" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <style>
-                  -fx-prompt-text-fill: black;
-               </style>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-
-            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@../../../images/question.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="logoutButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: darkcyan;" text="Shkyçu" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-            <ImageView fitHeight="22.0" fitWidth="61.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
-               <image>
-                  <Image url="@../../../images/logout.png" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
       <Pane layoutY="-123.0" prefHeight="200.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="44.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
@@ -180,6 +107,66 @@
          </font>
       </Label>
       <Line endX="32.69288635253906" endY="-1.52587890625E-5" layoutX="167.0" layoutY="166.0" startX="-141.5" startY="-1.52587890625E-5" />
+      <GridPane fx:id="gridPane1" layoutY="166.0" prefHeight="409.0" prefWidth="206.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.19998168945312" minWidth="3.2000136375427246" prefWidth="22.399994373321533" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.99998636245726" minWidth="10.0" prefWidth="183.60000562667847" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="151.60001220703126" minHeight="10.0" prefHeight="69.39999389648438" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="151.60001220703126" minHeight="0.0" prefHeight="12.600006103515625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="151.60001220703126" minHeight="10.0" prefHeight="79.60001220703126" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.79998779296875" minHeight="2.79998779296875" prefHeight="5.800006103515614" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.79998779296875" minHeight="10.0" prefHeight="99.00004882812502" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.79998779296875" minHeight="3.799975585937517" prefHeight="10.199951171875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="164.6000244140625" minHeight="10.0" prefHeight="139.1999938964844" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="74.0" prefWidth="202.0" text="Si mund të ndryshojë gjuhën?" wrapText="true" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../../../images/more.png" />
+               </image>
+            </ImageView>
+            <Line endX="27.99289894104004" endY="-0.6578265428543091" startX="-141.5" startY="-1.52587890625E-5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Line endX="27.99289894104004" endY="-0.6578265428543091" startX="-141.5" startY="-1.52587890625E-5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="97.0" prefWidth="184.0" text="Si mund të ndryshojë fjalëkalimin?" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../images/more.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="92.0" prefWidth="184.0" text="Si mund të përzgjedh orarin tim?" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../images/more.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: DARKCYAN;" text="Kthehu" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Line endX="64.23722076416016" endY="0.1787162721157074" startX="-100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
    </children>
    <padding>
       <Insets />
