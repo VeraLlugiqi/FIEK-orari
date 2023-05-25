@@ -67,10 +67,10 @@ public class PieChartController implements Initializable {
         piechartData.forEach(data ->
                 data.nameProperty().bind(
                         Bindings.concat(
-                                data.getName(), Translate.get("eshteZgjedhur.text") , data.pieValueProperty() , Translate.get("hereZgjedhur.text =")                        )
-                ));
+                                data.getName(), " eshte zgjedhur " , data.pieValueProperty() , " here")                        )
+                );
         pieChart.getData().addAll(piechartData);
-        updateTexts();
+//        updateTexts();
     }
 
 
@@ -78,9 +78,9 @@ public class PieChartController implements Initializable {
         selectedLanguageCode = languageCode;
     }
 
-    public void updateTexts(){
-        sallatMeTePerdorura.setText(Translate.get("sallatMeTePerdorura.text"));
-    }
+   // public void updateTexts(){
+//        sallatMeTePerdorura.setText(Translate.get("sallatMeTePerdorura.text"));
+//    }
 
 
 }

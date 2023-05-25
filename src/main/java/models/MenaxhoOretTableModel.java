@@ -1,13 +1,13 @@
-package controllers;
+package models;
 
-public class MenaxhoOretTable {
+public class MenaxhoOretTableModel {
     int oid;
     String salla;
     String lenda;
     String timestamp;
     String day;
 
-    public MenaxhoOretTable(int oid, String day, String timestamp, String salla, String lenda) {
+    public MenaxhoOretTableModel(int oid, String day, String timestamp, String salla, String lenda) {
         this.oid = oid;
         this.salla = salla;
         this.lenda = lenda;

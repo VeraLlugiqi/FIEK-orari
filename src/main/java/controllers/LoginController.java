@@ -3,7 +3,6 @@ package controllers;
 
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,13 +23,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.LocaleBundle;
-import models.User;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 
 public class LoginController {
     private UserController userController;
-    private ResourceBundle resources;
+
 
     public LoginController() {
         userController = new UserController();
@@ -54,12 +52,6 @@ public class LoginController {
     private Parent root;
 
    public static String selectedLanguageCode = "sq"; // Default language code
-//
-//    public void initialize() {
-//        selectedLanguageCode = "en";
-//    }
-
-
 
    public void updateTexts() {
         fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));

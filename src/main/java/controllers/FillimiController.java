@@ -1,23 +1,20 @@
 package controllers;
 
-import controllers.FillimiControllerInterface;
-import controllers.OrariController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.OrariModel;
 import service.ConnectionUtil;
 import service.FillimiService;
 import service.Translate;
@@ -27,7 +24,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static service.PasswordUtil.showAlert;
@@ -109,18 +105,12 @@ public class FillimiController extends SceneController implements Initializable{
             ps = conn.prepareStatement("SELECT * FROM schedule");
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add(new OrariController(rs.getString(1) ,rs.getString(2), rs.getString(3)));
+                list.add(new OrariModel(rs.getString(1) ,rs.getString(2), rs.getString(3)));
             }
         }catch(Exception e){
 
         }
         table_orari.setItems(list);
-    }
-
-    @FXML
-    public void switchToClose(ActionEvent event) {
-
-        System.exit(0);
     }
 
     public void switchToZgjedhNjeOre(ActionEvent event) {

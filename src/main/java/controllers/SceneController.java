@@ -39,7 +39,7 @@ abstract class SceneController {
         root = loader.load();
         FillimiController fillimiController = loader.getController();
         fillimiController.setSelectedLanguageCode(selectedLanguageCode);
-        fillimiController.updateTexts(); // Call updateTexts() in the SignupController
+        fillimiController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle(Translate.get("fillimi.text"));
@@ -53,7 +53,7 @@ abstract class SceneController {
         root = loader.load();
         MenaxhoOretController menaxhoOretController = loader.getController();
         menaxhoOretController.setSelectedLanguageCode(selectedLanguageCode);
-        menaxhoOretController.updateTexts(); // Call updateTexts() in the SignupController
+        menaxhoOretController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle(Translate.get("menaxhoOret.text"));

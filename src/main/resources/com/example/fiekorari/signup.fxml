@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="562.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController" onKeyPressed="#signupUserWithEnter">
+<AnchorPane onKeyPressed="#signupUserWithEnter" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
     <children>
-        <Pane layoutX="138.0" layoutY="70.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">
+        <Pane layoutX="216.0" layoutY="80.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">
             <children>
                 <TextField fx:id="idNumberTextField" layoutX="105.0" layoutY="247.0" prefWidth="208.0" promptText="Numri i ID-së" />
                 <Button fx:id="signUpButton" layoutX="155.0" layoutY="361.0" mnemonicParsing="false" onAction="#signupUser" onKeyPressed="#signupUserWithEnter" style="-fx-background-color: DARKCYAN;" text="Regjistrohu" textFill="WHITE" />

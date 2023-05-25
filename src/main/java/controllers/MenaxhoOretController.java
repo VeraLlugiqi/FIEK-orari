@@ -4,22 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import models.LocaleBundle;
-import models.User;
-import org.w3c.dom.Text;
+import models.MenaxhoOretTableModel;
 import service.ConnectionUtil;
-import service.FillimiService;
 import service.Translate;
 
 import java.io.IOException;
@@ -114,7 +108,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
             ps.setString(1, UserController.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
-                lista.add(new MenaxhoOretTable(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista.add(new MenaxhoOretTableModel(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             table_menaxhoOret.setItems(lista);
 

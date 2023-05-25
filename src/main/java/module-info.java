@@ -9,4 +9,6 @@ module com.example.fiekorari {
     exports controllers;
     opens controllers;
     opens com.example.fiekorari;
+    exports models;
+    opens models;
 }

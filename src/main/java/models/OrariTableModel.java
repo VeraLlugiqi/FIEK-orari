@@ -1,12 +1,12 @@
-package controllers;
+package models;
 
-public class OrariTable {
+public class OrariTableModel {
     String day;
     String timestamp;
     String salla;
     String lenda;
 
-    public OrariTable(String day, String timestamp, String salla, String lenda) {
+    public OrariTableModel(String day, String timestamp, String salla, String lenda) {
         this.day = day;
         this.timestamp = timestamp;
         this.salla = salla;
