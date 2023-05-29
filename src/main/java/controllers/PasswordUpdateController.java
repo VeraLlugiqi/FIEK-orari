@@ -5,17 +5,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import service.ConnectionUtil;
 import service.PasswordUtil;
 import service.Translate;
+import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -95,7 +93,7 @@ public class PasswordUpdateController extends SceneController {
         byte[] salt = null;
         try (Connection conn = ConnectionUtil.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT salt, password FROM user WHERE idNumber = ?")) {
-            statement.setString(1, UserController.loggedInUserId);
+            statement.setString(1, UserService.loggedInUserId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 salt = PasswordUtil.hexStringToByteArray(resultSet.getString("salt"));
@@ -144,7 +142,7 @@ public class PasswordUpdateController extends SceneController {
              PreparedStatement statement = conn.prepareStatement("UPDATE user SET password = ?, salt = ? WHERE idNumber = ?")) {
             statement.setString(1, newSaltedHashedPassword);
             statement.setString(2, PasswordUtil.byteArrayToHexString(newSalt));
-            statement.setString(3, UserController.loggedInUserId);
+            statement.setString(3, UserService.loggedInUserId);
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 PasswordUtil.showAlert(Translate.get("updatedSuccesfuly.text"));
@@ -175,11 +173,6 @@ public class PasswordUpdateController extends SceneController {
     }
     public void switchToOrari() throws IOException{
         switchToOrari(actionEvent);
-    }
-
-
-    public void switchToClose(ActionEvent event) {
-        System.exit(0);
     }
 
     public void updateTexts() {

@@ -8,19 +8,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import service.ConnectionUtil;
 import service.FillimiService;
-import service.PasswordUtil;
 import service.Translate;
+import service.UserService;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static service.PasswordUtil.showAlert;
@@ -70,7 +67,7 @@ public class RegjistroOrenController implements Initializable {
                     "ON u.uid = ps.professor_id " +
                     "WHERE u.idNumber = ? AND availableProfessorSubject = 0;");
 
-            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(1, UserService.loggedInUserId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 lendet.add(rs.getString(1));
@@ -104,10 +101,14 @@ public class RegjistroOrenController implements Initializable {
     private void zgjedhOrarin(ActionEvent event) {
         String lenda = lendaCombobox.getValue();
         String salla = sallaCombobox.getValue();
-
-        // Validate if any field is empty
-        if (lenda.isEmpty() && salla.isEmpty()) {
-            showErrorAlert(Translate.get("login.error.emptyFields"));
+        try {
+            // Validate if any field is empty
+            if (lenda.isEmpty() || salla.isEmpty()) {
+              //  showErrorAlert(Translate.get("login.error.emptyFields"));
+                return;
+            }
+        }catch(Exception e){
+            showAlert(Translate.get("login.error.emptyFields"));
             return;
         }
 
@@ -130,7 +131,7 @@ public class RegjistroOrenController implements Initializable {
             Connection conn = ConnectionUtil.getConnection();
             PreparedStatement statement = conn.prepareStatement("INSERT INTO orariZgjedhur (sid, idNumber, salla, lenda, timestamp, day, availableOrariZgjedhur) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, FillimiService.getIndeksi);
-            statement.setString(2, UserController.loggedInUserId);
+            statement.setString(2, UserService.loggedInUserId);
             statement.setString(3, salla);
             statement.setString(4, lenda);
             statement.setString(5, timestamp);
@@ -156,7 +157,7 @@ public class RegjistroOrenController implements Initializable {
                         "INNER JOIN user ON user.uid = professor_subject.professor_id " +
                         "SET professor_subject.availableProfessorSubject = 1 " +
                         "WHERE user.idNumber = ? AND subject.name = ?;");
-                ps.setString(1, UserController.loggedInUserId);
+                ps.setString(1, UserService.loggedInUserId);
                 ps.setString(2, lenda);
                 ps.executeUpdate();
             } else {

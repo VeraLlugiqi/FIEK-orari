@@ -2,12 +2,6 @@ package controllers;
 
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -16,13 +10,8 @@ import javafx.fxml.FXMLLoader;
         import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import models.LocaleBundle;
-import service.ConnectionUtil;
-import service.PasswordUtil;
+import repository.LocaleBundle;
 import service.Translate;
 
 abstract class SceneController {

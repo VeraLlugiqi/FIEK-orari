@@ -18,6 +18,7 @@ import models.OrariModel;
 import service.ConnectionUtil;
 import service.FillimiService;
 import service.Translate;
+import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,11 +67,6 @@ public class FillimiController extends SceneController implements Initializable{
     Button pickScheduleButton;
 
 
-
-
-
-
-
     @FXML
     private TableView<?> table_orari;
     @FXML
@@ -89,7 +85,7 @@ public class FillimiController extends SceneController implements Initializable{
             setCellTable();
             loadFromDatabase();
         }catch(Exception e){
-
+            e.printStackTrace();
         }
         updateTexts();
     }
@@ -151,7 +147,7 @@ public class FillimiController extends SceneController implements Initializable{
                     "ON u.uid = ps.professor_id " +
                     "WHERE u.idNumber = ? AND availableProfessorSubject = 0;");
 
-            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(1, UserService.loggedInUserId);
             rs = ps.executeQuery();
             if(rs.next()){
                 lendetRegjistruara = rs.getInt(1);
@@ -165,7 +161,7 @@ public class FillimiController extends SceneController implements Initializable{
         try{
             //Profesori mos te mund te zgjedhe dy ore ne te njejtin orar check
             ps = conn.prepareStatement("SELECT count(*) FROM orarizgjedhur WHERE idNumber = ? AND sid = ? AND availableOrariZgjedhur!=0");
-            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(1, UserService.loggedInUserId);
             ps.setString(2, indeksi);
             rs = ps.executeQuery();
             while(rs.next())

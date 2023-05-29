@@ -22,16 +22,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import models.LocaleBundle;
+import repository.LocaleBundle;
 import service.ConnectionUtil;
 import service.PasswordUtil;
+import service.UserService;
 
 public class LoginController {
-    private UserController userController;
+    private UserService userController;
 
 
     public LoginController() {
-        userController = new UserController();
+        userController = new UserService();
     }
 
     @FXML
@@ -96,8 +97,8 @@ public class LoginController {
                 if (storedPassword.equals(hashedPassword)) {
                     try {
 
-                        UserController.loggedInUserId = idNumber;
-                        System.out.println(UserController.loggedInUserId);
+                        UserService.loggedInUserId = idNumber;
+                        System.out.println(UserService.loggedInUserId);
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
                         root = loader.load();

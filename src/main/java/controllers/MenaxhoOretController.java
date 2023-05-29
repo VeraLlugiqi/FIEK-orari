@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import models.MenaxhoOretTableModel;
 import service.ConnectionUtil;
 import service.Translate;
+import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -103,9 +104,9 @@ public class MenaxhoOretController extends SceneController implements Initializa
 
     public void loadFromDatabase(){
         try{
-            System.out.println(UserController.loggedInUserId);
+            System.out.println(UserService.loggedInUserId);
             ps = conn.prepareStatement("Select * from orarizgjedhur where idNumber = ? AND availableOrariZgjedhur!=0");
-            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(1, UserService.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
                 lista.add(new MenaxhoOretTableModel(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
@@ -139,7 +140,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
             //Nqs indeksi nuk ndodhet ne liste shfaq error
             conn = ConnectionUtil.getConnection();
             ps = conn.prepareStatement("SELECT oid FROM orarizgjedhur where idNumber = ? AND oid = ? and availableOrariZgjedhur=1;\n");
-            ps.setString(1, UserController.loggedInUserId);
+            ps.setString(1, UserService.loggedInUserId);
             ps.setString(2, indeksi);
             rs = ps.executeQuery();
             if(!rs.next()){
@@ -180,7 +181,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
                         "INNER JOIN user ON user.uid = professor_subject.professor_id " +
                         "SET professor_subject.availableProfessorSubject = 0 " +
                         "WHERE user.idNumber = ? AND subject.name = ?;");
-                ps.setString(1, UserController.loggedInUserId);
+                ps.setString(1, UserService.loggedInUserId);
                 ps.setString(2, getLenda);
                 ps.executeUpdate();
                 showAlert(Translate.get("regjistroAlert.text"));
@@ -189,14 +190,6 @@ public class MenaxhoOretController extends SceneController implements Initializa
                 e.printStackTrace();
             }
         }
-
-
-
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setTitle("Ndihma");
-//        stage.setScene(scene);
-//        stage.show();
 
 
     public void switchToFillimi() throws IOException{
@@ -241,7 +234,4 @@ public class MenaxhoOretController extends SceneController implements Initializa
         selectedLanguageCode = languageCode;
     }
 
-    public void switchToClose(ActionEvent event) {
-        System.exit(0);
-    }
 }

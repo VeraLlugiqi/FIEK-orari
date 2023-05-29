@@ -4,18 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.OrariTableModel;
 import service.ConnectionUtil;
-import service.FillimiService;
 import service.Translate;
+import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -133,7 +131,7 @@ public class OrariFinalController extends SceneController implements Initializab
 
     public void loadFromDatabase() {
         try {
-            System.out.println(UserController.loggedInUserId);
+            System.out.println(UserService.loggedInUserId);
             ps = conn.prepareStatement("SELECT * FROM orarizgjedhur INNER JOIN subject ON orarizgjedhur.lenda = subject.name WHERE orarizgjedhur.availableOrariZgjedhur != 0 AND semestri = ?;");
             ps.setInt(1, 2); // Set the semester for the first tab
             rs = ps.executeQuery();
@@ -164,23 +162,6 @@ public class OrariFinalController extends SceneController implements Initializab
         }
     }
 
-
-    @FXML
-    public void switchToChart(){
-        try {
-            root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/pie.fxml"));
-            Stage addDialogStage = new Stage();
-            addDialogStage.setTitle(Translate.get("statistika.text"));
-            addDialogStage.initModality(Modality.WINDOW_MODAL);
-            addDialogStage.initOwner(stage);
-            scene = new Scene(root);
-            addDialogStage.setScene(scene);
-            System.out.println(FillimiService.getIndeksi);
-            addDialogStage.showAndWait();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
 
     public void switchToFillimi() throws IOException{
         switchToFillimi(actionEvent);
