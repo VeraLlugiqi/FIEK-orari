@@ -30,6 +30,11 @@ public class PasswordUtil {
             return null;
         }
     }
+    public static boolean verifyPassword(String password, String hashedPassword, String hexSalt) {
+        byte[] salt = hexStringToByteArray(hexSalt);
+        String calculatedHash = hashPassword(password, salt);
+        return hashedPassword.equals(calculatedHash);
+    }
 
     public static String byteArrayToHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder();

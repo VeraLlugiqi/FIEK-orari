@@ -55,7 +55,7 @@ abstract class SceneController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/profili.fxml"), bundle);
         root = loader.load();
         PasswordUpdateController passwordUpdateController = loader.getController();
-        passwordUpdateController.setSelectedLanguageCode(selectedLanguageCode);
+       // passwordUpdateController.setSelectedLanguageCode(selectedLanguageCode);
         passwordUpdateController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
