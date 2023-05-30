@@ -1,27 +1,18 @@
 package repository;
 
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import models.OrariModel;
 import service.ConnectionUtil;
 import service.FillimiService;
 import service.Translate;
 import service.UserService;
-
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import static service.PasswordUtil.showAlert;
 
 public class FillimiRepository {
-    Connection conn;
-    PreparedStatement ps;
-    ResultSet rs;
 
     public static void loadFromDatabase(
             Connection conn,
@@ -108,7 +99,6 @@ public class FillimiRepository {
             showAlert(Translate.get("verifikimierror.text"));
             e.printStackTrace();
         }
-
         return nr;
     }
 
