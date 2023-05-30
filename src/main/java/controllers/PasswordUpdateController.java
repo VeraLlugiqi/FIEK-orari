@@ -297,8 +297,7 @@ public class PasswordUpdateController extends SceneController {
         }
 
         // Retrieve the user from the UserRepository
-        UserRepository userRepository = new UserRepository();
-        User user = userRepository.getUser(idNumber);
+        User user = UserRepository.getUser(UserService.loggedInUserId);
 
         if (user == null) {
             PasswordUtil.showErrorAlert(Translate.get("login.error.invalidId"));

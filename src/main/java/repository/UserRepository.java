@@ -77,7 +77,7 @@ public class UserRepository {
             return false;
         }
     }
-    public User getUser(String idNumber) {
+    public static User getUser(String idNumber) {
         try (Connection conn = ConnectionUtil.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?")) {
             statement.setString(1, idNumber);
