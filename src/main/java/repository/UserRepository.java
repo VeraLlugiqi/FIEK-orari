@@ -111,25 +111,6 @@ public class UserRepository {
             return false;
         }
 
-//        public User loginUser(String idNumber, String password) {
-//            try (Connection conn = ConnectionUtil.getConnection();
-//                 PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?")) {
-//                statement.setString(1, idNumber);
-//                ResultSet resultSet = statement.executeQuery();
-//                if (resultSet.next()) {
-//                    String storedPassword = resultSet.getString("password");
-//                    if (storedPassword.equals(password)) {
-//                        User user = new User();
-//                        user.setIdNumber(resultSet.getString("idNumber"));
-//                        user.setPassword(resultSet.getString("password"));
-//                        return user;
-//                    }
-//                }
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
 
     public User loginUser(String idNumber, String password) {
         // Validate if any field is empty
