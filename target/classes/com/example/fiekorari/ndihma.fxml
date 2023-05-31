@@ -82,7 +82,7 @@
             <AnchorPane layoutX="1.0" layoutY="510.0" prefHeight="100.0" prefWidth="642.0" style="-fx-background-color: white;">
                <children>
                   <Label fx:id="SallatPerdorura" layoutX="14.0" layoutY="29.0" text="Shiko cilat jane sallat me te perdorura" />
-                  <Button fx:id="ketusallaButton" layoutX="238.0" layoutY="25.0" mnemonicParsing="false" onAction="#pieButtom" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: DARKCYAN;" text="Këtu" />
+                  <Button fx:id="ketusallaButton" layoutX="238.0" layoutY="25.0" mnemonicParsing="false" onAction="#pieButton" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: DARKCYAN;" text="Këtu" />
                   <Label fx:id="LigjerataShume" layoutX="14.0" layoutY="60.0" text="Shiko ne cilat dite ka ligjerata më shumë" />
                   <Button fx:id="ketuditeButton" layoutX="238.0" layoutY="56.0" mnemonicParsing="false" onAction="#barButton" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: DARKCYAN;" text="Këtu" />
                </children>

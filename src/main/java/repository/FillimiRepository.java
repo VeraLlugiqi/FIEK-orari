@@ -2,7 +2,7 @@ package repository;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import models.OrariModel;
+import models.dto.OrariFillimiDto;
 import service.ConnectionUtil;
 import service.FillimiService;
 import service.Translate;
@@ -25,7 +25,7 @@ public class FillimiRepository {
             ps = conn.prepareStatement("SELECT * FROM schedule");
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add(new OrariModel(rs.getString(1) ,rs.getString(2), rs.getString(3)));
+                list.add(new OrariFillimiDto(rs.getString(1) ,rs.getString(2), rs.getString(3)));
             }
         }catch(Exception e){
 

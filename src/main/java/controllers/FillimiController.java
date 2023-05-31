@@ -80,7 +80,6 @@ public class FillimiController extends SceneController implements Initializable{
         System.out.println(nrOreve);
     }
 
-
     public void switchToFillimi() throws IOException{
         switchToFillimi(actionEvent);
     }

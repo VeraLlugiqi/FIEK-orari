@@ -1,18 +1,24 @@
 package models;
 
-public class MenaxhoOretTableModel {
+public class OrariZgjedhurModel {
     int oid;
+    String sid;
+    String idNumber;
     String salla;
     String lenda;
     String timestamp;
     String day;
+    int availableOrariZgjedhur;
 
-    public MenaxhoOretTableModel(int oid, String day, String timestamp, String salla, String lenda) {
+    public OrariZgjedhurModel(int oid, String sid, String idNumber, String salla, String lenda, String timestamp, String day, int availableOrariZgjedhur) {
         this.oid = oid;
+        this.sid = sid;
+        this.idNumber = idNumber;
         this.salla = salla;
         this.lenda = lenda;
         this.timestamp = timestamp;
         this.day = day;
+        this.availableOrariZgjedhur = availableOrariZgjedhur;
     }
 
     public int getOid() {
@@ -21,6 +27,22 @@ public class MenaxhoOretTableModel {
 
     public void setOid(int oid) {
         this.oid = oid;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 
     public String getSalla() {
@@ -53,5 +75,13 @@ public class MenaxhoOretTableModel {
 
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public int getAvailableOrariZgjedhur() {
+        return availableOrariZgjedhur;
+    }
+
+    public void setAvailableOrariZgjedhur(int availableOrariZgjedhur) {
+        this.availableOrariZgjedhur = availableOrariZgjedhur;
     }
 }

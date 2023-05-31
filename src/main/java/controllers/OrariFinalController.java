@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import models.OrariTableModel;
+import models.dto.OrariFinalDto;
 import service.ConnectionUtil;
 import service.Translate;
 import service.UserService;
@@ -136,7 +136,7 @@ public class OrariFinalController extends SceneController implements Initializab
             ps.setInt(1, 2); // Set the semester for the first tab
             rs = ps.executeQuery();
             while (rs.next()) {
-                lista1.add(new OrariTableModel(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista1.add(new OrariFinalDto(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             orari_table1.setItems(lista1);
             semestriDy.setContent(orari_table1);
@@ -144,13 +144,13 @@ public class OrariFinalController extends SceneController implements Initializab
             ps.setInt(1, 4); // Set the semester for the second tab
             rs = ps.executeQuery();
             while (rs.next()) {
-                lista2.add(new OrariTableModel(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista2.add(new OrariFinalDto(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             orari_table2.setItems(lista2);
             ps.setInt(1, 6); // Set the semester for the third tab
             rs = ps.executeQuery();
             while (rs.next()) {
-                lista3.add(new OrariTableModel(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista3.add(new OrariFinalDto(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
 
                 orari_table3.setItems(lista3);
             }

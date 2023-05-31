@@ -15,4 +15,6 @@ module com.example.fiekorari {
     opens service;
     exports repository;
     opens repository;
+    exports models.dto;
+    opens models.dto;
 }

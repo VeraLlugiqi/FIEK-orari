@@ -1,12 +1,12 @@
-package models;
+package models.dto;
 
-public class OrariTableModel {
+public class OrariFinalDto {
     String day;
     String timestamp;
     String salla;
     String lenda;
 
-    public OrariTableModel(String day, String timestamp, String salla, String lenda) {
+    public OrariFinalDto(String day, String timestamp, String salla, String lenda) {
         this.day = day;
         this.timestamp = timestamp;
         this.salla = salla;

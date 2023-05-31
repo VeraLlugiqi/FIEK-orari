@@ -11,6 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import repository.LocaleBundle;
 import service.FillimiService;
+import service.NdihmaService;
 import service.Translate;
 
 import java.io.IOException;
@@ -24,9 +25,27 @@ public class NdihmaController extends SceneController {
     Parent root;
     Stage stage;
     Scene scene;
+
+    ActionEvent actionEvent;
+    public static String selectedLanguageCode = "sq";
+    NdihmaService ndihmaService = new NdihmaService();
+    @FXML
+    public void barButton(){
+        ndihmaService.barButton(root, scene, stage);
+    }
+    @FXML
+    public void pieButton(){
+        ndihmaService.pieButton(root, scene, stage);
+    }
+
+//    @FXML
+//    public void initialize(URL url, ResourceBundle resourceBundle){
+//
+//    }
+
+//--------------------Gjuha-------------------------------------
     @FXML
     Label fiek_orariLabel;
-
     @FXML
     Label helpLongTextLabel;
     @FXML
@@ -53,55 +72,6 @@ public class NdihmaController extends SceneController {
     Button ketusallaButton;
     @FXML
     Button ketuditeButton;
-
-    ActionEvent actionEvent;
-    public static String selectedLanguageCode = "sq";
-
-    public void barButton(){
-        try{
-        root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/barChart.fxml"));
-        Stage addDialogStage = new Stage();
-        addDialogStage.setTitle("BarChart");
-        addDialogStage.initModality(Modality.WINDOW_MODAL);
-        addDialogStage.initOwner(stage);
-        scene = new Scene(root);
-        addDialogStage.setScene(scene);
-        System.out.println(FillimiService.getIndeksi);
-        addDialogStage.showAndWait();
-        }catch(Exception e){
-            showAlert("Ka ndodhur nje gabim gjate marrjes se te dhenave");
-            e.printStackTrace();
-        }
-    }
-    public void pieButtom(){
-        try{
-            ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/pie.fxml"), bundle);
-            root = loader.load();
-            PieChartController pieChartController = loader.getController();
-            pieChartController.setSelectedLanguageCode(selectedLanguageCode);
-//            pieChartController.updateTexts();
-//
-            Stage addDialogStage = new Stage();
-            addDialogStage.setTitle(("PieChart"));
-            addDialogStage.initModality(Modality.WINDOW_MODAL);
-            addDialogStage.initOwner(stage);
-            scene = new Scene(root);
-            addDialogStage.setScene(scene);
-            System.out.println(FillimiService.getIndeksi);
-            addDialogStage.showAndWait();
-        }catch(Exception e){
-            showAlert("Ka ndodhur nje gabim gjate marrjes se te dhenave");
-            e.printStackTrace();
-        }
-    }
-//    @FXML
-//    public void initialize(URL url, ResourceBundle resourceBundle){
-//
-//    }
-
-
-
 
     public void updateTexts() {
 

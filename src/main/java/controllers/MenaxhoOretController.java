@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import models.MenaxhoOretTableModel;
+import models.dto.MenaxhoOretDto;
 import service.ConnectionUtil;
 import service.Translate;
 import service.UserService;
@@ -109,7 +109,7 @@ public class MenaxhoOretController extends SceneController implements Initializa
             ps.setString(1, UserService.loggedInUserId);
             rs = ps.executeQuery();
             while(rs.next()){
-                lista.add(new MenaxhoOretTableModel(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
+                lista.add(new MenaxhoOretDto(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             table_menaxhoOret.setItems(lista);
 
