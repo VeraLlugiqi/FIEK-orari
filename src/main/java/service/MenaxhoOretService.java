@@ -5,7 +5,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import repository.MenaxhoOretRepository;
-
 import static service.PasswordUtil.showErrorAlert;
 
 public class MenaxhoOretService {

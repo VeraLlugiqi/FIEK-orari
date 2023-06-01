@@ -3,7 +3,6 @@ package service;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-
 import controllers.FillimiService;
 import controllers.LoginController;
 import controllers.MenaxhoOretService;
@@ -18,8 +17,7 @@ import javafx.fxml.FXMLLoader;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
 import javafx.stage.Stage;
-import service.LocaleBundle;
-import service.Translate;
+
 
 public class SceneService {
     public static String selectedLanguageCode = "sq";

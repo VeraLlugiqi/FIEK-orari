@@ -5,13 +5,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.dto.OrariFinalDto;
 import repository.OrariFinalRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 public class OrariFinalService {
     public static void setCellTable(
             TableColumn columnDita,

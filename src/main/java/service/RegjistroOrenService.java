@@ -3,15 +3,7 @@ package service;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import repository.RegjistroOrenRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import static service.PasswordUtil.showAlert;
-import static service.PasswordUtil.showErrorAlert;
-
 public class RegjistroOrenService {
     public static void loadLendetFromDatabase(ObservableList lendet, ComboBox lendaCombobox) {
         RegjistroOrenRepository.loadLendetFromDatabase(lendet, lendaCombobox);

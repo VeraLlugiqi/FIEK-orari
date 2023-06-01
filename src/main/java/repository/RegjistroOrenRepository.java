@@ -117,7 +117,6 @@ public class RegjistroOrenRepository {
 
             conn.close();
             ps.close();
-
         } catch (SQLException e) {
             showErrorAlert(Translate.get("deshtimPerditesiOrari.text"));
             e.printStackTrace();

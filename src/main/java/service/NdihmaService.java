@@ -6,9 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.util.ResourceBundle;
-
 import static controllers.PieChartController.selectedLanguageCode;
 import static service.PasswordUtil.showAlert;
 

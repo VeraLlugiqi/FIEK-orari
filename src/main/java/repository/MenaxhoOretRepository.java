@@ -6,11 +6,9 @@ import models.dto.MenaxhoOretDto;
 import service.ConnectionUtil;
 import service.Translate;
 import service.UserService;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import static service.PasswordUtil.showAlert;
 import static service.PasswordUtil.showErrorAlert;
 
@@ -26,6 +24,9 @@ public class MenaxhoOretRepository {
                 lista.add(new MenaxhoOretDto(rs.getInt(1), rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
             }
             table_menaxhoOret.setItems(lista);
+            conn.close();
+            ps.close();
+            rs.close();
 
         }catch(Exception e){
 
@@ -43,6 +44,9 @@ public class MenaxhoOretRepository {
                 showErrorAlert("Indeksi nuk ndodhet ne liste");
                 return true;
             }
+            conn.close();
+            ps.close();
+            rs.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -55,6 +59,9 @@ public class MenaxhoOretRepository {
             PreparedStatement ps = conn.prepareStatement("UPDATE orarizgjedhur SET availableOrariZgjedhur = 0 WHERE oid = ?");
             ps.setString(1, indeksi);
             ps.executeUpdate();
+
+            conn.close();
+            ps.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -72,6 +79,9 @@ public class MenaxhoOretRepository {
                 getSallaLendaSid[1] = rs.getString(5);
                 getSallaLendaSid[2] = rs.getString(2);
             }
+            conn.close();
+            ps.close();
+            rs.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -90,6 +100,9 @@ public class MenaxhoOretRepository {
             ps.setString(1, sid);
             ps.setString(2, salla);
             ps.executeUpdate();
+
+            conn.close();
+            ps.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -106,6 +119,9 @@ public class MenaxhoOretRepository {
             ps.setString(1, UserService.loggedInUserId);
             ps.setString(2, lenda);
             ps.executeUpdate();
+
+            conn.close();
+            ps.close();
             showAlert(Translate.get("regjistroAlert.text"));
         }catch(Exception e){
             e.printStackTrace();

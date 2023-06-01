@@ -5,7 +5,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import models.dto.OrariFinalDto;
 import service.ConnectionUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +21,9 @@ public class OrariFinalRepository {
             }
             orari_table.setItems(list);
             semestri.setContent(orari_table);
+            conn.close();
+            ps.close();
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

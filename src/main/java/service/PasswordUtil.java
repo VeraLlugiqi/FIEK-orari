@@ -1,7 +1,6 @@
 package service;
 
         import javafx.scene.control.Alert;
-
         import java.security.MessageDigest;
         import java.security.NoSuchAlgorithmException;
         import java.security.SecureRandom;
