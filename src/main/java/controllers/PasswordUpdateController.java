@@ -9,7 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import models.dto.PasswordDataDto;
-import repository.UserRepository1;
 import service.*;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class PasswordUpdateController extends SceneService implements Initializable {
     ActionEvent actionEvent;
-    PasswordDataDto passwordDataDto = UserService1.getPassword();
+    PasswordDataDto passwordDataDto = UserService.getPassword();
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -32,7 +31,7 @@ public class PasswordUpdateController extends SceneService implements Initializa
         String confirmPassword = confirmNewPasswordField.getText();
 
         // Validate if any field is empty
-        if(service.UserService1.emptyFields(currentPassword, newPassword, confirmPassword)){
+        if(UserService.emptyFields(currentPassword, newPassword, confirmPassword)){
             return;
         }
         // Retrieve the salt and hashed password from the database
@@ -41,7 +40,7 @@ public class PasswordUpdateController extends SceneService implements Initializa
         // Hash the current password using the salt from the database
         String currentSaltedHashedPassword = PasswordUtil.hashPassword(currentPassword, salt);
         // Verify current password
-        if(service.UserService1.passwordVerify(currentSaltedHashedPassword, saltedHashedPassword, newPassword, confirmPassword)){
+        if(UserService.passwordVerify(currentSaltedHashedPassword, saltedHashedPassword, newPassword, confirmPassword)){
             return;
         }
         // Generate new salt
@@ -49,7 +48,7 @@ public class PasswordUpdateController extends SceneService implements Initializa
         // Hash the new password using the new salt and the SHA-256 algorithm
         String newSaltedHashedPassword = PasswordUtil.hashPassword(newPassword, newSalt);
         // Update the password in the database
-       UserService1.updatePassword(newSaltedHashedPassword, newSalt);
+       UserService.updatePassword(newSaltedHashedPassword, newSalt);
     }
 
     public void switchToFillimi() throws IOException{

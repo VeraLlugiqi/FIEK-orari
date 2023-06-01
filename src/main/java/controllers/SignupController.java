@@ -37,14 +37,14 @@ public class SignupController extends SceneService implements Initializable {
         String confirmPassword = confirmPasswordField.getText();
 
         // Validate if any field is empty
-        service.UserService1 signupService = new service.UserService1();
+        UserService signupService = new UserService();
         signupService.signupValidation(idNumber, password, confirmPassword);
         // Generate salt
         byte[] salt = PasswordUtil.generateSalt();
         // Hash the password using the salt and the SHA-256 algorithm
         String saltedHashedPassword = PasswordUtil.hashPassword(password, salt);
         // Insert the password and salt into the database
-        service.UserService1.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
+        UserService.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
     }
 
     public static Locale getSelectedLanguage() {
@@ -52,7 +52,7 @@ public class SignupController extends SceneService implements Initializable {
     }
 
     public void switchToLogin(ActionEvent event) throws IOException {
-        service.UserService1 signupService = new service.UserService1();
+        UserService signupService = new UserService();
         signupService.switchToLogin(event);
     }
 

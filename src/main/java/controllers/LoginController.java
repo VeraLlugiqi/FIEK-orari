@@ -167,18 +167,13 @@ package controllers;
 
 import java.io.IOException;
 import java.util.Locale;
-import java.util.ResourceBundle;
+
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import service.*;
-import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 public class LoginController extends SceneService {
     @FXML
@@ -192,11 +187,11 @@ public class LoginController extends SceneService {
         String password = passwordField.getText();
 
         // Validate if any field is empty
-        if(UserService1.loginEmptyFields(idNumber, password)){
+        if(UserService.loginEmptyFields(idNumber, password)){
             return;
         }
         // Retrieve the user from the database
-        UserService1.loginUser(idNumber, password, idTextField);
+        UserService.loginUser(idNumber, password, idTextField);
     }
 
 //    private void showErrorAlert(String message) {
