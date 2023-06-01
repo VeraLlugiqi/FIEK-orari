@@ -1,13 +1,14 @@
 package models.dto;
 
 public class CreateUserDto {
-    private String idNumber;
-    private String password;
-   // private String salt;
+    public String idNumber;
+    public String password;
+    public byte[] hashedPassword;
 
-    private CreateUserDto(String idNumber, String password){
+    public CreateUserDto(String idNumber, String password, byte[] hashedPassword){
         this.idNumber = idNumber;
         this.password = password;
+        this.hashedPassword = hashedPassword;
     }
 
 
@@ -23,4 +24,11 @@ public class CreateUserDto {
         this.password = password;
     }
 
+    public byte[] getHashedPassword() {
+        return hashedPassword;
+    }
+
+    public void setHashedPassword(byte[] hashedPassword) {
+        this.hashedPassword = hashedPassword;
+    }
 }

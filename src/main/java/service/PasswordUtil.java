@@ -46,6 +46,11 @@ public class PasswordUtil {
 
 
     public static byte[] hexStringToByteArray(String hexString) {
+        if (hexString == null) {
+            // Handle the null case here, such as returning an empty byte array or throwing an exception.
+            // Example: throw new IllegalArgumentException("hexString cannot be null");
+            return new byte[0];
+        }
         int len = hexString.length();
         byte[] data = new byte[len / 2];
         for (int i = 0; i < len; i += 2) {

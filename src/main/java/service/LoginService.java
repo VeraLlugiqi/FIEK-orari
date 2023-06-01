@@ -1,24 +1,49 @@
 package service;
 
+import controllers.FillimiController;
+import controllers.SignupController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.User;
+import repository.LoginRepository;
 import repository.UserRepository;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+
+import static controllers.LoginController.selectedLanguageCode;
+import static service.PasswordUtil.showErrorAlert;
+
 public class LoginService {
-    private UserRepository userRepository;
+    private LoginRepository loginRepository;
 
-    public LoginService() {
-        userRepository = new UserRepository();
-    }
-
-    public User loginUser(String idNumber, String password) {
-        // Validate if any field is empty
+    public static boolean loginEmptyFields(String idNumber, String password) {
         if (idNumber.isEmpty() || password.isEmpty()) {
-            return null;
+            showErrorAlert(Translate.get("login.error.emptyFields"));
+            return true;
         }
-
-        // Retrieve the user from the database
-        User user = userRepository.loginUser(idNumber, password);
-
-        return user;
+        return false;
     }
+
+    public static void loginUser(String idNumber, String password, Parent root, Scene scene, TextField field){
+        LoginRepository loginRepository1 = new LoginRepository();
+        loginRepository1.loginUser(idNumber, password, root, scene, field);
+    }
+
+
+
 }
+
+
+
+
+
+

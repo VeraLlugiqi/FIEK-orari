@@ -1,11 +1,18 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,26 +23,63 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import service.LocaleBundle;
-import service.PasswordUtil;
-import service.Translate;
-import service.UserService;
-import repository.UserRepository;
+//import models.LocaleBundle;
+import service.*;
+//import service.getTranslation;
 
-public class SignupController extends SceneController {
+public class SignupController extends SceneController implements Initializable {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    private String selectedLanguageCode = "sq";
-
+    private static Locale selectedLanguage;
+    public static String selectedLanguageCode = "sq";
     @FXML
     private TextField idNumberTextField;
     @FXML
     private PasswordField passwordField;
     @FXML
     private PasswordField confirmPasswordField;
+
+    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateTexts(); // Call updateTexts() during initialization
+    }
+
+    public void setSelectedLanguageCode(String languageCode) {
+        selectedLanguageCode = languageCode;
+    }
+
+    public void registerUser(){
+        String idNumber = idNumberTextField.getText();
+        String password = passwordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+
+        // Validate if any field is empty
+        SignupService signupService = new SignupService();
+        signupService.signupValidation(idNumber, password, confirmPassword);
+        // Generate salt
+        byte[] salt = PasswordUtil.generateSalt();
+
+        // Hash the password using the salt and the SHA-256 algorithm
+        String saltedHashedPassword = PasswordUtil.hashPassword(password, salt);
+
+        // Insert the password and salt into the database
+        SignupService.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
+    }
+
+    public static Locale getSelectedLanguage() {
+        return selectedLanguage;
+    }
+
+    public void switchToLogin(ActionEvent event) throws IOException {
+        SignupService signupService = new SignupService();
+        signupService.switchToLogin(event, root, scene, stage);
+    }
+
+
+
+//----------------Gjuha-----------------------
     @FXML
     private Label signupLabel;
     @FXML
@@ -44,110 +88,28 @@ public class SignupController extends SceneController {
     private Label questionSignupLabel;
     @FXML
     private Button loginButton;
-    UserRepository userRepository = new UserRepository();
-    public UserService userService;
 
-    public SignupController() {
-        userService = new UserService();
+    public void updateTexts() {
+        signUpButton.setText(getTranslation("signUpButton.text"));
+        questionSignupLabel.setText(getTranslation("questionSignupLabel.text"));
+        loginButton.setText(getTranslation("loginButton.text"));
+        signupLabel.setText(getTranslation("signupLabel.text"));
+        passwordField.setPromptText(getTranslation("passwordLabel.text"));
+        confirmPasswordField.setPromptText(getTranslation("confirmPasswordField.promptText"));
+        idNumberTextField.setPromptText(getTranslation("idNumberLabel.text"));
+    }
+    private String getTranslation(String key) {
+        return Translate.get(key, selectedLanguageCode);
     }
 
-
-    public void setSelectedLanguageCode(String languageCode) {
-        this.selectedLanguageCode = languageCode;
-    }
-
-    @FXML
-    public void initialize() {
-        updateTexts(); // Call updateTexts() during initialization
-    }
-
-    @FXML
     public void signupUser(ActionEvent event) {
         registerUser();
     }
 
-    @FXML
     public void signupUserWithEnter(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             registerUser();
         }
     }
-
-    private void registerUser() {
-        String idNumber = idNumberTextField.getText();
-        String password = passwordField.getText();
-        String confirmPassword = confirmPasswordField.getText();
-
-        // Validate if any field is empty
-        if (idNumber.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.emptyFields"));
-            return;
-        }
-
-
-        if (!userRepository.isIdNumberValid(idNumber)) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.invalidId"));
-            return;
-        }
-
-
-
-        if (password.length() < 8) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
-            return;
-        }
-
-        // Validate password match
-        if (!password.equals(confirmPassword)) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordMismatch"));
-            return;
-        }
-
-        boolean success = userService.registerUser(idNumber, password, confirmPassword);
-
-
-        if (success) {
-            PasswordUtil.showAlert(Translate.get("login.RegisterdSuccesfully"));
-
-            // Load the login.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
-            loader.setResources(LocaleBundle.bundle(selectedLanguageCode));
-            try {
-                Parent root = loader.load();
-                Stage stage = (Stage) passwordField.getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                PasswordUtil.showErrorAlert(Translate.get("login.error.loadScreen"));
-                e.printStackTrace();
-            }
-        } else {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
-        }
-    }
-
-    @FXML
-    public void switchToLogin(ActionEvent event) throws IOException {
-        // Load the login screen FXML using the selected language bundle
-        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/logIn.fxml"), bundle);
-        root = loader.load();
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void updateTexts() {
-        signUpButton.setText(Translate.get("signUpButton.text"));
-        questionSignupLabel.setText(Translate.get("questionSignupLabel.text"));
-        loginButton.setText(Translate.get("loginButton.text"));
-        signupLabel.setText(Translate.get("signupLabel.text"));
-        passwordField.setPromptText(Translate.get("passwordLabel.text"));
-        confirmPasswordField.setPromptText(Translate.get("confirmPasswordField.promptText"));
-        idNumberTextField.setPromptText(Translate.get("idNumberLabel.text"));
-    }
-
 
 }
