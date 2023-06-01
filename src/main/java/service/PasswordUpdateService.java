@@ -4,48 +4,38 @@ import models.User;
 import repository.UserRepository;
 
 public class PasswordUpdateService {
-    private final UserRepository userRepository;
-
-    public PasswordUpdateService() {
-        this.userRepository = new UserRepository();
+    public static boolean emptyFields(String currentPassword, String newPassword, String confirmPassword){
+        if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            PasswordUtil.showErrorAlert("All fields are required.");
+            return true;
+        }
+        return false;
     }
 
-    public boolean updatePassword(String idNumber, String currentPassword, String newPassword, String confirmPassword) {
-        User user = userRepository.getUser(idNumber);
+    public static boolean  passwordVerify(
+            String currentSaltedHashedPassword,
+            String saltedHashedPassword,
+            String newPassword,
+            String confirmPassword
+    ){
 
-        if (user == null) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.invalidId"));
-            return false;
-        }
 
-        // Verify current password
-        if (!PasswordUtil.verifyPassword(currentPassword, user.getPassword(), user.getSalt())) {
-            PasswordUtil.showErrorAlert(Translate.get("passwordGabim.text"));
-            return false;
+        if (!currentSaltedHashedPassword.equals(saltedHashedPassword)) {
+            PasswordUtil.showErrorAlert("Incorrect current password.");
+            return true;
         }
 
         // Validate new password length
         if (newPassword.length() < 8) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordTooShort"));
-            return false;
+            PasswordUtil.showErrorAlert("New password must be at least 8 characters.");
+            return true;
         }
 
         // Validate password match
         if (!newPassword.equals(confirmPassword)) {
-            PasswordUtil.showErrorAlert(Translate.get("login.error.passwordMismatch"));
-            return false;
+            PasswordUtil.showErrorAlert("New passwords do not match.");
+            return true;
         }
-
-        // Generate new salt
-        byte[] newSalt = PasswordUtil.generateSalt();
-
-        // Hash the new password using the new salt and the SHA-256 algorithm
-        String newSaltedHashedPassword = PasswordUtil.hashPassword(newPassword, newSalt);
-
-        // Update the password in the database
-        user.setPassword(newSaltedHashedPassword);
-        user.setSalt(PasswordUtil.byteArrayToHexString(newSalt));
-
-        return userRepository.updateUser(user);
+        return false;
     }
 }
