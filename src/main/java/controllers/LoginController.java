@@ -244,7 +244,7 @@ public class LoginController {
     private void performLogin() {
         String idNumber = idTextField.getText();
         String password = passwordField.getText();
-        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+
 
         // Validate if any field is empty
         if(LoginService.loginEmptyFields(idNumber, password)){

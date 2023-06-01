@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import service.Translate;
 import java.io.IOException;
 
-public class OrariApplication extends Application  {
+public class  OrariApplication extends Application  {
 
     @Override
     public void start(Stage stage) throws IOException {
