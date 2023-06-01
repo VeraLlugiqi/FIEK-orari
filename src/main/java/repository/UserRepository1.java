@@ -31,7 +31,7 @@ public class UserRepository1 {
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 PasswordUtil.showAlert(getTranslation("login.RegisterdSuccesfully"));
-                SignupService signupService = new SignupService();
+                UserService1 signupService = new UserService1();
                 signupService.loadFXML(passwordField);
             } else {
                 PasswordUtil.showErrorAlert(getTranslation("login.error.passwordTooShort"));

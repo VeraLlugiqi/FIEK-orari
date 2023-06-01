@@ -52,7 +52,7 @@ public class SignupController extends SceneService implements Initializable {
     }
 
     public void switchToLogin(ActionEvent event) throws IOException {
-        service.SignupService signupService = new service.SignupService();
+        service.UserService1 signupService = new service.UserService1();
         signupService.switchToLogin(event);
     }
 
