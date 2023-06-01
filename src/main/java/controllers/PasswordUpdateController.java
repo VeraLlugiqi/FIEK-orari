@@ -9,7 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import models.dto.PasswordDataDto;
-import repository.PasswordUpdateRepository;
+import repository.UserRepository1;
 import service.*;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class PasswordUpdateController extends SceneService implements Initializable {
     ActionEvent actionEvent;
-    PasswordDataDto passwordDataDto = PasswordUpdateRepository.getPassword();
+    PasswordDataDto passwordDataDto = UserService1.getPassword();
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -32,32 +32,24 @@ public class PasswordUpdateController extends SceneService implements Initializa
         String confirmPassword = confirmNewPasswordField.getText();
 
         // Validate if any field is empty
-        if(service.PasswordUpdateService.emptyFields(currentPassword, newPassword, confirmPassword)){
+        if(service.UserService1.emptyFields(currentPassword, newPassword, confirmPassword)){
             return;
         }
-
         // Retrieve the salt and hashed password from the database
         String saltedHashedPassword = passwordDataDto.getSaltedHashedPassword();
         byte[] salt = passwordDataDto.getSalt();
-        System.out.println(saltedHashedPassword +" " +  salt);
         // Hash the current password using the salt from the database
         String currentSaltedHashedPassword = PasswordUtil.hashPassword(currentPassword, salt);
-
-
         // Verify current password
-        if(service.PasswordUpdateService.passwordVerify(currentSaltedHashedPassword, saltedHashedPassword, newPassword, confirmPassword)){
+        if(service.UserService1.passwordVerify(currentSaltedHashedPassword, saltedHashedPassword, newPassword, confirmPassword)){
             return;
         }
-
         // Generate new salt
         byte[] newSalt = PasswordUtil.generateSalt();
-
         // Hash the new password using the new salt and the SHA-256 algorithm
         String newSaltedHashedPassword = PasswordUtil.hashPassword(newPassword, newSalt);
-
         // Update the password in the database
-       PasswordUpdateRepository.updatePassword(newSaltedHashedPassword, newSalt);
-
+       UserService1.updatePassword(newSaltedHashedPassword, newSalt);
     }
 
     public void switchToFillimi() throws IOException{
@@ -77,11 +69,6 @@ public class PasswordUpdateController extends SceneService implements Initializa
     }
     public void switchToOrari() throws IOException{
         switchToOrari(actionEvent);
-    }
-
-
-    public void switchToClose(ActionEvent event) {
-        System.exit(0);
     }
 
     //--------------Gjuha----------------------
@@ -121,7 +108,6 @@ public class PasswordUpdateController extends SceneService implements Initializa
         updateTexts(); // Call updateTexts() during initialization
     }
 
-
     public void updatePassword(ActionEvent event) {
         saveChanges();
     }
@@ -131,7 +117,6 @@ public class PasswordUpdateController extends SceneService implements Initializa
             saveChanges();
         }
     }
-
 
     public void updateTexts() {
         logoutButton.setText(Translate.get("logoutButton.text"));

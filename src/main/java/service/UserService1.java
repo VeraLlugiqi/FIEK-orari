@@ -8,13 +8,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.dto.PasswordDataDto;
 import repository.UserRepository1;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-import static controllers.SignupController.selectedLanguageCode;
 
-public class SignupService {
+import static controllers.SignupController.selectedLanguageCode;
+import static service.PasswordUtil.showErrorAlert;
+
+public class UserService1 {
+    //Register services
     Parent root; Scene scene; Stage stage;
     private String getTranslation(String key) {
         return Translate.get(key, selectedLanguageCode);
@@ -38,12 +42,13 @@ public class SignupService {
             PasswordUtil.showErrorAlert(getTranslation("login.error.passwordMismatch"));
             return;
         }
+        return;
     }
 
     private boolean isIdNumberValid(String idNumber) {
         return UserRepository1.isIdNumberValid(idNumber);
     }
-        public void loadFXML(TextField passwordField){
+    public void loadFXML(TextField passwordField){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/logIn.fxml"));
         try {
             Parent root = loader.load();
@@ -76,4 +81,64 @@ public class SignupService {
         stage.setScene(scene);
         stage.show();
     }
-}
+
+    //Login services
+    public static boolean loginEmptyFields(String idNumber, String password) {
+        if (idNumber.isEmpty() || password.isEmpty()) {
+            showErrorAlert(Translate.get("login.error.emptyFields"));
+            return true;
+        }
+        return false;
+    }
+
+    public static void loginUser(String idNumber, String password, TextField field){
+        UserRepository1 loginRepository1 = new UserRepository1();
+        loginRepository1.loginUser(idNumber, password, field);
+    }
+
+    //Password Update services
+    public static boolean emptyFields(String currentPassword, String newPassword, String confirmPassword){
+        if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            PasswordUtil.showErrorAlert("All fields are required.");
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean  passwordVerify(
+            String currentSaltedHashedPassword,
+            String saltedHashedPassword,
+            String newPassword,
+            String confirmPassword
+    ){
+
+
+        if (!currentSaltedHashedPassword.equals(saltedHashedPassword)) {
+            PasswordUtil.showErrorAlert("Incorrect current password.");
+            return true;
+        }
+
+        // Validate new password length
+        if (newPassword.length() < 8) {
+            PasswordUtil.showErrorAlert("New password must be at least 8 characters.");
+            return true;
+        }
+
+        // Validate password match
+        if (!newPassword.equals(confirmPassword)) {
+            PasswordUtil.showErrorAlert("New passwords do not match.");
+            return true;
+        }
+        return false;
+    }
+
+    public static void updatePassword(String newSaltedHashedPassword, byte[] newSalt){
+        UserRepository1.updatePassword(newSaltedHashedPassword, newSalt);
+    }
+
+    public static PasswordDataDto getPassword() {
+        return UserRepository1.getPassword();
+    }
+
+
+    }

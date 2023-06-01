@@ -1,5 +1,7 @@
 package service;
 
+import repository.UserRepository1;
+
 public class PasswordUpdateService {
     public static boolean emptyFields(String currentPassword, String newPassword, String confirmPassword){
         if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
@@ -34,5 +36,9 @@ public class PasswordUpdateService {
             return true;
         }
         return false;
+    }
+
+    public static void updatePassword(String newSaltedHashedPassword, byte[] newSalt){
+        UserRepository1.updatePassword(newSaltedHashedPassword, newSalt);
     }
 }

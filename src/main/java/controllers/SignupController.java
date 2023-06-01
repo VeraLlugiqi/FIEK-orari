@@ -37,14 +37,14 @@ public class SignupController extends SceneService implements Initializable {
         String confirmPassword = confirmPasswordField.getText();
 
         // Validate if any field is empty
-        service.SignupService signupService = new service.SignupService();
+        service.UserService1 signupService = new service.UserService1();
         signupService.signupValidation(idNumber, password, confirmPassword);
         // Generate salt
         byte[] salt = PasswordUtil.generateSalt();
         // Hash the password using the salt and the SHA-256 algorithm
         String saltedHashedPassword = PasswordUtil.hashPassword(password, salt);
         // Insert the password and salt into the database
-        service.SignupService.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
+        service.UserService1.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
     }
 
     public static Locale getSelectedLanguage() {

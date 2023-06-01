@@ -192,11 +192,11 @@ public class LoginController extends SceneService {
         String password = passwordField.getText();
 
         // Validate if any field is empty
-        if(LoginService.loginEmptyFields(idNumber, password)){
+        if(UserService1.loginEmptyFields(idNumber, password)){
             return;
         }
         // Retrieve the user from the database
-        LoginService.loginUser(idNumber, password, idTextField);
+        UserService1.loginUser(idNumber, password, idTextField);
     }
 
 //    private void showErrorAlert(String message) {
