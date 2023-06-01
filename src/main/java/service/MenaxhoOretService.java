@@ -4,11 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import repository.FillimiRepository;
 import repository.MenaxhoOretRepository;
-import controllers.MenaxhoOretController;
 
 import static service.PasswordUtil.showErrorAlert;
 

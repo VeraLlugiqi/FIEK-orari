@@ -313,7 +313,7 @@ public class PasswordUpdateController extends SceneController {
             PasswordUtil.showAlert(Translate.get("passwordUpdated.text"));
             clearFields();
         } else {
-            PasswordUtil.showErrorAlert(Translate.get("updateError.text"));
+            PasswordUtil.showErrorAlert(Translate.get("DeshtimMarrjesDhenave.text"));
         }
     }
 

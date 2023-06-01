@@ -6,7 +6,6 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import service.ChartService;
-import service.ConnectionUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
