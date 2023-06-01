@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PasswordUpdateService extends SceneService implements Initializable {
+public class PasswordUpdateController extends SceneService implements Initializable {
     ActionEvent actionEvent;
     PasswordDataDto passwordDataDto = PasswordUpdateRepository.getPassword();
     @FXML

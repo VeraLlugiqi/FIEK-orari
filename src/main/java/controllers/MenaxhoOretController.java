@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenaxhoOretService extends SceneService implements Initializable {
+public class MenaxhoOretController extends SceneService implements Initializable {
     @FXML
     private TableView<MenaxhoOretDto> table_menaxhoOret;
     @FXML
@@ -62,7 +62,7 @@ public class MenaxhoOretService extends SceneService implements Initializable {
         switchToFillimi(actionEvent);
     }
     public void switchToMenaxhoOret() throws IOException{
-        switchToMenaxhoOret(actionEvent);
+        switchToMenaxhoOret(actionEvent);  
     }
     public void switchToProfili() throws IOException{
         switchToProfili(actionEvent);
