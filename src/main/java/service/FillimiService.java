@@ -1,6 +1,5 @@
 package service;
 
-import controllers.FillimiController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,16 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import repository.FillimiRepository;
-
 import static service.PasswordUtil.showAlert;
 
 public class FillimiService {
     public static String getIndeksi;
+    Parent root; Stage stage; Scene scene;
 
     public static void setCellTable(TableColumn columnId, TableColumn columnDay, TableColumn columnTime ){
         columnId.setCellValueFactory(new PropertyValueFactory<>("sid"));
@@ -25,17 +22,12 @@ public class FillimiService {
         columnTime.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
     }
 
-    public static void loadFromDatabase(
-            ObservableList list,
-            TableView table_orari){
+    public static void loadFromDatabase(ObservableList list, TableView table_orari){
         FillimiRepository.loadFromDatabase(list, table_orari);
     }
-
-
     public static boolean indeksiNukNdodhetNeListe(String indeksi){
         return FillimiRepository.indeksiNukNdodhetNeListe(indeksi);
     }
-
     public static int lendetRegjistruara(){
        return FillimiRepository.lendetRegjistruara();
     }
@@ -44,7 +36,7 @@ public class FillimiService {
         return FillimiRepository.dyOrare(nr);
     }
 
-    public void switchToRegjistroOren(Parent root, Stage stage, Scene scene){
+    public void switchToRegjistroOren(){
         try {
             root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
             Stage addDialogStage = new Stage();
@@ -74,10 +66,7 @@ public class FillimiService {
     public static void loadRegjistroOret(
             int lendetRegjistruara,
             int nrOreve,
-            int nr,
-            Scene scene,
-            Parent root,
-            Stage stage
+            int nr
     ){
         //Shiko sa lende te regjistruara i ka profesori, ashtu qe i del nje alert error kur nuk ka me lende te regjistroje
         lendetRegjistruara = FillimiService.lendetRegjistruara();
@@ -85,7 +74,7 @@ public class FillimiService {
         if(nrOreve==0) {
             if (lendetRegjistruara != 0) {
                 FillimiService fillimiService = new FillimiService();
-                fillimiService.switchToRegjistroOren(root, stage, scene);
+                fillimiService.switchToRegjistroOren();
             } else {
                 showAlert(Translate.get("joMeLende.text"));
             }

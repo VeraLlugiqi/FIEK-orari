@@ -13,7 +13,8 @@ import static controllers.PieChartController.selectedLanguageCode;
 import static service.PasswordUtil.showAlert;
 
 public class NdihmaService {
-    public void barButton(Parent root, Scene scene, Stage stage){
+    Parent root; Scene scene; Stage stage;
+    public void barButton(){
         try{
             root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/barChart.fxml"));
             Stage addDialogStage = new Stage();
@@ -30,15 +31,13 @@ public class NdihmaService {
         }
     }
 
-    public void pieButton(Parent root, Scene scene, Stage stage){
+    public void pieButton(){
         try{
             ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/pie.fxml"), bundle);
             root = loader.load();
             PieChartController pieChartController = loader.getController();
             pieChartController.setSelectedLanguageCode(selectedLanguageCode);
-//            pieChartController.updateTexts();
-//
             Stage addDialogStage = new Stage();
             addDialogStage.setTitle(("PieChart"));
             addDialogStage.initModality(Modality.WINDOW_MODAL);

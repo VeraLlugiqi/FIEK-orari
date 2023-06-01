@@ -13,10 +13,7 @@ import java.sql.ResultSet;
 import static service.PasswordUtil.showAlert;
 
 public class FillimiRepository {
-
-    public static void loadFromDatabase(
-            ObservableList list,
-            TableView table_orari){
+    public static void loadFromDatabase(ObservableList list, TableView table_orari){
         try{
             Connection conn = ConnectionUtil.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM schedule");
@@ -43,6 +40,9 @@ public class FillimiRepository {
                 showAlert("Indeksi nuk ndodhet ne liste!");
                 return true;
             }
+            conn.close();
+            ps.close();
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,7 +64,9 @@ public class FillimiRepository {
             if(rs.next()){
                 lendetRegjistruara = rs.getInt(1);
             }
-
+            conn.close();
+            ps.close();
+            rs.close();
         }catch(Exception e){
             showAlert(Translate.get("errorNrLendeDb.text"));
             e.printStackTrace();
@@ -83,6 +85,9 @@ public class FillimiRepository {
             while(rs.next())
                 nr = rs.getInt(1);
 
+            conn.close();
+            ps.close();
+            rs.close();
         }catch(Exception e){
             showAlert(Translate.get("verifikimierror.text"));
             e.printStackTrace();

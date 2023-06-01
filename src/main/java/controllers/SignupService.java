@@ -2,18 +2,12 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,7 +21,7 @@ import javafx.stage.Stage;
 import service.*;
 //import service.getTranslation;
 
-public class SignupController extends SceneController implements Initializable {
+public class SignupService extends SceneService implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -56,7 +50,7 @@ public class SignupController extends SceneController implements Initializable {
         String confirmPassword = confirmPasswordField.getText();
 
         // Validate if any field is empty
-        SignupService signupService = new SignupService();
+        service.SignupService signupService = new service.SignupService();
         signupService.signupValidation(idNumber, password, confirmPassword);
         // Generate salt
         byte[] salt = PasswordUtil.generateSalt();
@@ -65,7 +59,7 @@ public class SignupController extends SceneController implements Initializable {
         String saltedHashedPassword = PasswordUtil.hashPassword(password, salt);
 
         // Insert the password and salt into the database
-        SignupService.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
+        service.SignupService.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
     }
 
     public static Locale getSelectedLanguage() {
@@ -73,7 +67,7 @@ public class SignupController extends SceneController implements Initializable {
     }
 
     public void switchToLogin(ActionEvent event) throws IOException {
-        SignupService signupService = new SignupService();
+        service.SignupService signupService = new service.SignupService();
         signupService.switchToLogin(event, root, scene, stage);
     }
 

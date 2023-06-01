@@ -167,17 +167,11 @@ package controllers;
 
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import repository.LoginRepository;
 import service.*;
 
 import javafx.scene.Parent;
@@ -188,7 +182,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import models.User;
 
 public class LoginController {
     private UserService userController;
@@ -265,7 +258,7 @@ public class LoginController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
         Parent root = loader.load();
-        SignupController signupController = loader.getController();
+        SignupService signupController = loader.getController();
         signupController.setSelectedLanguageCode(selectedLanguageCode);
         signupController.updateTexts(); // Call updateTexts() in the SignupController
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

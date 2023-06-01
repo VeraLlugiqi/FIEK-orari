@@ -12,16 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BarChartController {
-
     @FXML
     private BarChart<String, Integer> barChart;
     @FXML
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-    Connection conn;
-    PreparedStatement ps;
-    ResultSet rs;
+
 
     public void initialize() {
         List<XYChart.Series<String, Integer>> seriesList = new ArrayList<>();

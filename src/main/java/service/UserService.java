@@ -1,7 +1,7 @@
 
 package service;
 
-        import models.User;
+        import models.UserModel;
         import repository.UserRepository;
 
 public class UserService {
@@ -16,14 +16,14 @@ public class UserService {
         return userRepository.registerUser(idNumber, password, confirmPassword);
     }
 
-    public User loginUser(String idNumber, String password) {
+    public UserModel loginUser(String idNumber, String password) {
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty()) {
             return null;
         }
 
         // Retrieve the user from the database
-        User user = userRepository.loginUser(idNumber, password);
+        UserModel user = userRepository.loginUser(idNumber, password);
 
         return user;
     }

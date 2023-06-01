@@ -22,21 +22,16 @@ import static service.PasswordUtil.showAlert;
 import static service.PasswordUtil.showErrorAlert;
 
 public class RegjistroOrenController implements Initializable {
-    Connection conn = null;
-
-    ObservableList<String> lendet;
-    ObservableList<String> sallat;
-
-    public static String selectedLanguageCode = "sq";
-
     @FXML
     ComboBox<String> lendaCombobox;
     @FXML
     ComboBox<String> sallaCombobox;
 
+    ObservableList<String> lendet;
+    ObservableList<String> sallat;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            conn = ConnectionUtil.getConnection();
             lendet = FXCollections.observableArrayList();
             sallat = FXCollections.observableArrayList();
             loadLendetFromDatabase();
@@ -78,6 +73,7 @@ public class RegjistroOrenController implements Initializable {
         sallatLiraLabel.setText(Translate.get("sallatLiraLabel.text"));
         subjectLabel.setText(Translate.get("subjectLabel.text"));
     }
+    public static String selectedLanguageCode = "sq";
     public void setSelectedLanguageCode(String languageCode) {
         selectedLanguageCode = languageCode;
     }

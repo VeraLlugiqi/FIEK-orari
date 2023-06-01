@@ -1,8 +1,5 @@
 package service;
 
-import models.User;
-import repository.UserRepository;
-
 public class PasswordUpdateService {
     public static boolean emptyFields(String currentPassword, String newPassword, String confirmPassword){
         if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {

@@ -6,12 +6,10 @@ import service.ConnectionUtil;
 import service.FillimiService;
 import service.Translate;
 import service.UserService;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import static service.PasswordUtil.showAlert;
 import static service.PasswordUtil.showErrorAlert;
 
@@ -30,6 +28,9 @@ public class RegjistroOrenRepository {
             while (rs.next()) {
                 lendet.add(rs.getString(1));
             }
+            conn.close();
+            ps.close();
+            rs.close();
         } catch (Exception e) {
             showAlert("Ka ndodhur nje gabim gjate marrjes se lendeve nga databaza");
 
@@ -50,6 +51,9 @@ public class RegjistroOrenRepository {
             while (rs.next()) {
                 sallat.add(rs.getString(9));
             }
+            conn.close();
+            ps.close();
+            rs.close();
         } catch (Exception e) {
             showAlert(Translate.get("gabimMarrjaDhenave.text"));
             e.printStackTrace();
@@ -68,6 +72,9 @@ public class RegjistroOrenRepository {
                 timestampSalla[0] = rs.getString(2);
                 timestampSalla[1] = rs.getString(3);
             }
+            conn.close();
+            ps.close();
+            rs.close();
         } catch (Exception e) {
             showAlert(Translate.get("errorDatabaze.text"));
         }
@@ -88,6 +95,9 @@ public class RegjistroOrenRepository {
             ps.setString(1, FillimiService.getIndeksi);
             ps.setString(2, salla);
             ps.executeUpdate();
+
+            conn.close();
+            ps.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -104,6 +114,9 @@ public class RegjistroOrenRepository {
             ps.setString(1, UserService.loggedInUserId);
             ps.setString(2, lenda);
             ps.executeUpdate();
+
+            conn.close();
+            ps.close();
 
         } catch (SQLException e) {
             showErrorAlert(Translate.get("deshtimPerditesiOrari.text"));
@@ -127,10 +140,11 @@ public class RegjistroOrenRepository {
             if (rowsAffected > 0) {
                 updateLenda(lenda);
                 updateSalla(salla);
-                //Ora regjistrohet me sukses, update vlerat e salles dhe lendes
             }else {
                 showErrorAlert(Translate.get("deshtimPerditesiOrari.text"));
             }
+            conn.close();
+            ps.close();
         }catch(Exception e){
             e.printStackTrace();
         }

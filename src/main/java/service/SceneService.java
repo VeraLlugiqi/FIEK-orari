@@ -1,9 +1,16 @@
-package controllers;
+package service;
 
 
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import controllers.FillimiService;
+import controllers.LoginController;
+import controllers.MenaxhoOretService;
+import controllers.NdihmaService;
+import controllers.OrariFinalService;
+import controllers.PasswordUpdateService;
+import controllers.SignupService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +21,7 @@ import javafx.stage.Stage;
 import service.LocaleBundle;
 import service.Translate;
 
-abstract class SceneController {
+public class SceneService {
     public static String selectedLanguageCode = "sq";
 
     private Stage stage;
@@ -26,7 +33,7 @@ abstract class SceneController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"), bundle);
         root = loader.load();
-        FillimiController fillimiController = loader.getController();
+        FillimiService fillimiController = loader.getController();
         fillimiController.setSelectedLanguageCode(selectedLanguageCode);
         fillimiController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -40,7 +47,7 @@ abstract class SceneController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/menaxhoOret.fxml"), bundle);
         root = loader.load();
-        MenaxhoOretController menaxhoOretController = loader.getController();
+        MenaxhoOretService menaxhoOretController = loader.getController();
         menaxhoOretController.setSelectedLanguageCode(selectedLanguageCode);
         menaxhoOretController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -54,7 +61,7 @@ abstract class SceneController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/profili.fxml"), bundle);
         root = loader.load();
-        PasswordUpdateController passwordUpdateController = loader.getController();
+        PasswordUpdateService passwordUpdateController = loader.getController();
        // passwordUpdateController.setSelectedLanguageCode(selectedLanguageCode);
         passwordUpdateController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -85,7 +92,7 @@ abstract class SceneController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/ndihma.fxml"), bundle);
         root = loader.load();
-        NdihmaController ndihmaController = loader.getController();
+        NdihmaService ndihmaController = loader.getController();
         ndihmaController.setSelectedLanguageCode(selectedLanguageCode);
         ndihmaController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -101,7 +108,7 @@ abstract class SceneController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/orari.fxml"), bundle);
         root = loader.load();
-        OrariFinalController orariController = loader.getController();
+        OrariFinalService orariController = loader.getController();
         orariController.setSelectedLanguageCode(selectedLanguageCode);
         orariController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -115,7 +122,7 @@ abstract class SceneController {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
         root = loader.load();
-        SignupController signupController = loader.getController();
+        SignupService signupController = loader.getController();
         signupController.setSelectedLanguageCode(selectedLanguageCode);
         signupController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

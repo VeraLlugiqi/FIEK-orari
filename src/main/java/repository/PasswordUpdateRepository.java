@@ -1,7 +1,5 @@
 package repository;
 
-import models.User;
-import models.dto.CreateUserDto;
 import models.dto.PasswordDataDto;
 import service.ConnectionUtil;
 import service.PasswordUtil;

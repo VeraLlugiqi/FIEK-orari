@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import static controllers.SignupController.selectedLanguageCode;
+import static controllers.SignupService.selectedLanguageCode;
 
 public class SignupService {
     private String getTranslation(String key) {

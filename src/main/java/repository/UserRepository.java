@@ -5,7 +5,7 @@ package repository;
         import java.sql.ResultSet;
         import java.sql.SQLException;
 
-        import models.User;
+        import models.UserModel;
         import service.ConnectionUtil;
         import service.PasswordUtil;
         import service.Translate;
@@ -77,13 +77,13 @@ public class UserRepository {
             return false;
         }
     }
-    public static User getUser(String idNumber) {
+    public static UserModel getUser(String idNumber) {
         try (Connection conn = ConnectionUtil.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?")) {
             statement.setString(1, idNumber);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                User user = new User();
+                UserModel user = new UserModel();
                 user.setIdNumber(resultSet.getString("idNumber"));
                 user.setPassword(resultSet.getString("password"));
                 return user;
@@ -98,7 +98,7 @@ public class UserRepository {
         return Translate.get(key, selectedLanguageCode);
     }
 
-        public boolean createUser(User user) {
+        public boolean createUser(UserModel user) {
             try (Connection conn = ConnectionUtil.getConnection();
                  PreparedStatement statement = conn.prepareStatement("INSERT INTO user (idNumber, password) VALUES (?, ?)")) {
                 statement.setString(1, user.getIdNumber());
@@ -112,7 +112,7 @@ public class UserRepository {
         }
 
 
-    public User loginUser(String idNumber, String password) {
+    public UserModel loginUser(String idNumber, String password) {
         // Validate if any field is empty
         if (idNumber.isEmpty() || password.isEmpty()) {
             return null;
@@ -128,7 +128,7 @@ public class UserRepository {
                 String hashedPassword = PasswordUtil.hashPassword(password, salt);
 
                 if (storedPassword.equals(hashedPassword)) {
-                    User user = new User();
+                    UserModel user = new UserModel();
                     user.setIdNumber(resultSet.getString("idNumber"));
                     user.setPassword(resultSet.getString("password"));
                     return user;
@@ -141,7 +141,7 @@ public class UserRepository {
     }
 
 
-    public boolean updateUser(User user) {
+    public boolean updateUser(UserModel user) {
             try (Connection conn = ConnectionUtil.getConnection();
                  PreparedStatement statement = conn.prepareStatement("UPDATE user SET password = ? WHERE idNumber = ?")) {
                 statement.setString(1, user.getPassword());

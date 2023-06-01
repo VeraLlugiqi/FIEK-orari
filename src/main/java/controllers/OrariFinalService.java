@@ -5,59 +5,46 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import models.dto.OrariFinalDto;
-import service.ConnectionUtil;
-import service.OrariFinalService;
+import service.SceneService;
 import service.Translate;
-import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class OrariFinalController extends SceneController implements Initializable {
-    Connection conn;
-    ObservableList lista1;
-    ObservableList lista2;
-    ObservableList lista3;
+public class OrariFinalService extends SceneService implements Initializable {
     @FXML
-    private TableView<?> orari_table1;
+    private TableView<OrariFinalDto> orari_table1;
     @FXML
-    private TableView<?> orari_table2;
+    private TableView<OrariFinalDto> orari_table2;
     @FXML
-    private TableView<?> orari_table3;
+    private TableView<OrariFinalDto> orari_table3;
     @FXML
-    private TableColumn<?, ?> columnDita;
+    private TableColumn<OrariFinalDto, String> columnDita;
     @FXML
-    private TableColumn<?, ?> columnOra;
+    private TableColumn<OrariFinalDto, String> columnOra;
     @FXML
-    private TableColumn<?, ?> columnSalla;
+    private TableColumn<OrariFinalDto, String> columnSalla;
     @FXML
-    private TableColumn<?, ?> columnLenda;
+    private TableColumn<OrariFinalDto, String> columnLenda;
     @FXML
-    private TableColumn<?, ?> columnDita1;
+    private TableColumn<OrariFinalDto, String> columnDita1;
     @FXML
-    private TableColumn<?, ?> columnOra1;
+    private TableColumn<OrariFinalDto, String> columnOra1;
     @FXML
-    private TableColumn<?, ?> columnSalla1;
+    private TableColumn<OrariFinalDto, String> columnSalla1;
     @FXML
-    private TableColumn<?, ?> columnLenda1;
+    private TableColumn<OrariFinalDto, String> columnLenda1;
     @FXML
-    private TableColumn<?, ?> columnDita2;
+    private TableColumn<OrariFinalDto, String> columnDita2;
     @FXML
-    private TableColumn<?, ?> columnOra2;
+    private TableColumn<OrariFinalDto, String> columnOra2;
     @FXML
-    private TableColumn<?, ?> columnSalla2;
+    private TableColumn<OrariFinalDto, String> columnSalla2;
     @FXML
-    private TableColumn<?, ?> columnLenda2;
+    private TableColumn<OrariFinalDto, String> columnLenda2;
     @FXML
     TabPane tabPane;
     @FXML
@@ -66,20 +53,22 @@ public class OrariFinalController extends SceneController implements Initializab
     Tab semestriKater;
     @FXML
     Tab semestriGjashte;
+    ObservableList lista1;
+    ObservableList lista2;
+    ObservableList lista3;
     ActionEvent actionEvent;
 
     public void initialize(URL url, ResourceBundle resourceBundle){
         try{
-            conn = ConnectionUtil.getConnection();
             lista1 = FXCollections.observableArrayList();
             lista2 = FXCollections.observableArrayList();
             lista3= FXCollections.observableArrayList();
-            OrariFinalService.setCellTable(columnDita, columnLenda, columnOra, columnSalla);
-            OrariFinalService.setCellTable(columnDita1, columnLenda1, columnOra1, columnSalla1);
-            OrariFinalService.setCellTable(columnDita2, columnLenda2, columnOra2, columnSalla2);
-            OrariFinalService.loadFromDatabase(lista1, orari_table1, semestriDy, 2);
-            OrariFinalService.loadFromDatabase(lista2, orari_table2, semestriKater, 4);
-            OrariFinalService.loadFromDatabase(lista3, orari_table3, semestriGjashte, 6);
+            service.OrariFinalService.setCellTable(columnDita, columnLenda, columnOra, columnSalla);
+            service.OrariFinalService.setCellTable(columnDita1, columnLenda1, columnOra1, columnSalla1);
+            service.OrariFinalService.setCellTable(columnDita2, columnLenda2, columnOra2, columnSalla2);
+            service.OrariFinalService.loadFromDatabase(lista1, orari_table1, semestriDy, 2);
+            service.OrariFinalService.loadFromDatabase(lista2, orari_table2, semestriKater, 4);
+            service.OrariFinalService.loadFromDatabase(lista3, orari_table3, semestriGjashte, 6);
         }catch(Exception e){
 
         }

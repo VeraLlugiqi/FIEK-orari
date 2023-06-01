@@ -2,7 +2,6 @@ package service;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
-import javafx.scene.chart.Chart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import repository.ChartRepository;

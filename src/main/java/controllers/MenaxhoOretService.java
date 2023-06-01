@@ -5,54 +5,39 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import models.dto.MenaxhoOretDto;
-import service.ConnectionUtil;
-import service.MenaxhoOretService;
+import service.SceneService;
 import service.Translate;
-import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import static service.PasswordUtil.showAlert;
-import static service.PasswordUtil.showErrorAlert;
-
-public class MenaxhoOretController extends SceneController implements Initializable {
+public class MenaxhoOretService extends SceneService implements Initializable {
     @FXML
-    private TableView<?> table_menaxhoOret;
+    private TableView<MenaxhoOretDto> table_menaxhoOret;
     @FXML
-    private TableColumn<?, ?> columnIndeksi;
+    private TableColumn<MenaxhoOretDto, String> columnIndeksi;
     @FXML
-    private TableColumn<?, ?> columnOra;
+    private TableColumn<MenaxhoOretDto, String> columnOra;
     @FXML
-    private TableColumn<?, ?> columnDita;
+    private TableColumn<MenaxhoOretDto, String> columnDita;
     @FXML
-    private TableColumn<?, ?> columnSalla;
+    private TableColumn<MenaxhoOretDto, String> columnSalla;
     @FXML
-    private TableColumn<?, ?> columnLenda;
+    private TableColumn<MenaxhoOretDto, String> columnLenda;
 
     ActionEvent actionEvent;
     ObservableList lista;
-    Connection conn;
-
 
     public void initialize(URL url, ResourceBundle resourceBundle){
         try{
-            conn = ConnectionUtil.getConnection();
             lista = FXCollections.observableArrayList();
-            MenaxhoOretService.setCellTable(columnIndeksi, columnDita, columnLenda, columnOra, columnSalla);
-            MenaxhoOretService.loadFromDatabase(lista, table_menaxhoOret);
+            service.MenaxhoOretService.setCellTable(columnIndeksi, columnDita, columnLenda, columnOra, columnSalla);
+            service.MenaxhoOretService.loadFromDatabase(lista, table_menaxhoOret);
         }catch(Exception e){
 
         }
@@ -63,15 +48,14 @@ public class MenaxhoOretController extends SceneController implements Initializa
     @FXML
     public void fshiOrenFunction() {
             String indeksi = indeksiField.getText();
-            if(MenaxhoOretService.emptyIndeks(indeksi)){
+            if(service.MenaxhoOretService.emptyIndeks(indeksi)){
                 return;
             }
             //Nqs indeksi nuk ndodhet ne liste shfaq error
-            if(MenaxhoOretService.indeksiNukNdodhetNeListe(indeksi)){
+            if(service.MenaxhoOretService.indeksiNukNdodhetNeListe(indeksi)){
                 return;
             }
-
-              MenaxhoOretService.fshiOrenFunction(indeksi);
+              service.MenaxhoOretService.fshiOrenFunction(indeksi);
         }
 
     public void switchToFillimi() throws IOException{

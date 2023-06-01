@@ -1,12 +1,11 @@
 package repository;
 
-import controllers.FillimiController;
+import controllers.FillimiService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 import service.*;
 
 import java.io.IOException;
@@ -67,7 +66,7 @@ public class LoginRepository {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
                         root = loader.load();
-                        FillimiController fillimiController = loader.getController();
+                        FillimiService fillimiController = loader.getController();
                         fillimiController.setSelectedLanguageCode(selectedLanguageCode);
 
                         fillimiController.updateTexts(); // Call updateTexts() in the SignupController

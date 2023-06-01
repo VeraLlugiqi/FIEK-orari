@@ -20,9 +20,6 @@ public class PieChartController implements Initializable {
     Label sallatMeTePerdorura;
     String[] sallaArray = new String[3];
     int[] numberOfUsage = new int[3];
-    public static String selectedLanguageCode = "sq";
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,18 +31,13 @@ public class PieChartController implements Initializable {
         );
         ChartService.getDescriptionPie(piechartData);
         pieChart.getData().addAll(piechartData);
-//        updateTexts();
     }
 
 
+    public static String selectedLanguageCode = "sq";
     public void setSelectedLanguageCode(String languageCode) {
         selectedLanguageCode = languageCode;
     }
-
-   // public void updateTexts(){
-//        sallatMeTePerdorura.setText(Translate.get("sallatMeTePerdorura.text"));
-//    }
-
 
 }
 

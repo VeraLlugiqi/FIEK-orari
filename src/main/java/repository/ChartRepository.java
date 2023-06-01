@@ -3,12 +3,9 @@ package repository;
 import javafx.scene.chart.XYChart;
 import service.ConnectionUtil;
 import service.Translate;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
-
 import static service.PasswordUtil.showAlert;
 
 public class ChartRepository {
@@ -50,6 +47,9 @@ public class ChartRepository {
                 int count = rs.getInt("booked_schedules");
                 series.getData().add(new XYChart.Data<>(day, count));
             }
+            conn.close();
+            ps.close();
+            rs.close();
         }catch(Exception e){
             e.printStackTrace();
         }

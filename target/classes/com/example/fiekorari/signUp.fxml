@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onKeyPressed="#signupUserWithEnter" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+<AnchorPane onKeyPressed="#signupUserWithEnter" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupService">
     <children>
         <Pane layoutX="216.0" layoutY="80.0" prefHeight="440.0" prefWidth="417.0" style="-fx-background-color: white;">
             <children>

@@ -7,35 +7,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import service.NdihmaService;
+import service.SceneService;
 import service.Translate;
-
 import java.io.IOException;
 
 
-public class NdihmaController extends SceneController {
+public class NdihmaService extends SceneService {
     Parent root;
     Stage stage;
     Scene scene;
 
     ActionEvent actionEvent;
-    public static String selectedLanguageCode = "sq";
-    NdihmaService ndihmaService = new NdihmaService();
+    service.NdihmaService ndihmaService = new service.NdihmaService();
     @FXML
     public void barButton(){
-        ndihmaService.barButton(root, scene, stage);
+        ndihmaService.barButton();
     }
     @FXML
     public void pieButton(){
-        ndihmaService.pieButton(root, scene, stage);
+        ndihmaService.pieButton();
     }
 
-//    @FXML
-//    public void initialize(URL url, ResourceBundle resourceBundle){
-//
-//    }
-
 //--------------------Gjuha-------------------------------------
+public static String selectedLanguageCode = "sq";
     @FXML
     Label fiek_orariLabel;
     @FXML

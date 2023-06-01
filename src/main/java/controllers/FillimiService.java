@@ -11,8 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import service.ConnectionUtil;
-import service.FillimiService;
+import models.dto.OrariFillimiDto;
+import service.SceneService;
 import service.Translate;
 import java.io.IOException;
 import java.net.URL;
@@ -21,16 +21,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class FillimiController extends SceneController implements Initializable{
+public class FillimiService extends SceneService implements Initializable{
 
     @FXML
-    private TableView<?> table_orari;
+    private TableView<OrariFillimiDto> table_orari;
     @FXML
-    private TableColumn<?, ?> columnDay;
+    private TableColumn<OrariFillimiDto, String> columnDay;
     @FXML
-    private TableColumn<?, ?> columnTime;
+    private TableColumn<OrariFillimiDto, String> columnTime;
     @FXML
-    private TableColumn<?, ?> columnId;
+    private TableColumn<OrariFillimiDto, String> columnId;
 
     ActionEvent actionEvent;
     int lendetRegjistruara;
@@ -46,31 +46,28 @@ public class FillimiController extends SceneController implements Initializable{
 
     public void initialize(URL url, ResourceBundle resourceBundle){
         try {
-            conn = ConnectionUtil.getConnection();
             list = FXCollections.observableArrayList();
-            FillimiService.setCellTable(columnId, columnDay, columnTime);
-            FillimiService.loadFromDatabase(list, table_orari);
+            service.FillimiService.setCellTable(columnId, columnDay, columnTime);
+            service.FillimiService.loadFromDatabase(list, table_orari);
         }catch(Exception e){
             e.printStackTrace();
         }
         updateTexts();
     }
 
-
     @FXML
     public void switchTo() {
         String indeksi = indeksiField.getText();
-        FillimiService.getIndeksi = indeksi;
+        service.FillimiService.getIndeksi = indeksi;
         //Nqs indeksi empty
-        if(FillimiService.indeksiEmpty(indeksi)){
+        if(service.FillimiService.indeksiEmpty(indeksi)){
             return;
         }
         //Indeksi nuk ndodhet ne liste
-        if(FillimiService.indeksiNukNdodhetNeListe(indeksi)){
+        if(service.FillimiService.indeksiNukNdodhetNeListe(indeksi)){
             return;
         }
-
-        FillimiService.loadRegjistroOret(lendetRegjistruara, nrOreve, nr, scene, root, stage);
+        service.FillimiService.loadRegjistroOret(lendetRegjistruara, nrOreve, nr);
         System.out.println(nrOreve);
     }
 
