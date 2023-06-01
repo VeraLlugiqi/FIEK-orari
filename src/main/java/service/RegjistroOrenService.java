@@ -32,7 +32,8 @@ public class RegjistroOrenService {
         return RegjistroOrenRepository.getTimestampDay(sallaId);
     }
 
-    public static void regjistroOrenSukses(String lenda, String salla, String[]timestampSalla) {
+    public static void regjistroOrenSukses(String lenda, String salla) {
+        String[] timestampSalla = RegjistroOrenService.getTimestampDay(FillimiService.getIndeksi);
         RegjistroOrenRepository.regjistroOrenSukses(lenda, salla, timestampSalla);
         }
     }

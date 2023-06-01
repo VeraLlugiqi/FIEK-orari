@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import service.ConnectionUtil;
@@ -48,20 +49,13 @@ public class FillimiController extends SceneController implements Initializable{
             conn = ConnectionUtil.getConnection();
             list = FXCollections.observableArrayList();
             FillimiService.setCellTable(columnId, columnDay, columnTime);
-            FillimiService.loadFromDatabase(conn, ps, rs, list, table_orari);
+            FillimiService.loadFromDatabase(list, table_orari);
         }catch(Exception e){
             e.printStackTrace();
         }
         updateTexts();
     }
 
-    public void switchToZgjedhNjeOre(ActionEvent event) {
-        switchTo();
-    }
-
-    public void switchToZgjedhNjeOreWithEnter(KeyEvent event){
-        FillimiService.switchToZgjedhNjeOreWithEnter(event);
-    }
 
     @FXML
     public void switchTo() {
@@ -72,11 +66,11 @@ public class FillimiController extends SceneController implements Initializable{
             return;
         }
         //Indeksi nuk ndodhet ne liste
-        if(FillimiService.indeksiNukNdodhetNeListe(conn, ps, rs, indeksi)){
+        if(FillimiService.indeksiNukNdodhetNeListe(indeksi)){
             return;
         }
 
-        FillimiService.loadRegjistroOret(conn, ps, rs, lendetRegjistruara, nrOreve, nr, scene, root, stage);
+        FillimiService.loadRegjistroOret(lendetRegjistruara, nrOreve, nr, scene, root, stage);
         System.out.println(nrOreve);
     }
 
@@ -146,5 +140,14 @@ public class FillimiController extends SceneController implements Initializable{
         selectedLanguageCode = languageCode;
     }
 
+    public void switchToZgjedhNjeOre() {
+        switchTo();
+    }
+
+    public void switchToZgjedhNjeOreWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            switchToZgjedhNjeOre();
+        }
+    }
 
 }

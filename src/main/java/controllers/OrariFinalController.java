@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.dto.OrariFinalDto;
 import service.ConnectionUtil;
+import service.OrariFinalService;
 import service.Translate;
 import service.UserService;
 
@@ -23,53 +24,18 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class OrariFinalController extends SceneController implements Initializable {
-    private Scene scene;
-    private Parent root;
-    private Stage stage;
     Connection conn;
-    PreparedStatement ps;
-    ResultSet rs;
     ObservableList lista1;
     ObservableList lista2;
     ObservableList lista3;
-    @FXML
-    Label fiek_orariLabel;
-    @FXML
-    Button startButton;
-    @FXML
-    Button manageClassButton;
-    @FXML
-    Button profileButton;
-    @FXML
-    Button Oraributton;
-    @FXML
-    Button NdihmaButton;
-    @FXML
-    Button logoutButton;
-    @FXML
-    Label longTextLabel;
-    @FXML
-    Label scheduleLabel;
-    @FXML
-    TabPane tabPane;
-    @FXML
-    Tab semestriDy;
-    @FXML
-    Tab semestriKater;
-    @FXML
-    Tab semestriGjashte;
-
-    public static String selectedLanguageCode = "sq";
     @FXML
     private TableView<?> orari_table1;
     @FXML
     private TableView<?> orari_table2;
     @FXML
     private TableView<?> orari_table3;
-
     @FXML
     private TableColumn<?, ?> columnDita;
-
     @FXML
     private TableColumn<?, ?> columnOra;
     @FXML
@@ -78,25 +44,28 @@ public class OrariFinalController extends SceneController implements Initializab
     private TableColumn<?, ?> columnLenda;
     @FXML
     private TableColumn<?, ?> columnDita1;
-
     @FXML
     private TableColumn<?, ?> columnOra1;
     @FXML
     private TableColumn<?, ?> columnSalla1;
     @FXML
     private TableColumn<?, ?> columnLenda1;
-
     @FXML
     private TableColumn<?, ?> columnDita2;
-
     @FXML
     private TableColumn<?, ?> columnOra2;
     @FXML
     private TableColumn<?, ?> columnSalla2;
     @FXML
     private TableColumn<?, ?> columnLenda2;
-
-
+    @FXML
+    TabPane tabPane;
+    @FXML
+    Tab semestriDy;
+    @FXML
+    Tab semestriKater;
+    @FXML
+    Tab semestriGjashte;
     ActionEvent actionEvent;
 
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -105,63 +74,18 @@ public class OrariFinalController extends SceneController implements Initializab
             lista1 = FXCollections.observableArrayList();
             lista2 = FXCollections.observableArrayList();
             lista3= FXCollections.observableArrayList();
-            setCellTable();
-            loadFromDatabase();
+            OrariFinalService.setCellTable(columnDita, columnLenda, columnOra, columnSalla);
+            OrariFinalService.setCellTable(columnDita1, columnLenda1, columnOra1, columnSalla1);
+            OrariFinalService.setCellTable(columnDita2, columnLenda2, columnOra2, columnSalla2);
+            OrariFinalService.loadFromDatabase(lista1, orari_table1, semestriDy, 2);
+            OrariFinalService.loadFromDatabase(lista2, orari_table2, semestriKater, 4);
+            OrariFinalService.loadFromDatabase(lista3, orari_table3, semestriGjashte, 6);
         }catch(Exception e){
 
         }
         updateTexts();
 
     }
-
-    public void setCellTable(){
-        columnDita.setCellValueFactory(new PropertyValueFactory<>("day"));
-        columnLenda.setCellValueFactory(new PropertyValueFactory<>("lenda"));
-        columnOra.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
-        columnSalla.setCellValueFactory(new PropertyValueFactory<>("salla"));
-        columnDita1.setCellValueFactory(new PropertyValueFactory<>("day"));
-        columnLenda1.setCellValueFactory(new PropertyValueFactory<>("lenda"));
-        columnOra1.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
-        columnSalla1.setCellValueFactory(new PropertyValueFactory<>("salla"));
-        columnDita2.setCellValueFactory(new PropertyValueFactory<>("day"));
-        columnLenda2.setCellValueFactory(new PropertyValueFactory<>("lenda"));
-        columnOra2.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
-        columnSalla2.setCellValueFactory(new PropertyValueFactory<>("salla"));
-    }
-
-    public void loadFromDatabase() {
-        try {
-            System.out.println(UserService.loggedInUserId);
-            ps = conn.prepareStatement("SELECT * FROM orarizgjedhur INNER JOIN subject ON orarizgjedhur.lenda = subject.name WHERE orarizgjedhur.availableOrariZgjedhur != 0 AND semestri = ?;");
-            ps.setInt(1, 2); // Set the semester for the first tab
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista1.add(new OrariFinalDto(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
-            }
-            orari_table1.setItems(lista1);
-            semestriDy.setContent(orari_table1);
-
-            ps.setInt(1, 4); // Set the semester for the second tab
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista2.add(new OrariFinalDto(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
-            }
-            orari_table2.setItems(lista2);
-            ps.setInt(1, 6); // Set the semester for the third tab
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista3.add(new OrariFinalDto(rs.getString(7), rs.getString(6), rs.getString(4), rs.getString(5)));
-
-                orari_table3.setItems(lista3);
-            }
-            semestriDy.setContent(orari_table1);
-            semestriKater.setContent(orari_table2);
-            semestriGjashte.setContent(orari_table3);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public void switchToFillimi() throws IOException{
         switchToFillimi(actionEvent);
@@ -181,6 +105,28 @@ public class OrariFinalController extends SceneController implements Initializab
     public void switchToOrari() throws IOException{
         switchToOrari(actionEvent);
     }
+
+    //------------------------Gjuha-------------------
+    @FXML
+    Label fiek_orariLabel;
+    @FXML
+    Button startButton;
+    @FXML
+    Button manageClassButton;
+    @FXML
+    Button profileButton;
+    @FXML
+    Button Oraributton;
+    @FXML
+    Button NdihmaButton;
+    @FXML
+    Button logoutButton;
+    @FXML
+    Label longTextLabel;
+    @FXML
+    Label scheduleLabel;
+
+    public static String selectedLanguageCode = "sq";
 
     public void setSelectedLanguageCode(String languageCode) {
         selectedLanguageCode = languageCode;

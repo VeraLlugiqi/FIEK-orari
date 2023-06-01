@@ -2,7 +2,9 @@ package service;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.Chart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import repository.ChartRepository;
 
 public class ChartService {
@@ -17,4 +19,9 @@ public class ChartService {
                                 data.getName(), " eshte zgjedhur " , data.pieValueProperty() , " here")                        )
         );
     }
-}
+
+    public static void getBarChartInfo(XYChart.Series<String, Integer> series){
+        ChartRepository.getBarChartInfo(series);
+    }
+
+    }

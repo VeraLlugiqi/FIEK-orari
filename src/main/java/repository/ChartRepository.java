@@ -1,11 +1,13 @@
 package repository;
 
+import javafx.scene.chart.XYChart;
 import service.ConnectionUtil;
 import service.Translate;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import static service.PasswordUtil.showAlert;
 
@@ -36,6 +38,21 @@ public class ChartRepository {
 
         }
 
+    }
+
+    public static void getBarChartInfo(XYChart.Series<String, Integer> series){
+        try {
+            Connection conn = ConnectionUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT day, COUNT(*) AS booked_schedules FROM orarizgjedhur WHERE availableOrariZgjedhur = 1 GROUP BY day ");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String day = rs.getString("day");
+                int count = rs.getInt("booked_schedules");
+                series.getData().add(new XYChart.Data<>(day, count));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 package service;
 
+import controllers.FillimiController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,10 +14,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import repository.FillimiRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 import static service.PasswordUtil.showAlert;
 
 public class FillimiService {
@@ -29,51 +26,25 @@ public class FillimiService {
     }
 
     public static void loadFromDatabase(
-            Connection conn,
-            PreparedStatement ps,
-            ResultSet rs,
             ObservableList list,
             TableView table_orari){
-        FillimiRepository.loadFromDatabase(conn, ps, rs, list, table_orari);
+        FillimiRepository.loadFromDatabase(list, table_orari);
     }
 
-    public static void switchToZgjedhNjeOreWithEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            //switchTo();
-        }
+
+    public static boolean indeksiNukNdodhetNeListe(String indeksi){
+        return FillimiRepository.indeksiNukNdodhetNeListe(indeksi);
     }
 
-    public static boolean indeksiNukNdodhetNeListe(
-            Connection conn,
-            PreparedStatement ps,
-            ResultSet rs,
-            String indeksi
-    ){
-        return FillimiRepository.indeksiNukNdodhetNeListe(conn, ps, rs, indeksi);
+    public static int lendetRegjistruara(){
+       return FillimiRepository.lendetRegjistruara();
     }
 
-    public static int lendetRegjistruara(
-            Connection conn,
-            PreparedStatement ps,
-            ResultSet rs
-    ){
-       return FillimiRepository.lendetRegjistruara(conn, ps, rs);
+    public static int dyOrare(int nr){
+        return FillimiRepository.dyOrare(nr);
     }
 
-    public static int dyOrare(
-            Connection conn,
-            PreparedStatement ps,
-            ResultSet rs,
-            int nr
-    ){
-        return FillimiRepository.dyOrare(conn, ps, rs, nr);
-    }
-
-    public void switchToRegjistroOren(
-            Parent root,
-            Stage stage,
-            Scene scene
-    ){
+    public void switchToRegjistroOren(Parent root, Stage stage, Scene scene){
         try {
             root = FXMLLoader.load(getClass().getResource("/com/example/fiekorari/regjistroOren.fxml"));
             Stage addDialogStage = new Stage();
@@ -101,9 +72,6 @@ public class FillimiService {
     }
 
     public static void loadRegjistroOret(
-            Connection conn,
-            PreparedStatement ps,
-            ResultSet rs,
             int lendetRegjistruara,
             int nrOreve,
             int nr,
@@ -112,8 +80,8 @@ public class FillimiService {
             Stage stage
     ){
         //Shiko sa lende te regjistruara i ka profesori, ashtu qe i del nje alert error kur nuk ka me lende te regjistroje
-        lendetRegjistruara = FillimiService.lendetRegjistruara(conn, ps, rs);
-        nrOreve = FillimiService.dyOrare(conn, ps, rs, nr);
+        lendetRegjistruara = FillimiService.lendetRegjistruara();
+        nrOreve = FillimiService.dyOrare(nr);
         if(nrOreve==0) {
             if (lendetRegjistruara != 0) {
                 FillimiService fillimiService = new FillimiService();

@@ -62,10 +62,8 @@ public class RegjistroOrenController implements Initializable {
         if(RegjistroOrenService.emptySallaLenda(lenda, salla)){
             return;
         }
-        //Merr timestamp dhe day nga databaza
-        String[] timestampSalla = RegjistroOrenService.getTimestampDay(FillimiService.getIndeksi);
         //Nese jane zgjedhur fushat me sukses, i vendosim te dhenat ne tabelen orarizgjedhur
-        RegjistroOrenService.regjistroOrenSukses(lenda, salla, timestampSalla);
+        RegjistroOrenService.regjistroOrenSukses(lenda, salla);
     }
 
     //------------------------Gjuha---------------------
