@@ -9,7 +9,7 @@ import controllers.MenaxhoOretService;
 import controllers.NdihmaService;
 import controllers.OrariFinalService;
 import controllers.PasswordUpdateService;
-import controllers.SignupService;
+import controllers.SignupController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -120,7 +120,7 @@ public class SceneService {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
         root = loader.load();
-        SignupService signupController = loader.getController();
+        SignupController signupController = loader.getController();
         signupController.setSelectedLanguageCode(selectedLanguageCode);
         signupController.updateTexts(); // Call updateTexts() in the SignupController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -129,5 +129,4 @@ public class SceneService {
         stage.setScene(scene);
         stage.show();
     }
-
 }

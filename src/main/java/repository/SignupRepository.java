@@ -3,9 +3,7 @@ package repository;
 import javafx.scene.control.TextField;
 import models.UserModel;
 import service.*;
-import static controllers.SignupService.selectedLanguageCode;
-
-
+import static controllers.SignupController.selectedLanguageCode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,11 +63,32 @@ public class SignupRepository{
                 } else {
                     PasswordUtil.showErrorAlert(getTranslation("login.error.passwordTooShort"));
                 }
+                conn.close();
+                statement.close();
+
             } catch (SQLException e) {
                 PasswordUtil.showErrorAlert(getTranslation("login.error.PassowrdUpdateFail"));
                 e.printStackTrace();
             }
         }
+
+    public static boolean isIdNumberValid(String idNumber) {
+        try (Connection conn = ConnectionUtil.getConnection();
+             PreparedStatement statement = conn.prepareStatement("SELECT COUNT(*) FROM user WHERE idNumber = ?")) {
+            statement.setString(1, idNumber);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+            conn.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
     private String getTranslation(String key) {
         return Translate.get(key, selectedLanguageCode);

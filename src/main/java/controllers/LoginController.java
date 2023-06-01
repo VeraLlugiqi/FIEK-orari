@@ -165,15 +165,12 @@
 
 package controllers;
 
-
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import service.*;
-
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -183,89 +180,48 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class LoginController {
-    private UserService userController;
-    private ResourceBundle resources;
-
-    public LoginController() {
-        userController = new UserService();
-    }
-
+public class LoginController extends SceneService {
     @FXML
     private TextField idTextField;
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private Label fiek_orariLabel;
-    @FXML
-    private Button loginButton;
-    @FXML
-    private Button signUpButton;
-
-    @FXML
-    private Label notRegisteredLabel;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    public static String selectedLanguageCode = "sq"; // Default language code
-//
-//    public void initialize() {
-//        selectedLanguageCode = "en";
-//    }
-
-
-
-    public void updateTexts() {
-        fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));
-        idTextField.setPromptText(Translate.get("idTextField.promptText"));
-        passwordField.setPromptText(Translate.get("passwordField.promptText"));
-        loginButton.setText(Translate.get("loginButton.text"));
-        notRegisteredLabel.setText(Translate.get("notRegisteredLabel.text"));
-        signUpButton.setText(Translate.get("signUpButton.text"));
-    }
-    public void loginUser(ActionEvent event) {
-        performLogin();
-    }
-
-    public void loginUserWithEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            performLogin();
-        }
-    }
+    ActionEvent event;
 
     private void performLogin() {
         String idNumber = idTextField.getText();
         String password = passwordField.getText();
-
 
         // Validate if any field is empty
         if(LoginService.loginEmptyFields(idNumber, password)){
             return;
         }
         // Retrieve the user from the database
-        LoginService.loginUser(idNumber, password, root, scene, idTextField);
+        LoginService.loginUser(idNumber, password, idTextField);
     }
 
-    private void showErrorAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+//    private void showErrorAlert(String message) {
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setHeaderText(null);
+//        alert.setContentText(message);
+//        alert.showAndWait();
+//    }
 
-    public void switchToSignUp(ActionEvent event) throws IOException {
-        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
-        Parent root = loader.load();
-        SignupService signupController = loader.getController();
-        signupController.setSelectedLanguageCode(selectedLanguageCode);
-        signupController.updateTexts(); // Call updateTexts() in the SignupController
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setTitle(Translate.get("signup.text"));
-        stage.setScene(scene);
-        stage.show();
+//    public void switchToSignUp(ActionEvent event) throws IOException {
+//        ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/signup.fxml"), bundle);
+//        Parent root = loader.load();
+//        SignupService signupController = loader.getController();
+//        signupController.setSelectedLanguageCode(selectedLanguageCode);
+//        signupController.updateTexts(); // Call updateTexts() in the SignupController
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(root);
+//        stage.setTitle(Translate.get("signup.text"));
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+
+    public void switchToSignUp() throws IOException{
+        switchToSignUp(event);
     }
 
     public void setSelectedLanguageCode(String languageCode) {
@@ -294,6 +250,33 @@ public class LoginController {
         return byteArray;
     }
 
+    //------------------Gjuha-----------------------------------
+    @FXML
+    private Label fiek_orariLabel;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button signUpButton;
+    @FXML
+    private Label notRegisteredLabel;
+
+    public static String selectedLanguageCode = "sq"; // Default language code
+    public void updateTexts() {
+        fiek_orariLabel.setText(Translate.get("fiek_orariLabel.text"));
+        idTextField.setPromptText(Translate.get("idTextField.promptText"));
+        passwordField.setPromptText(Translate.get("passwordField.promptText"));
+        loginButton.setText(Translate.get("loginButton.text"));
+        notRegisteredLabel.setText(Translate.get("notRegisteredLabel.text"));
+        signUpButton.setText(Translate.get("signUpButton.text"));
+    }
+    public void loginUser(ActionEvent event) {
+        performLogin();
+    }
+    public void loginUserWithEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            performLogin();
+        }
+    }
 
 }
 

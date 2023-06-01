@@ -7,47 +7,24 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.*;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import static controllers.LoginController.hexStringToByteArray;
 import static repository.UserRepository.selectedLanguageCode;
 import static service.PasswordUtil.showErrorAlert;
 
 public class LoginRepository {
-
-    public boolean verifyCredentials(String idNumber, String password) {
-        try {
-            Connection conn = ConnectionUtil.getConnection();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?");
-            statement.setString(1, idNumber);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                String storedPassword = resultSet.getString("password");
-                byte[] salt = PasswordUtil.hexStringToByteArray(resultSet.getString("salt"));
-                String hashedPassword = PasswordUtil.hashPassword(password, salt);
-
-                return storedPassword.equals(hashedPassword);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
+    Parent root;
+    Scene scene;
     public void loginUser(
             String idNumber,
             String password,
-            Parent root,
-            Scene scene,
             TextField idTextField
-    ){
+    )
+    {
         try (Connection conn = ConnectionUtil.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT * FROM user WHERE idNumber = ?")) {
             statement.setString(1, idNumber);
@@ -87,6 +64,9 @@ public class LoginRepository {
             } else {
                 showErrorAlert(Translate.get("login.error.invalidCredentials"));
             }
+            conn.close();
+            statement.close();
+            resultSet.close();
         } catch (SQLException e) {
             showErrorAlert(Translate.get("login.error.loginFailed"));
             e.printStackTrace();

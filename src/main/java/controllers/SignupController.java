@@ -4,30 +4,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
-//import models.LocaleBundle;
 import service.*;
-//import service.getTranslation;
-
-public class SignupService extends SceneService implements Initializable {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private static Locale selectedLanguage;
-    public static String selectedLanguageCode = "sq";
+public class SignupController extends SceneService implements Initializable {
     @FXML
     private TextField idNumberTextField;
     @FXML
@@ -54,10 +41,8 @@ public class SignupService extends SceneService implements Initializable {
         signupService.signupValidation(idNumber, password, confirmPassword);
         // Generate salt
         byte[] salt = PasswordUtil.generateSalt();
-
         // Hash the password using the salt and the SHA-256 algorithm
         String saltedHashedPassword = PasswordUtil.hashPassword(password, salt);
-
         // Insert the password and salt into the database
         service.SignupService.insertPassword(salt, saltedHashedPassword, idNumber, passwordField);
     }
@@ -68,9 +53,8 @@ public class SignupService extends SceneService implements Initializable {
 
     public void switchToLogin(ActionEvent event) throws IOException {
         service.SignupService signupService = new service.SignupService();
-        signupService.switchToLogin(event, root, scene, stage);
+        signupService.switchToLogin(event);
     }
-
 
 
 //----------------Gjuha-----------------------
@@ -105,5 +89,6 @@ public class SignupService extends SceneService implements Initializable {
             registerUser();
         }
     }
-
+    private static Locale selectedLanguage;
+    public static String selectedLanguageCode = "sq";
 }
