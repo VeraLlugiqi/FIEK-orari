@@ -11,7 +11,7 @@ import javafx.fxml.FXMLLoader;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
 import javafx.stage.Stage;
-import repository.LocaleBundle;
+import service.LocaleBundle;
 import service.Translate;
 
 abstract class SceneController {
