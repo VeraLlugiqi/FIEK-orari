@@ -65,9 +65,10 @@ public class FillimiRepository {
             if(rs.next()){
                 lendetRegjistruara = rs.getInt(1);
             }
-            conn.close();
-            ps.close();
+
             rs.close();
+            ps.close();
+            conn.close();
         }catch(Exception e){
             showAlert(Translate.get("errorNrLendeDb.text"));
             e.printStackTrace();

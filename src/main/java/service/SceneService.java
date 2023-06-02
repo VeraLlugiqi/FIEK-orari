@@ -3,7 +3,7 @@ package service;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-import controllers.FillimiService;
+import controllers.FillimiController;
 import controllers.LoginController;
 import controllers.MenaxhoOretController;
 import controllers.NdihmaService;
@@ -31,7 +31,7 @@ public class SceneService {
         ResourceBundle bundle = LocaleBundle.bundle(selectedLanguageCode);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"), bundle);
         root = loader.load();
-        FillimiService fillimiController = loader.getController();
+        FillimiController fillimiController = loader.getController();
         fillimiController.setSelectedLanguageCode(selectedLanguageCode);
         fillimiController.updateTexts();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

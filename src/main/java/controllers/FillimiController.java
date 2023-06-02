@@ -21,7 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class FillimiService extends SceneService implements Initializable{
+public class FillimiController extends SceneService implements Initializable{
 
     @FXML
     private TableView<OrariFillimiDto> table_orari;
@@ -34,12 +34,7 @@ public class FillimiService extends SceneService implements Initializable{
 
     ActionEvent actionEvent;
     int lendetRegjistruara;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private Connection conn = null;
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
+
     private ObservableList list;
     private int nrOreve;
     private int nr;
@@ -143,7 +138,7 @@ public class FillimiService extends SceneService implements Initializable{
 
     public void switchToZgjedhNjeOreWithEnter(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            switchToZgjedhNjeOre();
+            switchTo();
         }
     }
 

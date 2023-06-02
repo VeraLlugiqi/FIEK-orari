@@ -1,6 +1,6 @@
 package repository;
 
-import controllers.FillimiService;
+import controllers.FillimiController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static controllers.LoginController.hexStringToByteArray;
-import static controllers.SignupController.selectedLanguageCode;
 import static service.PasswordUtil.showErrorAlert;
 
 public class UserRepository {
@@ -93,7 +92,7 @@ public class UserRepository {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fiekorari/fillimi.fxml"));
                         root = loader.load();
-                        FillimiService fillimiController = loader.getController();
+                        FillimiController fillimiController = loader.getController();
                         fillimiController.setSelectedLanguageCode(UserRepository.selectedLanguageCode);
 
                         fillimiController.updateTexts(); // Call updateTexts() in the SignupController
